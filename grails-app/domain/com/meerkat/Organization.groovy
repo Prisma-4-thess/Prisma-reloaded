@@ -13,6 +13,8 @@ class Organization {
     int fekNumber
     int fekIssue
     int fekYear
+    static hasMany = [orgDomain:DictionaryItem]
+    DictionaryItem category
     static constraints = {
         label(blank: false)
         supervisor(nullable: true)
