@@ -1,7 +1,7 @@
 package com.meerkat
 
 class Organization {
-
+    String uid
     String label
     String abbreviation
     String latinName
@@ -16,6 +16,7 @@ class Organization {
     static hasMany = [orgDomain:DictionaryItem]
     DictionaryItem category
     static constraints = {
+        uid(unique: true,nullable: false)
         label(blank: false)
         odeManagerEmail(email: true,blank: true)
         website(blank: true)
