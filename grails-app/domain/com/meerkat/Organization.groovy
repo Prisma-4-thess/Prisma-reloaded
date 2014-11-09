@@ -17,7 +17,6 @@ class Organization {
     DictionaryItem category
     static constraints = {
         label(blank: false)
-        supervisor(nullable: true)
         odeManagerEmail(email: true,blank: true)
         website(blank: true)
         fekIssue(nullable: true)
