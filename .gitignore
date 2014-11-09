@@ -1,10 +1,5 @@
 # .gitignore for Grails 2.4.3
 
-#unwanted bin from grails-app
-grails-app/assets/*
-grails-app/utils/*
-grails-app/migrations/*
-
 #intellij shit
 *.iml
 .classpath
