@@ -5,7 +5,7 @@ class Organization {
     String label
     String abbreviation
     String latinName
-    enum Status{ACTIVE,INACTIVE,PENDING}
+    String status
     Organization supervisor
     String website
     String odeManagerEmail
@@ -23,5 +23,6 @@ class Organization {
         fekIssue(nullable: true)
         vatNumber(nullable: true)
         supervisor(nullable: true)
+        status(inList: ["active", "inactive", "pending"])
     }
 }
