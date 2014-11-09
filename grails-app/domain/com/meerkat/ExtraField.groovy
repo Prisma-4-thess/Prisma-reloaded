@@ -13,7 +13,7 @@ class ExtraField {
     String searchTerm
     String dictionary
     boolean relAdaConstrainedInOrganization
-    static hasMany = [fixedValueList:String,relAdaDecisionTypes:Type,nestedFields:ExtraFields]
+    static hasMany = [fixedValueList:String,relAdaDecisionTypes:Type,nestedFields:ExtraField]
 
     static constraints = {
         value(nullable: true)

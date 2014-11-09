@@ -23,4 +23,5 @@ target/*
 #forgotten gitignore gedit-backup
 .gitignore~  
 
-
+#grail's out classes
+out/*
