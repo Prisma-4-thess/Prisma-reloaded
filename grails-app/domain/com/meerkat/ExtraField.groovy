@@ -1,7 +1,6 @@
 package com.meerkat
 
 class ExtraField {
-    String value
     String uid
     String label
     String help
@@ -13,10 +12,10 @@ class ExtraField {
     String searchTerm
     String dictionary
     boolean relAdaConstrainedInOrganization
+    static belongsTo = Type
     static hasMany = [fixedValueList:String,relAdaDecisionTypes:Type,nestedFields:ExtraField]
 
     static constraints = {
-        value(nullable: true)
         type(inList: ["integer", "string", "object"])
         validation(inList: ["ada", "dictionary", "fixedValueList","afm","orgStructure"])
         dictionary(nullable: true)
