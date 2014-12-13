@@ -56,7 +56,7 @@
 				<li class="fieldcontain">
 					<span id="issueDate-label" class="property-label"><g:message code="decision.issueDate.label" default="Issue Date" /></span>
 					
-						<span class="property-value" aria-labelledby="issueDate-label"><g:formatDate date="${decisionInstance?.issueDate}" /></span>
+						<span class="property-value" aria-labelledby="issueDate-label"><g:fieldValue bean="${decisionInstance}" field="issueDate"/></span>
 					
 				</li>
 				</g:if>
@@ -112,7 +112,7 @@
 				<li class="fieldcontain">
 					<span id="submissionTimestamp-label" class="property-label"><g:message code="decision.submissionTimestamp.label" default="Submission Timestamp" /></span>
 					
-						<span class="property-value" aria-labelledby="submissionTimestamp-label"><g:formatDate date="${decisionInstance?.submissionTimestamp}" /></span>
+						<span class="property-value" aria-labelledby="submissionTimestamp-label"><g:fieldValue bean="${decisionInstance}" field="submissionTimestamp"/></span>
 					
 				</li>
 				</g:if>

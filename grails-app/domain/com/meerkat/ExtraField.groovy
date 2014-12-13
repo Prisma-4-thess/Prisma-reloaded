@@ -1,7 +1,7 @@
 package com.meerkat
 
 class ExtraField {
-    String uid
+    String id
     String label
     String help
     String type
@@ -23,5 +23,9 @@ class ExtraField {
         relAdaDecisionTypes(nullable: true)
         relAdaConstrainedInOrganization(nullable:true)
         nestedFields(nullable: true)
+    }
+    static mapping = {
+        version false
+        id column: 'extraField_id'
     }
 }

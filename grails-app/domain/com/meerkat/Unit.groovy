@@ -1,7 +1,7 @@
 package com.meerkat
 
 class Unit {
-    String uid
+    String id
     String label
     String abbreviation
     boolean active
@@ -10,7 +10,11 @@ class Unit {
     static hasMany = [unitDomains:DictionaryItem]
 
     static constraints = {
-        uid(unique: true,nullable: false)
+        id(unique: true,nullable: false)
         parent(nullable: false)
+    }
+    static mapping = {
+        version false
+        id column:'unit_id',generator: 'assigned'
     }
 }

@@ -46,7 +46,7 @@
 					
 						<td>${fieldValue(bean: decisionInstance, field: "correctedDecision")}</td>
 					
-						<td><g:formatDate date="${decisionInstance.issueDate}" /></td>
+						<td>${fieldValue(bean: decisionInstance, field: "issueDate")}</td>
 					
 						<td>${fieldValue(bean: decisionInstance, field: "organization")}</td>
 					

@@ -1,13 +1,16 @@
 package com.meerkat
 
 class Type {
-
-    String uid
+    String id
     String label
     Type parent
     boolean allowedInDecision
     static hasMany = [extraFields:ExtraField]
     static constraints = {
-        uid(unique: true,nullable: false)
+        id(unique: true,nullable: false)
+    }
+    static mapping = {
+        version false
+        id column: 'type_id'
     }
 }

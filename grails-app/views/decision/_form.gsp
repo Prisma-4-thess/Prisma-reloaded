@@ -34,7 +34,7 @@
 		<g:message code="decision.issueDate.label" default="Issue Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="issueDate" precision="day"  value="${decisionInstance?.issueDate}"  />
+	<g:field name="issueDate" type="number" value="${decisionInstance.issueDate}" required=""/>
 
 </div>
 
@@ -88,7 +88,7 @@
 		<g:message code="decision.submissionTimestamp.label" default="Submission Timestamp" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="submissionTimestamp" precision="day"  value="${decisionInstance?.submissionTimestamp}"  />
+	<g:field name="submissionTimestamp" type="number" value="${decisionInstance.submissionTimestamp}" required=""/>
 
 </div>
 
@@ -124,7 +124,7 @@
 		<g:message code="decision.versionId.label" default="Version Id" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="versionId" required="" value="${decisionInstance?.versionId}"/>
+	<g:field name="versionId" type="number" value="${decisionInstance.versionId}" required=""/>
 
 </div>
 

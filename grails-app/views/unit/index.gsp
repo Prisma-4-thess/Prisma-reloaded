@@ -24,8 +24,6 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="uid" title="${message(code: 'unit.uid.label', default: 'Uid')}" />
-					
 						<th><g:message code="unit.parent.label" default="Parent" /></th>
 					
 						<g:sortableColumn property="abbreviation" title="${message(code: 'unit.abbreviation.label', default: 'Abbreviation')}" />
@@ -42,9 +40,7 @@
 				<g:each in="${unitInstanceList}" status="i" var="unitInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${unitInstance.id}">${fieldValue(bean: unitInstance, field: "uid")}</g:link></td>
-					
-						<td>${fieldValue(bean: unitInstance, field: "parent")}</td>
+						<td><g:link action="show" id="${unitInstance.id}">${fieldValue(bean: unitInstance, field: "parent")}</g:link></td>
 					
 						<td>${fieldValue(bean: unitInstance, field: "abbreviation")}</td>
 					

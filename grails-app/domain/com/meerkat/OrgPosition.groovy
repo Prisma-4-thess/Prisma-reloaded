@@ -1,10 +1,14 @@
 package com.meerkat
 
 class OrgPosition {
-    String uid
+    String id
     String label
     static constraints = {
-        uid(unique: true,nullable: false)
+        id(unique: true,nullable: false)
         label(blank: false)
+    }
+    static mapping = {
+        version false
+        id column: 'orgPosition_id'
     }
 }

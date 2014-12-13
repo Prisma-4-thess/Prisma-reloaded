@@ -1,14 +1,20 @@
 package com.meerkat
 
 class Signer {
-    String uid
+    String id
     String firstName
     String lastName
     boolean active
     Organization org
-    boolean hasOrganizatioSignRights
-    OrgPosition position
+    long activeFrom
+    long activeUntil
+    boolean hasOrganizationSignRights
+    static hasMany = [signUnits:SignUnit]
     static constraints = {
-        uid(unique: true,nullable: false)
+        id(unique: true,nullable: false)
+    }
+    static mapping = {
+        version false
+        id column: 'signer_id'
     }
 }

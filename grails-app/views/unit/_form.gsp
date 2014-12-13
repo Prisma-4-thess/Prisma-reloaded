@@ -2,15 +2,6 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'uid', 'error')} required">
-	<label for="uid">
-		<g:message code="unit.uid.label" default="Uid" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="uid" required="" value="${unitInstance?.uid}"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'parent', 'error')} required">
 	<label for="parent">
 		<g:message code="unit.parent.label" default="Parent" />

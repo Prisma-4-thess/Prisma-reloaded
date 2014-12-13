@@ -1,11 +1,15 @@
 package com.meerkat
 
 class Dictionary {
-    String uid
+    String id
     String label
     static hasMany = [items:DictionaryItem]
     static constraints = {
-        uid(unique: true,nullable: false)
+        id(unique: true,nullable: false)
         label(blank: false)
+    }
+    static mapping = {
+        version false
+        id column: 'dictionary_id'
     }
 }

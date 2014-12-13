@@ -1,7 +1,7 @@
 package com.meerkat
 
 class Organization {
-    String uid
+    String id
     String label
     String abbreviation
     String latinName
@@ -11,12 +11,12 @@ class Organization {
     String odeManagerEmail
     String vatNumber
     int fekNumber
-    int fekIssue
+    DictionaryItem fekIssue
     int fekYear
     static hasMany = [orgDomain:DictionaryItem]
     DictionaryItem category
     static constraints = {
-        uid(unique: true,nullable: false)
+        id(unique: true,nullable: false)
         label(blank: false)
         odeManagerEmail(email: true,blank: true)
         website(blank: true)
@@ -24,5 +24,9 @@ class Organization {
         vatNumber(nullable: true)
         supervisor(nullable: true)
         status(inList: ["active", "inactive", "pending"])
+    }
+    static mapping = {
+        version false
+        id column:'organization_id',generator: 'assigned'
     }
 }

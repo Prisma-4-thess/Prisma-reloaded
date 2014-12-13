@@ -23,15 +23,6 @@
 			</g:if>
 			<ol class="property-list unit">
 			
-				<g:if test="${unitInstance?.uid}">
-				<li class="fieldcontain">
-					<span id="uid-label" class="property-label"><g:message code="unit.uid.label" default="Uid" /></span>
-					
-						<span class="property-value" aria-labelledby="uid-label"><g:fieldValue bean="${unitInstance}" field="uid"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${unitInstance?.parent}">
 				<li class="fieldcontain">
 					<span id="parent-label" class="property-label"><g:message code="unit.parent.label" default="Parent" /></span>
