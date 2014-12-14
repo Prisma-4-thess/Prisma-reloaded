@@ -52,6 +52,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${decisionInstance?.geo}">
+				<li class="fieldcontain">
+					<span id="geo-label" class="property-label"><g:message code="decision.geo.label" default="Geo" /></span>
+					
+						<span class="property-value" aria-labelledby="geo-label"><g:link controller="geo" action="show" id="${decisionInstance?.geo?.id}">${decisionInstance?.geo?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${decisionInstance?.issueDate}">
 				<li class="fieldcontain">
 					<span id="issueDate-label" class="property-label"><g:message code="decision.issueDate.label" default="Issue Date" /></span>

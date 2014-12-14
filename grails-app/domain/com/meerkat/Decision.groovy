@@ -12,6 +12,7 @@ class Decision implements Serializable {
     long submissionTimestamp
     Decision correctedDecision
     static hasMany = [extraFieldValues: ExtraFieldValue, signers: Signer, units: Unit, thematicCategories: DictionaryItem]
+    static belongsTo = [geo: Geo]
     static constraints = {
         ada(unique: "versionId")
     }

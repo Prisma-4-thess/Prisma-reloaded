@@ -28,13 +28,13 @@
 					
 						<th><g:message code="decision.correctedDecision.label" default="Corrected Decision" /></th>
 					
+						<th><g:message code="decision.geo.label" default="Geo" /></th>
+					
 						<g:sortableColumn property="issueDate" title="${message(code: 'decision.issueDate.label', default: 'Issue Date')}" />
 					
 						<th><g:message code="decision.organization.label" default="Organization" /></th>
 					
 						<g:sortableColumn property="privateData" title="${message(code: 'decision.privateData.label', default: 'Private Data')}" />
-					
-						<g:sortableColumn property="protocolNumber" title="${message(code: 'decision.protocolNumber.label', default: 'Protocol Number')}" />
 					
 					</tr>
 				</thead>
@@ -46,13 +46,13 @@
 					
 						<td>${fieldValue(bean: decisionInstance, field: "correctedDecision")}</td>
 					
+						<td>${fieldValue(bean: decisionInstance, field: "geo")}</td>
+					
 						<td>${fieldValue(bean: decisionInstance, field: "issueDate")}</td>
 					
 						<td>${fieldValue(bean: decisionInstance, field: "organization")}</td>
 					
 						<td><g:formatBoolean boolean="${decisionInstance.privateData}" /></td>
-					
-						<td>${fieldValue(bean: decisionInstance, field: "protocolNumber")}</td>
 					
 					</tr>
 				</g:each>
