@@ -9,6 +9,6 @@ class SignUnit {
     }
     static mapping = {
         version false
-        id column: 'signUnit_id'
+        id column: 'signUnit_id',generator: 'assigned',sqlType: "varchar(20)"
     }
 }

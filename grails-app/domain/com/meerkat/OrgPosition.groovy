@@ -9,6 +9,6 @@ class OrgPosition {
     }
     static mapping = {
         version false
-        id column: 'orgPosition_id'
+        id column: 'orgPosition_id',generator: 'assigned',sqlType: "varchar(20)"
     }
 }

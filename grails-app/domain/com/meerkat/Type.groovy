@@ -11,6 +11,6 @@ class Type {
     }
     static mapping = {
         version false
-        id column: 'type_id'
+        id column: 'type_id',generator: 'assigned',sqlType: "varchar(20)"
     }
 }
