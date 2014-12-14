@@ -29,6 +29,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: decisionInstance, field: 'geo', 'error')} required">
+	<label for="geo">
+		<g:message code="decision.geo.label" default="Geo" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="geo" name="geo.id" from="${com.meerkat.Geo.list()}" optionKey="id" required="" value="${decisionInstance?.geo?.id}" class="many-to-one"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: decisionInstance, field: 'issueDate', 'error')} required">
 	<label for="issueDate">
 		<g:message code="decision.issueDate.label" default="Issue Date" />

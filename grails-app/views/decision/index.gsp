@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="admin_panel">
 		<g:set var="entityName" value="${message(code: 'decision.label', default: 'Decision')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
@@ -11,7 +11,7 @@
 		<a href="#list-decision" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/admin_panel')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -28,13 +28,13 @@
 					
 						<th><g:message code="decision.correctedDecision.label" default="Corrected Decision" /></th>
 					
+						<th><g:message code="decision.geo.label" default="Geo" /></th>
+					
 						<g:sortableColumn property="issueDate" title="${message(code: 'decision.issueDate.label', default: 'Issue Date')}" />
 					
 						<th><g:message code="decision.organization.label" default="Organization" /></th>
 					
 						<g:sortableColumn property="privateData" title="${message(code: 'decision.privateData.label', default: 'Private Data')}" />
-					
-						<g:sortableColumn property="protocolNumber" title="${message(code: 'decision.protocolNumber.label', default: 'Protocol Number')}" />
 					
 					</tr>
 				</thead>
@@ -46,13 +46,13 @@
 					
 						<td>${fieldValue(bean: decisionInstance, field: "correctedDecision")}</td>
 					
+						<td>${fieldValue(bean: decisionInstance, field: "geo")}</td>
+					
 						<td>${fieldValue(bean: decisionInstance, field: "issueDate")}</td>
 					
 						<td>${fieldValue(bean: decisionInstance, field: "organization")}</td>
 					
 						<td><g:formatBoolean boolean="${decisionInstance.privateData}" /></td>
-					
-						<td>${fieldValue(bean: decisionInstance, field: "protocolNumber")}</td>
 					
 					</tr>
 				</g:each>
