@@ -20,5 +20,7 @@ class ExtraField {
     static mapping = {
         version false
         id column: "extraField_id", generator: "assigned", sqlType: "varchar(20)"
+        relAdaDecisionTypes column: "rel_adaPdecision_type_id", generator: "assigned", sqlType: "varchar(20)"
+        nestedFields column: "nested_field_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }

@@ -14,5 +14,8 @@ class Unit {
     static mapping = {
         version false
         id column: "unit_id", generator: "assigned", sqlType: "varchar(20)"
+        parent column: "parent_id", generator: "assigned", sqlType: "varchar(20)"
+        category column: "category_id", generator: "assigned", sqlType: "varchar(20)"
+        unitDomains column: "unit_domain_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }
