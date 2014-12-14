@@ -4,6 +4,6 @@ class ExtraFieldValue {
     String value
     ExtraField ownerExtraField
     static constraints = {
-        value(blank: false)
+        ownerExtraField(nullable: true)
     }
 }

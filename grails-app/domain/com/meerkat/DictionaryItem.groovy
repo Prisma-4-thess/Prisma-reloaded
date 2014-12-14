@@ -5,9 +5,7 @@ class DictionaryItem {
     DictionaryItem parent
     static belongsTo = [dictionary: Dictionary]
     static constraints = {
-        id(unique: true, nullable: false)
-        label(blank: false)
-        parent(nullable: true)
+        dictionary(nullable: true)
     }
     static mapping = {
         version false
