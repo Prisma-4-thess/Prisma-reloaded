@@ -14,7 +14,7 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost/prismaReloaded"
+            url = "jdbc:mysql://localhost/prismaReloaded?useUnicode=yes&characterEncoding=UTF-8"
         }
     }
     test {
@@ -26,7 +26,7 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://localhost/prismaReloaded"
+            url = "jdbc:mysql://localhost/prismaReloaded?useUnicode=yes&characterEncoding=UTF-8"
             pooled = true
             properties {
                 maxActive = -1
