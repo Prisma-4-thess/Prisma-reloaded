@@ -4,8 +4,7 @@ class Dictionary {
     String label
     static hasMany = [items: DictionaryItem]
     static constraints = {
-        id(unique: true, nullable: false)
-        label(blank: false)
+        items(nullable: true)
     }
     static mapping = {
         version false

@@ -3,14 +3,13 @@ package com.meerkat
 class Unit {
     String label
     String abbreviation
-    boolean active
+    Boolean active
     Organization parent
     DictionaryItem category
     static hasMany = [unitDomains: DictionaryItem]
 
     static constraints = {
-        id(unique: true, nullable: false)
-        parent(nullable: false)
+        parent(nullable: true)
     }
     static mapping = {
         version false

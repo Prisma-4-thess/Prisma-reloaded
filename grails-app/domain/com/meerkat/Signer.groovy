@@ -3,14 +3,14 @@ package com.meerkat
 class Signer {
     String firstName
     String lastName
-    boolean active
+    Boolean active
     Organization org
-    long activeFrom
-    long activeUntil
-    boolean hasOrganizationSignRights
+    Long activeFrom
+    Long activeUntil
+    Boolean hasOrganizationSignRights
     static hasMany = [signUnits: SignUnit]
     static constraints = {
-        id(unique: true, nullable: false)
+
     }
     static mapping = {
         version false

@@ -115,3 +115,6 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+grails.gorm.default.constraints = {
+    '*'(nullable: true)
+}
