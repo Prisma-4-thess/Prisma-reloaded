@@ -15,5 +15,7 @@ class Signer {
     static mapping = {
         version false
         id column: "signer_id", generator: "assigned", sqlType: "varchar(20)"
+        org column: "org_id", generator: "assigned", sqlType: "varchar(20)"
+        signUnits column: "sign_unit_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }

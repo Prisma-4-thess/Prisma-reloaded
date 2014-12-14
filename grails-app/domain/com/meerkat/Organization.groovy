@@ -20,5 +20,8 @@ class Organization {
     static mapping = {
         version false
         id column: "organization_id", generator: "assigned", sqlType: "varchar(20)"
+        orgDomain column: "org_domain_id", generator: "assigned", sqlType: "varchar(20)"
+        category column: "category_id", generator: "assigned", sqlType: "varchar(20)"
+        supervisor column: "supervisor_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }
