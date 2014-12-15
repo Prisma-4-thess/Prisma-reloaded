@@ -12,6 +12,6 @@ class DecisionDictionaryItem implements Serializable{
         id composite: ['ada','versionId','item']
         ada column: "decision_ada", generator: "assigned", sqlType: "varchar(20)"
         versionId column: "decision_version", generator: "assigned", sqlType: "varchar(50)"
-        item column: "them_cat_id", generator: "assigned", sqlType: "varchar(20)"
+        item column: "them_cat_id", generator: "assigned", sqlType: "varchar(50)"
     }
 }
