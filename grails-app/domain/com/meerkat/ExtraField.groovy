@@ -5,8 +5,6 @@ class ExtraField {
     String help
     String type
     String validation
-    Boolean required
-    Boolean multiple
     Integer maxLength
     String searchTerm
     String dictionary
