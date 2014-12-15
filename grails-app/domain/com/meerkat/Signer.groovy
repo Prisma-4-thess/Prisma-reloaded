@@ -8,7 +8,6 @@ class Signer {
     Long activeFrom
     Long activeUntil
     Boolean hasOrganizationSignRights
-    static hasMany = [signUnits: SignUnit]
     static constraints = {
 
     }
@@ -16,6 +15,5 @@ class Signer {
         version false
         id column: "signer_id", generator: "assigned", sqlType: "varchar(20)"
         org column: "org_id", generator: "assigned", sqlType: "varchar(20)"
-        signUnits column: "signUnit_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }

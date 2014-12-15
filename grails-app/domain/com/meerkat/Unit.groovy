@@ -6,7 +6,6 @@ class Unit {
     Boolean active
     Organization parent
     DictionaryItem category
-    static hasMany = [unitDomains: DictionaryItem]
 
     static constraints = {
         parent(nullable: true)
@@ -16,6 +15,5 @@ class Unit {
         id column: "unit_id", generator: "assigned", sqlType: "varchar(20)"
         parent column: "parent_id", generator: "assigned", sqlType: "varchar(20)"
         category column: "category_id", generator: "assigned", sqlType: "varchar(20)"
-        unitDomains column: "unit_domain_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }

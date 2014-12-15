@@ -2,7 +2,7 @@ package com.meerkat
 
 class Decision implements Serializable {
     String ada
-    int versionId
+    String versionId
     String protocolNumber
     String subject
     long issueDate
@@ -11,10 +11,8 @@ class Decision implements Serializable {
     boolean privateData
     long submissionTimestamp
     Decision correctedDecision
-    static hasMany = [extraFieldValues: ExtraFieldValue, signers: Signer, units: Unit, thematicCategories: DictionaryItem]
     static belongsTo = [geo: Geo]
     static constraints = {
-        ada(unique: "versionId")
     }
     static mapping = {
         version false
