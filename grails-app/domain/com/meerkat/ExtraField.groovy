@@ -16,6 +16,6 @@ class ExtraField {
     }
     static mapping = {
         version false
-        id column: "extraField_id", generator: "assigned", sqlType: "varchar(20)"
+        id column: "extraField_id", generator: "assigned", sqlType: "varchar(50)"
     }
 }
