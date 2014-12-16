@@ -40,16 +40,17 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron" style="background-color: #1abc9c; opacity: 0.6; filter: alpha(opacity=60);  ">
+    <div class="container">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    </div>
+</div>
 
-
-<div class="container">
-    <div class="demo-headline">
-        <h1 class="demo-logo">
-            <div class="logo"></div>
-            Flat UI
-            <small>Free User Interface Kit</small>
-        </h1>
-    </div> <!-- /demo-headline -->
+<div class="container" >
+    <div class="demo-headline" ></div> <!-- /demo-headline -->
 %{--
     <h1 class="demo-section-title">Basic elements</h1>
     <h3 class="demo-panel-title">Buttons</h3>
@@ -811,9 +812,9 @@
 </div> <!-- /container -->
 
 <footer style="background-color: #003333;">
-    <div class="container" style="border-width: 1px; border: solid;">
+    <div class="container" >
         <div class="row">
-            <div class="col-xs-12" style="border-width: 1px; border: solid;" align="center">
+            <div class="col-xs-12" align="center">
                 <g:set var="currentYear" value="${new Date()[Calendar.YEAR]}"/>
                 <h6 class="footer-title"><g:link base="http://www.meerkat.gr" target="_blank">Meerkat</g:link> &copy  All Rights Reserved ${currentYear} <br/>
                     <g:link base="https://www.facebook.com/meerkat.gr?ref=ts&fref=ts" target="_blank"><span class="fui-facebook"></span></g:link>
