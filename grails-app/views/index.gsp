@@ -807,7 +807,7 @@
 
                 <p class="demo-download-text">Your likes, shares and comments make us happy!</p>
             </div>
-        </div> <!-- /download area -->--}%
+        </div> <!-- /download area -->--}%                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <p>Trolololololololololololololololo...</p>
 
 </div> <!-- /container -->
 
