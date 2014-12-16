@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
     <meta charset="utf-8">
     <title>Prisma</title>
@@ -22,6 +22,7 @@
       <script src="js/vendor/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -29,16 +30,16 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Prisma</a>
         </div>
+
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Default</a></li>
                 <li><a href="#">Static top</a></li>
-                <li ><a href="#">Fixed top </a></li>
+                <li><a href="#">Fixed top</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-
 
 
 <div class="container">
@@ -809,31 +810,17 @@
 
 </div> <!-- /container -->
 
-<footer>
+<footer style="background-color: #003333;">
     <div class="container" style="border-width: 1px; border: solid;">
         <div class="row">
             <div class="col-xs-12" style="border-width: 1px; border: solid;" align="center">
                 <g:set var="currentYear" value="${new Date()[Calendar.YEAR]}"/>
-                <h6 class="footer-title">Meerkat &copy  All Rights Reserved ${currentYear} <br/>
-                    <span class="fui-facebook"></span>
-                    <span class="fui-twitter"></span>
+                <h6 class="footer-title"><g:link base="http://www.meerkat.gr" target="_blank">Meerkat</g:link> &copy  All Rights Reserved ${currentYear} <br/>
+                    <g:link base="https://www.facebook.com/meerkat.gr?ref=ts&fref=ts" target="_blank"><span class="fui-facebook"></span></g:link>
+                    <g:link base="https://twitter.com/meerkat_team "><span class="fui-twitter"></span></g:link>
                     <span class="fui-linkedin"></span>
                 </h6>
-
-            </div> <!-- /col-xs-7 -->
-            %{--
-            <div class="col-xs-5" style="border-width: 1px; border: solid;">
-                <div class="footer-banner">
-                    <h3 class="footer-title">Get Flat UI Pro</h3>
-                    <ul>
-                        <li>Tons of Basic and Custom UI Elements</li>
-                        <li>A Lot of Useful Samples</li>
-                        <li>More Vector Icons and Glyphs</li>
-                        <li>Pro Color Swatches</li>
-                        <li>Bootstrap Based HTML/CSS/JS Layout</li>
-                    </ul>
-                </div>
-            </div>--}%
+            </div>
         </div>
     </div>
 </footer>
