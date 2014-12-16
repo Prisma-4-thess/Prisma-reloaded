@@ -49,7 +49,7 @@
             <small>Free User Interface Kit</small>
         </h1>
     </div> <!-- /demo-headline -->
-
+%{--
     <h1 class="demo-section-title">Basic elements</h1>
     <h3 class="demo-panel-title">Buttons</h3>
 
@@ -539,283 +539,289 @@
     </div>
 
 
-    <h3 class="demo-panel-title">Glyphs <small>(70)</small></h3>
-    <div class="demo-icons">
-        <div class="demo-content">
-            <span class="fui-info-circle"></span>
-            <span class="fui-alert-circle"></span>
-            <span class="fui-question-circle"></span>
-            <span class="fui-check-circle"></span>
-            <span class="fui-cross-circle"></span>
-            <span class="fui-plus-circle"></span>
-            <span class="fui-window"></span>
-            <span class="fui-windows"></span>
-            <span class="fui-upload"></span>
-            <span class="fui-arrow-right"></span>
-            <span class="fui-arrow-left"></span>
-            <span class="fui-loop"></span>
-            <span class="fui-cmd"></span>
-            <span class="fui-mic"></span>
-            <span class="fui-export"></span>
-            <span class="fui-heart"></span>
-            <span class="fui-location"></span>
-            <span class="fui-plus"></span>
-            <span class="fui-check"></span>
-            <span class="fui-cross"></span>
-            <span class="fui-list"></span>
-            <span class="fui-new"></span>
-            <span class="fui-video"></span>
-            <span class="fui-photo"></span>
-            <span class="fui-time"></span>
-            <span class="fui-eye"></span>
-            <span class="fui-chat"></span>
-            <span class="fui-home"></span>
-            <span class="fui-search"></span>
-            <span class="fui-user"></span>
-            <span class="fui-mail"></span>
-            <span class="fui-lock"></span>
-            <span class="fui-power"></span>
-            <span class="fui-star"></span>
-            <span class="fui-calendar"></span>
-            <span class="fui-gear"></span>
-            <span class="fui-bookmark"></span>
-            <span class="fui-exit"></span>
-            <span class="fui-trash"></span>
-            <span class="fui-folder"></span>
-            <span class="fui-bubble"></span>
-            <span class="fui-calendar-solid"></span>
-            <span class="fui-star-2"></span>
-            <span class="fui-credit-card"></span>
-            <span class="fui-clip"></span>
-            <span class="fui-link"></span>
-            <span class="fui-pause"></span>
-            <span class="fui-play"></span>
-            <span class="fui-volume"></span>
-            <span class="fui-mute"></span>
-            <span class="fui-resize"></span>
-            <span class="fui-tag"></span>
-            <span class="fui-document"></span>
-            <span class="fui-image"></span>
-            <span class="fui-triangle-up"></span>
-            <span class="fui-triangle-up-small"></span>
-            <span class="fui-triangle-right-large"></span>
-            <span class="fui-triangle-left-large"></span>
-            <span class="fui-triangle-down"></span>
-            <span class="fui-triangle-down-small"></span>
-            <span class="fui-radio-unchecked"></span>
-            <span class="fui-radio-checked"></span>
-            <span class="fui-checkbox-unchecked"></span>
-            <span class="fui-checkbox-checked"></span>
-            <span class="fui-list-thumbnailed"></span>
-            <span class="fui-list-small-thumbnails"></span>
-            <span class="fui-list-numbered"></span>
-            <span class="fui-list-large-thumbnails"></span>
-            <span class="fui-list-columned"></span>
-            <span class="fui-list-bulleted"></span>
-        </div><!-- /.demo-content -->
-    </div><!-- /.demo-icons -->
+        <h3 class="demo-panel-title">Glyphs <small>(70)</small></h3>
+        <div class="demo-icons">
+            <div class="demo-content">
+                <span class="fui-info-circle"></span>
+                <span class="fui-alert-circle"></span>
+                <span class="fui-question-circle"></span>
+                <span class="fui-check-circle"></span>
+                <span class="fui-cross-circle"></span>
+                <span class="fui-plus-circle"></span>
+                <span class="fui-window"></span>
+                <span class="fui-windows"></span>
+                <span class="fui-upload"></span>
+                <span class="fui-arrow-right"></span>
+                <span class="fui-arrow-left"></span>
+                <span class="fui-loop"></span>
+                <span class="fui-cmd"></span>
+                <span class="fui-mic"></span>
+                <span class="fui-export"></span>
+                <span class="fui-heart"></span>
+                <span class="fui-location"></span>
+                <span class="fui-plus"></span>
+                <span class="fui-check"></span>
+                <span class="fui-cross"></span>
+                <span class="fui-list"></span>
+                <span class="fui-new"></span>
+                <span class="fui-video"></span>
+                <span class="fui-photo"></span>
+                <span class="fui-time"></span>
+                <span class="fui-eye"></span>
+                <span class="fui-chat"></span>
+                <span class="fui-home"></span>
+                <span class="fui-search"></span>
+                <span class="fui-user"></span>
+                <span class="fui-mail"></span>
+                <span class="fui-lock"></span>
+                <span class="fui-power"></span>
+                <span class="fui-star"></span>
+                <span class="fui-calendar"></span>
+                <span class="fui-gear"></span>
+                <span class="fui-bookmark"></span>
+                <span class="fui-exit"></span>
+                <span class="fui-trash"></span>
+                <span class="fui-folder"></span>
+                <span class="fui-bubble"></span>
+                <span class="fui-calendar-solid"></span>
+                <span class="fui-star-2"></span>
+                <span class="fui-credit-card"></span>
+                <span class="fui-clip"></span>
+                <span class="fui-link"></span>
+                <span class="fui-pause"></span>
+                <span class="fui-play"></span>
+                <span class="fui-volume"></span>
+                <span class="fui-mute"></span>
+                <span class="fui-resize"></span>
+                <span class="fui-tag"></span>
+                <span class="fui-document"></span>
+                <span class="fui-image"></span>
+                <span class="fui-triangle-up"></span>
+                <span class="fui-triangle-up-small"></span>
+                <span class="fui-triangle-right-large"></span>
+                <span class="fui-triangle-left-large"></span>
+                <span class="fui-triangle-down"></span>
+                <span class="fui-triangle-down-small"></span>
+                <span class="fui-radio-unchecked"></span>
+                <span class="fui-radio-checked"></span>
+                <span class="fui-checkbox-unchecked"></span>
+                <span class="fui-checkbox-checked"></span>
+                <span class="fui-list-thumbnailed"></span>
+                <span class="fui-list-small-thumbnails"></span>
+                <span class="fui-list-numbered"></span>
+                <span class="fui-list-large-thumbnails"></span>
+                <span class="fui-list-columned"></span>
+                <span class="fui-list-bulleted"></span>
+            </div><!-- /.demo-content -->
+        </div><!-- /.demo-icons -->
 
-    <h3 class="demo-panel-title">Social <small>(27)</small></h3>
-    <div class="demo-icons">
-        <div class="demo-content">
-            <span class="fui-facebook"></span>
-            <span class="fui-youtube"></span>
-            <span class="fui-vimeo"></span>
-            <span class="fui-twitter"></span>
-            <span class="fui-stumbleupon"></span>
-            <span class="fui-spotify"></span>
-            <span class="fui-skype"></span>
-            <span class="fui-pinterest"></span>
-            <span class="fui-path"></span>
-            <span class="fui-linkedin"></span>
-            <span class="fui-google-plus"></span>
-            <span class="fui-dribbble"></span>
-            <span class="fui-behance"></span>
-            <span class="fui-yelp"></span>
-            <span class="fui-wordpress"></span>
-            <span class="fui-windows-8"></span>
-            <span class="fui-vine"></span>
-            <span class="fui-tumblr"></span>
-            <span class="fui-paypal"></span>
-            <span class="fui-lastfm"></span>
-            <span class="fui-instagram"></span>
-            <span class="fui-html5"></span>
-            <span class="fui-github"></span>
-            <span class="fui-foursquare"></span>
-            <span class="fui-dropbox"></span>
-            <span class="fui-android"></span>
-            <span class="fui-apple"></span>
-        </div><!-- /.demo-content -->
-    </div><!-- /.demo-icons -->
+        <h3 class="demo-panel-title">Social <small>(27)</small></h3>
+        <div class="demo-icons">
+            <div class="demo-content">
+                <span class="fui-facebook"></span>
+                <span class="fui-youtube"></span>
+                <span class="fui-vimeo"></span>
+                <span class="fui-twitter"></span>
+                <span class="fui-stumbleupon"></span>
+                <span class="fui-spotify"></span>
+                <span class="fui-skype"></span>
+                <span class="fui-pinterest"></span>
+                <span class="fui-path"></span>
+                <span class="fui-linkedin"></span>
+                <span class="fui-google-plus"></span>
+                <span class="fui-dribbble"></span>
+                <span class="fui-behance"></span>
+                <span class="fui-yelp"></span>
+                <span class="fui-wordpress"></span>
+                <span class="fui-windows-8"></span>
+                <span class="fui-vine"></span>
+                <span class="fui-tumblr"></span>
+                <span class="fui-paypal"></span>
+                <span class="fui-lastfm"></span>
+                <span class="fui-instagram"></span>
+                <span class="fui-html5"></span>
+                <span class="fui-github"></span>
+                <span class="fui-foursquare"></span>
+                <span class="fui-dropbox"></span>
+                <span class="fui-android"></span>
+                <span class="fui-apple"></span>
+            </div><!-- /.demo-content -->
+        </div><!-- /.demo-icons -->
 
-    <h3 class="demo-panel-title mbl pbl">Samples</h3>
-    <div class="row demo-samples">
-        <div class="col-xs-4">
-            <div class="todo">
-                <div class="todo-search">
-                    <input class="todo-search-field" type="search" value="" placeholder="Search" />
-                </div>
-                <ul>
-                    <li class="todo-done">
-                        <div class="todo-icon fui-user"></div>
-                        <div class="todo-content">
-                            <h4 class="todo-name">
-                                Meet <strong>Adrian</strong> at <strong>6pm</strong>
-                            </h4>
-                            Times Square
-                        </div>
-                    </li>
-                    <li>
-                        <div class="todo-icon fui-list"></div>
-                        <div class="todo-content">
-                            <h4 class="todo-name">
-                                Chat with <strong>V.Kudinov</strong>
-                            </h4>
-                            Skype conference an 9 am
-                        </div>
-                    </li>
-                    <li>
-                        <div class="todo-icon fui-eye"></div>
-                        <div class="todo-content">
-                            <h4 class="todo-name">
-                                Watch <strong>Iron Man</strong>
-                            </h4>
-                            1998 Broadway
-                        </div>
-                    </li>
-                    <li>
-                        <div class="todo-icon fui-time"></div>
-                        <div class="todo-content">
-                            <h4 class="todo-name">
-                                Fix bug on a <strong>Website</strong>
-                            </h4>
-                            As soon as possible
-                        </div>
-                    </li>
-                </ul>
-            </div><!-- /.todo -->
-        </div><!-- /.col-xs-4 -->
-
-        <div class="col-xs-8">
-            <video class="video-js" preload="auto" poster="docs/assets/img/video/poster.jpg" data-setup="{}">
-                <source src="http://iurevych.github.com/Flat-UI-videos/big_buck_bunny.mp4" type="video/mp4">
-                <source src="http://iurevych.github.com/Flat-UI-videos/big_buck_bunny.webm" type="video/webm">
-            </video>
-        </div> <!-- /video -->
-    </div>
-
-    <div class="row demo-tiles">
-        <div class="col-xs-3">
-            <div class="tile">
-                <img src="img/icons/svg/compas.svg" alt="Compas" class="tile-image big-illustration">
-                <h3 class="tile-title">Web Oriented</h3>
-                <p>100% convertable to HTML/CSS layout.</p>
-                <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
-            </div>
-        </div>
-
-        <div class="col-xs-3">
-            <div class="tile">
-                <img src="img/icons/svg/loop.svg" alt="Infinity-Loop" class="tile-image">
-                <h3 class="tile-title">Easy to Customize</h3>
-                <p>Vector-based shapes and minimum of layer styles.</p>
-                <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
-            </div>
-        </div>
-
-        <div class="col-xs-3">
-            <div class="tile">
-                <img src="img/icons/svg/pencils.svg" alt="Pensils" class="tile-image">
-                <h3 class="tile-title">Color Swatches</h3>
-                <p>Easy to add or change elements. </p>
-                <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
-            </div>
-        </div>
-
-        <div class="col-xs-3">
-            <div class="tile tile-hot">
-                <img src="img/icons/svg/ribbon.svg" alt="ribbon" class="tile-hot-ribbon">
-                <img src="img/icons/svg/chat.svg" alt="Chat" class="tile-image">
-                <h3 class="tile-title">Free for Share</h3>
-                <p>Your likes, shares and comments helps us.</p>
-                <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
-            </div>
-
-        </div>
-    </div> <!-- /tiles -->
-
-    <div class="login">
-        <div class="login-screen">
-            <div class="login-icon">
-                <img src="img/login/icon.png" alt="Welcome to Mail App" />
-                <h4>Welcome to <small>Mail App</small></h4>
-            </div>
-
-            <div class="login-form">
-                <div class="form-group">
-                    <input type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name" />
-                    <label class="login-field-icon fui-user" for="login-name"></label>
-                </div>
-
-                <div class="form-group">
-                    <input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
-                    <label class="login-field-icon fui-lock" for="login-pass"></label>
-                </div>
-
-                <a class="btn btn-primary btn-lg btn-block" href="#">Log in</a>
-                <a class="login-link" href="#">Lost your password?</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-9">
-            <div class="demo-browser">
-                <div class="demo-browser-side">
-                    <div class="demo-browser-author"></div>
-                    <div class="demo-browser-action">
-                        <a class="btn btn-danger btn-lg btn-block" href="http://twitter.com/monstercritic" target="_blank">
-                            <span class="fui-plus"></span>Follow
-                        </a>
+        <h3 class="demo-panel-title mbl pbl">Samples</h3>
+        <div class="row demo-samples">
+            <div class="col-xs-4">
+                <div class="todo">
+                    <div class="todo-search">
+                        <input class="todo-search-field" type="search" value="" placeholder="Search" />
                     </div>
-                    <h5>@monstercritic</h5>
-                    <h6>
-                        Tourist. Designer. NYC
-                        <a href="http://shmidt.in" target="_blank">shmidt.in</a>
-                    </h6>
+                    <ul>
+                        <li class="todo-done">
+                            <div class="todo-icon fui-user"></div>
+                            <div class="todo-content">
+                                <h4 class="todo-name">
+                                    Meet <strong>Adrian</strong> at <strong>6pm</strong>
+                                </h4>
+                                Times Square
+                            </div>
+                        </li>
+                        <li>
+                            <div class="todo-icon fui-list"></div>
+                            <div class="todo-content">
+                                <h4 class="todo-name">
+                                    Chat with <strong>V.Kudinov</strong>
+                                </h4>
+                                Skype conference an 9 am
+                            </div>
+                        </li>
+                        <li>
+                            <div class="todo-icon fui-eye"></div>
+                            <div class="todo-content">
+                                <h4 class="todo-name">
+                                    Watch <strong>Iron Man</strong>
+                                </h4>
+                                1998 Broadway
+                            </div>
+                        </li>
+                        <li>
+                            <div class="todo-icon fui-time"></div>
+                            <div class="todo-content">
+                                <h4 class="todo-name">
+                                    Fix bug on a <strong>Website</strong>
+                                </h4>
+                                As soon as possible
+                            </div>
+                        </li>
+                    </ul>
+                </div><!-- /.todo -->
+            </div><!-- /.col-xs-4 -->
+
+            <div class="col-xs-8">
+                <video class="video-js" preload="auto" poster="docs/assets/img/video/poster.jpg" data-setup="{}">
+                    <source src="http://iurevych.github.com/Flat-UI-videos/big_buck_bunny.mp4" type="video/mp4">
+                    <source src="http://iurevych.github.com/Flat-UI-videos/big_buck_bunny.webm" type="video/webm">
+                </video>
+            </div> <!-- /video -->
+        </div>
+
+        <div class="row demo-tiles">
+            <div class="col-xs-3">
+                <div class="tile">
+                    <img src="img/icons/svg/compas.svg" alt="Compas" class="tile-image big-illustration">
+                    <h3 class="tile-title">Web Oriented</h3>
+                    <p>100% convertable to HTML/CSS layout.</p>
+                    <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
                 </div>
-                <div class="demo-browser-content">
-                    <img src="docs/assets/img/demo/browser-pic-1.jpg" alt="" />
-                    <img src="docs/assets/img/demo/browser-pic-2.jpg" alt="" />
-                    <img src="docs/assets/img/demo/browser-pic-3.jpg" alt="" />
-                    <img src="docs/assets/img/demo/browser-pic-4.jpg" alt="" />
-                    <img src="docs/assets/img/demo/browser-pic-5.jpg" alt="" />
-                    <img src="docs/assets/img/demo/browser-pic-6.jpg" alt="" />
+            </div>
+
+            <div class="col-xs-3">
+                <div class="tile">
+                    <img src="img/icons/svg/loop.svg" alt="Infinity-Loop" class="tile-image">
+                    <h3 class="tile-title">Easy to Customize</h3>
+                    <p>Vector-based shapes and minimum of layer styles.</p>
+                    <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="tile">
+                    <img src="img/icons/svg/pencils.svg" alt="Pensils" class="tile-image">
+                    <h3 class="tile-title">Color Swatches</h3>
+                    <p>Easy to add or change elements. </p>
+                    <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="tile tile-hot">
+                    <img src="img/icons/svg/ribbon.svg" alt="ribbon" class="tile-hot-ribbon">
+                    <img src="img/icons/svg/chat.svg" alt="Chat" class="tile-image">
+                    <h3 class="tile-title">Free for Share</h3>
+                    <p>Your likes, shares and comments helps us.</p>
+                    <a class="btn btn-primary btn-large btn-block" href="http://designmodo.com/flat">Get Pro</a>
+                </div>
+
+            </div>
+        </div> <!-- /tiles -->
+
+
+        <div class="login">
+            <div class="login-screen">
+                <div class="login-icon">
+                    <img src="img/login/icon.png" alt="Welcome to Mail App" />
+                    <h4>Welcome to <small>Mail App</small></h4>
+                </div>
+
+                <div class="login-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name" />
+                        <label class="login-field-icon fui-user" for="login-name"></label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
+                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                    </div>
+
+                    <a class="btn btn-primary btn-lg btn-block" href="#">Log in</a>
+                    <a class="login-link" href="#">Lost your password?</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-xs-3">
-            <div class="demo-download">
-                <img src="docs/assets/img/demo/html-icon.png" src="Free PSD" />
+        <div class="row">
+            <div class="col-xs-9">
+                <div class="demo-browser">
+                    <div class="demo-browser-side">
+                        <div class="demo-browser-author"></div>
+                        <div class="demo-browser-action">
+                            <a class="btn btn-danger btn-lg btn-block" href="http://twitter.com/monstercritic" target="_blank">
+                                <span class="fui-plus"></span>Follow
+                            </a>
+                        </div>
+                        <h5>@monstercritic</h5>
+                        <h6>
+                            Tourist. Designer. NYC
+                            <a href="http://shmidt.in" target="_blank">shmidt.in</a>
+                        </h6>
+                    </div>
+                    <div class="demo-browser-content">
+                        <img src="docs/assets/img/demo/browser-pic-1.jpg" alt="" />
+                        <img src="docs/assets/img/demo/browser-pic-2.jpg" alt="" />
+                        <img src="docs/assets/img/demo/browser-pic-3.jpg" alt="" />
+                        <img src="docs/assets/img/demo/browser-pic-4.jpg" alt="" />
+                        <img src="docs/assets/img/demo/browser-pic-5.jpg" alt="" />
+                        <img src="docs/assets/img/demo/browser-pic-6.jpg" alt="" />
+                    </div>
+                </div>
             </div>
 
-            <a href="https://github.com/designmodo/Flat-UI/archive/master.zip" class="btn btn-primary btn-lg btn-block">Download</a>
+            <div class="col-xs-3">
+                <div class="demo-download">
+                    <img src="docs/assets/img/demo/html-icon.png" src="Free PSD" />
+                </div>
 
-            <p class="demo-download-text">Your likes, shares and comments make us happy!</p>
-        </div>
-    </div> <!-- /download area -->
+                <a href="https://github.com/designmodo/Flat-UI/archive/master.zip" class="btn btn-primary btn-lg btn-block">Download</a>
+
+                <p class="demo-download-text">Your likes, shares and comments make us happy!</p>
+            </div>
+        </div> <!-- /download area -->--}%
 
 </div> <!-- /container -->
 
 <footer>
     <div class="container" style="border-width: 1px; border: solid;">
         <div class="row">
-            <div class="col-xs-7" style="border-width: 1px; border: solid;">
-                <h3 class="footer-title">Meerkat</h3>
+            <div class="col-xs-12" style="border-width: 1px; border: solid;" align="center">
                 <g:set var="currentYear" value="${new Date()[Calendar.YEAR]}"/>
-                ${currentYear}
+                <h6 class="footer-title">Meerkat &copy  All Rights Reserved ${currentYear} <br/>
+                    <span class="fui-facebook"></span>
+                    <span class="fui-twitter"></span>
+                    <span class="fui-linkedin"></span>
+                </h6>
+
             </div> <!-- /col-xs-7 -->
+            %{--
             <div class="col-xs-5" style="border-width: 1px; border: solid;">
                 <div class="footer-banner">
                     <h3 class="footer-title">Get Flat UI Pro</h3>
@@ -827,7 +833,7 @@
                         <li>Bootstrap Based HTML/CSS/JS Layout</li>
                     </ul>
                 </div>
-            </div>
+            </div>--}%
         </div>
     </div>
 </footer>
