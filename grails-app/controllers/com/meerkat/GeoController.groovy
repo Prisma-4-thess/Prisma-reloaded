@@ -1,13 +1,32 @@
 package com.meerkat
 
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class GeoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+    /**
+     * Loads the template responsible to show all given geos. If no geos are given it shows all of them.
+     * @param geoList: List of geos to show.
+     * @return
+     */
+    def listGeo(List<Geo> geoList) {
+        if (geoList == null) geoList = Geo.list(params)
+        render(template: 'list', model: ['geoList': geoList, 'numOfResults': Geo.count()])
+    }
+
+    /**
+     * Loads the template responsible to show one geo.
+     * @param geoInstance: Geo to show. Can have a value if this function is called like: <g:link action="showGeo" id="${geoInstance.id}">
+     * @return
+     */
+    def showGeo(Geo geoInstance) {
+        render(template: 'show', model: ['geoInstance': geoInstance, 'entityName': 'Geo'])
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
