@@ -119,4 +119,19 @@ class DecisionService {
         }
         return decisions
     }
+
+    /*
+    Returns the thematic category of a decision
+    parameters: Decision decision
+    return: String themCat.label
+     */
+    String getThematicCategory(Decision decision){
+        DictionaryItem themCat=DictionaryItem.createCriteria().get{
+            and{
+                eq("ada",decision.ada)
+                eq("versionId",decision.versionId)
+            }
+        }
+        return themCat.label
+    }
 }
