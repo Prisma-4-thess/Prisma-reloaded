@@ -13,18 +13,18 @@
         <thead>
         <tr>
 
-            <g:sortableColumn property="latitude" title="${message(code: 'geo.latitude.label', default: 'Latitude')}" params="['clicked': 'geo']"/>
+            <g:sortableColumn property="latitude" title="${message(code: 'geo.latitude.label', default: 'Latitude')}" params="['clicked': 'geo','searchBarQuery':searchBarQuery]"/>
 
             <g:sortableColumn property="longitude"
-                              title="${message(code: 'geo.longitude.label', default: 'Longitude')}" params="['clicked': 'geo']"/>
+                              title="${message(code: 'geo.longitude.label', default: 'Longitude')}" params="['clicked': 'geo','searchBarQuery':searchBarQuery]"/>
 
-            <g:sortableColumn property="address" title="${message(code: 'geo.address.label', default: 'Address')}" params="['clicked': 'geo']"/>
+            <g:sortableColumn property="address" title="${message(code: 'geo.address.label', default: 'Address')}" params="['clicked': 'geo','searchBarQuery':searchBarQuery]"/>
 
-            <g:sortableColumn property="tk" title="${message(code: 'geo.tk.label', default: 'Tk')}" params="['clicked': 'geo']"/>
+            <g:sortableColumn property="tk" title="${message(code: 'geo.tk.label', default: 'Tk')}" params="['clicked': 'geo','searchBarQuery':searchBarQuery]"/>
 
-            <g:sortableColumn property="newCat" title="${message(code: 'geo.newCat.label', default: 'New Cat')}" params="['clicked': 'geo']"/>
+            <g:sortableColumn property="newCat" title="${message(code: 'geo.newCat.label', default: 'New Cat')}" params="['clicked': 'geo','searchBarQuery':searchBarQuery]"/>
 
-            <g:sortableColumn property="namegrk" title="${message(code: 'geo.namegrk.label', default: 'Namegrk')}" params="['clicked': 'geo']"/>
+            <g:sortableColumn property="namegrk" title="${message(code: 'geo.namegrk.label', default: 'Namegrk')}" params="['clicked': 'geo','searchBarQuery':searchBarQuery]"/>
 
         </tr>
         </thead>
@@ -58,6 +58,6 @@
     </table>
 
     <div class="pagination">
-        <g:paginate total="${numOfResults ?: 0}" params="['clicked': 'geo']"/>
+        <g:paginate total="${numOfResults ?: 0}" params="['clicked': 'geo','searchBarQuery':searchBarQuery]"/>
     </div>
 </div>

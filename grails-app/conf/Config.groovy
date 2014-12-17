@@ -118,3 +118,6 @@ log4j.main = {
 grails.gorm.default.constraints = {
     '*'(nullable: true)
 }
+
+pagination.defaultMax = 10
+pagination.defaultOffset = 0
