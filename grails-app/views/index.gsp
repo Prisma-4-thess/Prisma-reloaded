@@ -26,15 +26,16 @@
     #map-canvas {
         width: 100%;
         height: 400px;
-
     }
 
     #mainContent {
         background-color: #1abc9c;
-        opacity: 0.6;
-        filter: Alpha(opacity=60);
+        opacity: 0.4;
+        filter: Alpha(opacity=40);
+        transition: opacity 1s linear;
     }
-    </style>
+
+</style>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script>
         function initialize() {
@@ -52,7 +53,7 @@
 
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0%;">
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Prisma</a>
@@ -68,17 +69,18 @@
     </div>
 </nav>
 
-<div id="mainContent" class="jumbotron">
-    <div id="map-canvas"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-offset-6">
+            <button type="button" class="btn btn-default arrow-down" id="fadeIn">display map</button>
+            <button type="button" class="btn btn-default" id="fadeOut" style="display: none;">hide map</button>
+        </div>
+    </div>
 </div>
 
-
-<div class="container">
-    <div class="demo-headline">
-        <button type="button" class="btn btn-danger" id="fadeIn">show map</button>
-        <button type="button" class="btn btn-danger" id="fadeOut" style="display: none;">show map</button>
-    </div> <!-- /demo-headline -->
-</div> <!-- /container -->
+<div id="mainContent" class="jumbotron" style="padding-top: 2%;">
+    <div id="map-canvas"></div>
+</div>
 
 <footer style="background-color: #003333;">
     <div class="container">
@@ -96,7 +98,9 @@
 </footer>
 
 <script>
+    document.getElementById('map-canvas').style.pointerEvents = 'none';
     $('#fadeIn').click(function () {
+        document.getElementById('map-canvas').style.pointerEvents = 'auto';
         $('#mainContent').css({
             'background-color': '#1abc9c',
             'opacity': '1'
@@ -109,10 +113,11 @@
         });
     });
     $('#fadeOut').click(function () {
+        document.getElementById('map-canvas').style.pointerEvents = 'none';
         $('#mainContent').css({
             'background-color': '#1abc9c',
-            'opacity': '0.6',
-            'filter': 'Alpha(opacity=60)'
+            'opacity': '0.4',
+            'filter': 'Alpha(opacity=40)'
         });
         $('#fadeIn').css({
             'display': 'inline'
