@@ -123,15 +123,33 @@ class DecisionService {
     /*
     Returns the thematic category of a decision
     parameters: Decision decision
-    return: String themCat.label
+    return: List themCat
      */
-    String getThematicCategory(Decision decision){
-        DictionaryItem themCat=DictionaryItem.createCriteria().get{
+    def getThematicCategory(Decision decision){
+        def themCat=DictionaryItem.createCriteria().list{
             and{
                 eq("ada",decision.ada)
                 eq("versionId",decision.versionId)
             }
         }
-        return themCat.label
+        return themCat
+    }
+
+    /*
+    return a map containing label of extra field and value of the given as parameter decision
+    parameters: Decision decision
+    return: Map returnMap
+     */
+    def getExtrafields(Decision decision){
+        def returnMap=[:]
+        def extras=DecisionExtraFieldValue.createCriteria().list {
+            eq("ada",decision.ada)
+            eq("versionId",decision.versionId)
+        }
+        extras.each {extra->
+            extra.value.ownerExtraField.id
+            returnMap.put(extra.value.ownerExtraField.id,extra.value.value)
+        }
+        return returnMap
     }
 }
