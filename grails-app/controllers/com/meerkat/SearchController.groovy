@@ -22,8 +22,17 @@ class SearchController {
         List<Geo> geoList
         int numOfResultsDec = 0, numOfResultsSigner = 0, numOfResultsType = 0, numOfResultsGeo = 0
 
-        //TODO: Call service for search
-        if (params.clicked == null) {
+        //TODO: Call service for sort/paginate
+        if (params.clicked == "decision") {
+            decisionList = Decision.list(params)
+        } else if (params.clicked == "signer") {
+            signerList = Signer.list(params)
+        } else if (params.clicked == "type") {
+            typeList = Type.list(params)
+        } else if (params.clicked == "geo") {
+            geoList = Geo.list(params)
+        } else {
+            //TODO: Call service for search
             if (decisionList == null) {
                 decisionList = Decision.list(params)
                 numOfResultsDec = Decision.getAll().size()
@@ -40,17 +49,6 @@ class SearchController {
                 geoList = Geo.list(params)
                 numOfResultsGeo = Geo.getAll().size()
             }
-        }
-
-        //TODO: Call service for sort/offset
-        if (params.clicked == "decision") {
-            decisionList = Decision.list(params)
-        } else if (params.clicked == "signer") {
-            signerList = Signer.list(params)
-        } else if (params.clicked == "type") {
-            typeList = Type.list(params)
-        } else if (params.clicked == "geo") {
-            geoList = Geo.list(params)
         }
 
         print(params)
