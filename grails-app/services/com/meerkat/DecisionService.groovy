@@ -74,4 +74,19 @@ class DecisionService {
         }
         return decisions
     }
+
+    /*
+    Find decisions with geo exactly as the param given
+    parameters: Geo geo,the 4 params for pagination
+    return:List decisions
+     */
+    def findDecisionByPOI(Geo geo,int max,int offset,String sort,String orderList){
+        def decisions=Decision.createCriteria().list {
+            eq("geo",geo)
+            order(sort,orderList)
+            firstResult(offset)
+            maxResults(max)
+        }
+        return decisions
+    }
 }
