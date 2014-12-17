@@ -29,4 +29,18 @@ class DecisionService {
         }
         return returnDecision
     }
+    /*
+    Find decisions with exact or like Protocol Number as given
+    parametrs: String number,the 4 params for pagination
+    return:List decisions
+     */
+    def findDecisionByProtNum(String number,int max,int offset,String sort,String orderList){
+        def decisions=Decision.createCriteria().list() {
+            like("protocolNumber",number)
+            order(sort,orderList)
+            firstResult(offset)
+            maxResults(max)
+        }
+        return decisions
+    }
 }
