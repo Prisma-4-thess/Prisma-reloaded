@@ -91,13 +91,28 @@ class DecisionService {
     }
 
     /*
-    Find decisions with signer like the param given
+    Find decisions with signer like or exactly the param given
     parameters: String signer,the 4 params for pagination
     return:List decisions
      */
     def findDecisionBySigner(String signer,int max,int offset,String sort,String orderList){
         def decisions=Decision.createCriteria().list() {
             like("subject",signer)
+            order(sort,orderList)
+            firstResult(offset)
+            maxResults(max)
+        }
+        return decisions
+    }
+
+    /*
+    Find decisions with unit like or exactly the param given
+    parameters: String subject,the 4 params for pagination
+    return:List decisions
+     */
+    def findDecisionByUnit(String unit,int max,int offset,String sort,String orderList){
+        def decisions=Decision.createCriteria().list() {
+            like("subject",unit)
             order(sort,orderList)
             firstResult(offset)
             maxResults(max)
