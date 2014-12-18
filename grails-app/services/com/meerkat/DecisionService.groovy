@@ -4,7 +4,6 @@ import grails.transaction.Transactional
 import org.apache.lucene.analysis.el.GreekStemmer
 @Transactional
 class DecisionService {
-    def stemmer=new GreekStemmer()
     /**
     Return the decision identified by ada with all the version history
     parameters: String ada
@@ -154,8 +153,10 @@ class DecisionService {
         return returnMap
     }
 
-    static def search(){
-
+    static def search(char[] search_param){
+        GreekStemmer stemmer=new GreekStemmer();
+        println stemmer.stem(search_param,search_param.length)
+        println stemmer
     }
 
 }
