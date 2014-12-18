@@ -11,7 +11,7 @@ class GeoService {
      parameters: double centerLat,double centerLon,double radius
      return: List retPois
       */
-    def findPOINearLatLng(double centerLat,double centerLon,double radius){
+    static def findPOINearLatLng(double centerLat,double centerLon,double radius){
         def retPois=[]
         def pois=Geo.getAll()
         pois.each{poi->
@@ -28,7 +28,7 @@ class GeoService {
     parameters: double lat1 double lon1 double lat2 double lon2
     return: double distance
      */
-    double calculateDistance(double lat1,double lon1,double lat2,double lon2){
+    static double calculateDistance(double lat1,double lon1,double lat2,double lon2){
         def R = 6371; // km
         def φ1 = lat1.toRadians();
         def φ2 = lat2.toRadians();
