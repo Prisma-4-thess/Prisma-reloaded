@@ -17,7 +17,7 @@ class SearchController {
         }
 
         String searchQuery = params.searchBarQuery;
-        if(searchQuery==null) searchQuery = " " //TODO: Should be removed
+        if (searchQuery == null) searchQuery = " " //TODO: Should be removed
         def decisionList
         def signerList
         def typeList
@@ -35,7 +35,8 @@ class SearchController {
             typeList = Type.list(params)
             numOfResultsType = typeList.totalCount
         } else if (params.clicked == "geo") {
-            geoList = Geo.list(params)
+//            geoList = Geo.list(params)
+            geoList = SearchService.searchForPOI(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
             numOfResultsGeo = geoList.totalCount
 //            geoList = SearchService.searchForPOI(searchQuery,params.max,params.offset,params.sort,params.order)
         } else {
@@ -56,9 +57,9 @@ class SearchController {
                 numOfResultsType = typeList.totalCount
             }
             if (geoList == null) {
-                geoList = Geo.list(params)
+//                geoList = Geo.list(params)
                 //numOfResultsGeo = Geo.getAll().size()
-                //geoList = SearchService.searchForPOI(searchQuery,params.max,params.offset,params.sort,params.order)
+                geoList = SearchService.searchForPOI(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
                 numOfResultsGeo = geoList.totalCount
             }
         }
