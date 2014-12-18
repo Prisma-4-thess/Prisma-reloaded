@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Prisma</title>
-    <meta name="description" content="Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version."/>
+    <title>Prisma | Meerkat</title>
+    <meta name="description" content=""/>
 
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
 
@@ -30,8 +30,8 @@
 
     #mainContent {
         background-color: #1abc9c;
-        opacity: 0.4;
-        filter: Alpha(opacity=40);
+        opacity: 0.3;
+        filter: Alpha(opacity=30);
         transition: opacity 1s linear;
     }
 
@@ -56,7 +56,7 @@
 <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0%;">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Prisma</a>
+          <g:link base="/Prisma"><img src="img/site-logo.png"/></g:link>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
@@ -72,8 +72,8 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-offset-6">
-            <button type="button" class="btn btn-default arrow-down" id="fadeIn">display map</button>
-            <button type="button" class="btn btn-default" id="fadeOut" style="display: none;">hide map</button>
+            <button type="button" class="btn btn-default" id="fadeIn" style="padding:2px 4px;"><img src="img/icons/png/down-arrow-circle-hi.png"/></button>
+            <button type="button" class="btn btn-default" id="fadeOut" style="display: none; padding:2px 4px;"><img src="img/icons/png/up-arrow-circle-hi.png"/></button>
         </div>
     </div>
 </div>
@@ -116,8 +116,8 @@
         document.getElementById('map-canvas').style.pointerEvents = 'none';
         $('#mainContent').css({
             'background-color': '#1abc9c',
-            'opacity': '0.4',
-            'filter': 'Alpha(opacity=40)'
+            'opacity': '0.3',
+            'filter': 'Alpha(opacity=30)'
         });
         $('#fadeIn').css({
             'display': 'inline'
