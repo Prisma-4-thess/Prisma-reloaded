@@ -33,14 +33,14 @@ class DecisionService {
     /**
     Find decisions with exact or like Protocol Number as given
     parameters: String number,the 4 params for pagination
-    return:List decisions
+    return:PagedResultList decisions
      */
-    static def findDecisionByProtNum(String number,int max,int offset,String sort,String orderList){
-        def decisions=Decision.createCriteria().list() {
+    static def findDecisionByProtNum(String number,int par_max,int par_offset,String sort,String orderList){
+        def decisions=Decision.createCriteria().list(max: par_max, offset: par_offset) {
             like("protocolNumber",number)
+            if (sort){
             order(sort,orderList)
-            firstResult(offset)
-            maxResults(max)
+            }
         }
         return decisions
     }
@@ -48,14 +48,14 @@ class DecisionService {
     /**
     Find decisions with subject like the param given
     parameters: String subject,the 4 params for pagination
-    return:List decisions
+    return:PagedResultList decisions
      */
-    static def findDecisionBySubject(String subject,int max,int offset,String sort,String orderList){
-        def decisions=Decision.createCriteria().list() {
+    static def findDecisionBySubject(String subject,int par_max,int par_offset,String sort,String orderList){
+        def decisions=Decision.createCriteria().list(max: par_max, offset: par_offset) {
             like("subject","%"+subject+"%")
-            order(sort,orderList)
-            firstResult(offset)
-            maxResults(max)
+            if (sort){
+                order(sort,orderList)
+            }
         }
         return decisions
     }
@@ -65,12 +65,12 @@ class DecisionService {
     parameters: String type,the 4 params for pagination
     return:List decisions
      */
-    static def findDecisionByType(String type,int max,int offset,String sort,String orderList){
-        def decisions=Decision.createCriteria().list() {
+    static def findDecisionByType(String type,int par_max,int par_offset,String sort,String orderList){
+        def decisions=Decision.createCriteria().list(max: par_max, offset: par_offset) {
             eq("type",type)
-            order(sort,orderList)
-            firstResult(offset)
-            maxResults(max)
+            if (sort){
+                order(sort,orderList)
+            }
         }
         return decisions
     }
@@ -80,12 +80,12 @@ class DecisionService {
     parameters: Geo geo,the 4 params for pagination
     return:List decisions
      */
-    static def findDecisionByPOI(Geo geo,int max,int offset,String sort,String orderList){
-        def decisions=Decision.createCriteria().list {
+    static def findDecisionByPOI(Geo geo,int par_max,int par_offset,String sort,String orderList){
+        def decisions=Decision.createCriteria().list(max: par_max, offset: par_offset) {
             eq("geo",geo)
-            order(sort,orderList)
-            firstResult(offset)
-            maxResults(max)
+            if (sort){
+                order(sort,orderList)
+            }
         }
         return decisions
     }
@@ -95,12 +95,12 @@ class DecisionService {
     parameters: String signer,the 4 params for pagination
     return:List decisions
      */
-    static def findDecisionBySigner(String signer,int max,int offset,String sort,String orderList){
-        def decisions=Decision.createCriteria().list() {
+    static def findDecisionBySigner(String signer,int par_max,int par_offset,String sort,String orderList){
+        def decisions=Decision.createCriteria().list(max: par_max, offset: par_offset) {
             like("signer",signer)
-            order(sort,orderList)
-            firstResult(offset)
-            maxResults(max)
+            if (sort){
+                order(sort,orderList)
+            }
         }
         return decisions
     }
@@ -110,12 +110,12 @@ class DecisionService {
     parameters: String subject,the 4 params for pagination
     return:List decisions
      */
-    static def findDecisionByUnit(String unit,int max,int offset,String sort,String orderList){
-        def decisions=Decision.createCriteria().list() {
+    static def findDecisionByUnit(String unit,int par_max,int par_offset,String sort,String orderList){
+        def decisions=Decision.createCriteria().list(max: par_max, offset: par_offset) {
             like("subject",unit)
-            order(sort,orderList)
-            firstResult(offset)
-            maxResults(max)
+            if (sort){
+                order(sort,orderList)
+            }
         }
         return decisions
     }
