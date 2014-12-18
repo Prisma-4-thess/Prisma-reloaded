@@ -9,8 +9,7 @@
 grailsw.bat
 grailsw
 
-#grails lib 
-lib/*
+#grails source
 src/*
 wrapper/*
 

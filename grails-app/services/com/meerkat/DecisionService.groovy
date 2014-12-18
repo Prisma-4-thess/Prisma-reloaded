@@ -1,9 +1,10 @@
 package com.meerkat
 
 import grails.transaction.Transactional
-
+import org.apache.lucene.analysis.el.GreekStemmer
 @Transactional
 class DecisionService {
+    def stemmer=new GreekStemmer()
     /**
     Return the decision identified by ada with all the version history
     parameters: String ada
@@ -153,5 +154,8 @@ class DecisionService {
         return returnMap
     }
 
+    static def search(){
+
+    }
 
 }
