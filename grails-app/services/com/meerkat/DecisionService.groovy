@@ -1,7 +1,7 @@
 package com.meerkat
 
 import grails.transaction.Transactional
-import org.apache.lucene.analysis.el.GreekStemmer
+
 @Transactional
 class DecisionService {
     /**
@@ -151,12 +151,6 @@ class DecisionService {
             returnMap.put(extra.value.ownerExtraField.id,extra.value.value)
         }
         return returnMap
-    }
-
-    static def search(char[] search_param){
-        GreekStemmer stemmer=new GreekStemmer();
-        println stemmer.stem(search_param,search_param.length)
-        println stemmer
     }
 
 }
