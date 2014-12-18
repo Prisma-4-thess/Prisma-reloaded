@@ -9,7 +9,7 @@ class DecisionService {
     parameters: String ada
     return: List decisions
      */
-    def getDecisionByAda(String ada){
+    static def getDecisionByAda(String ada){
         def decisions=Decision.findAllByAda(ada)
         return decisions
     }
@@ -19,7 +19,7 @@ class DecisionService {
     parameters: String ada
     return: Decision decisions
      */
-    def getCorrectDecisionByAda(String ada){
+    static def getCorrectDecisionByAda(String ada){
         def decisions=Decision.findAllByAda(ada)
         def returnDecision
         decisions.each {d->
@@ -35,7 +35,7 @@ class DecisionService {
     parameters: String number,the 4 params for pagination
     return:List decisions
      */
-    def findDecisionByProtNum(String number,int max,int offset,String sort,String orderList){
+    static def findDecisionByProtNum(String number,int max,int offset,String sort,String orderList){
         def decisions=Decision.createCriteria().list() {
             like("protocolNumber",number)
             order(sort,orderList)
@@ -50,7 +50,7 @@ class DecisionService {
     parameters: String subject,the 4 params for pagination
     return:List decisions
      */
-    def findDecisionBySubject(String subject,int max,int offset,String sort,String orderList){
+    static def findDecisionBySubject(String subject,int max,int offset,String sort,String orderList){
         def decisions=Decision.createCriteria().list() {
             like("subject","%"+subject+"%")
             order(sort,orderList)
@@ -65,7 +65,7 @@ class DecisionService {
     parameters: String type,the 4 params for pagination
     return:List decisions
      */
-    def findDecisionByType(String type,int max,int offset,String sort,String orderList){
+    static def findDecisionByType(String type,int max,int offset,String sort,String orderList){
         def decisions=Decision.createCriteria().list() {
             eq("type",type)
             order(sort,orderList)
@@ -80,7 +80,7 @@ class DecisionService {
     parameters: Geo geo,the 4 params for pagination
     return:List decisions
      */
-    def findDecisionByPOI(Geo geo,int max,int offset,String sort,String orderList){
+    static def findDecisionByPOI(Geo geo,int max,int offset,String sort,String orderList){
         def decisions=Decision.createCriteria().list {
             eq("geo",geo)
             order(sort,orderList)
@@ -95,7 +95,7 @@ class DecisionService {
     parameters: String signer,the 4 params for pagination
     return:List decisions
      */
-    def findDecisionBySigner(String signer,int max,int offset,String sort,String orderList){
+    static def findDecisionBySigner(String signer,int max,int offset,String sort,String orderList){
         def decisions=Decision.createCriteria().list() {
             like("subject",signer)
             order(sort,orderList)
@@ -110,7 +110,7 @@ class DecisionService {
     parameters: String subject,the 4 params for pagination
     return:List decisions
      */
-    def findDecisionByUnit(String unit,int max,int offset,String sort,String orderList){
+    static def findDecisionByUnit(String unit,int max,int offset,String sort,String orderList){
         def decisions=Decision.createCriteria().list() {
             like("subject",unit)
             order(sort,orderList)
@@ -125,7 +125,7 @@ class DecisionService {
     parameters: Decision decision
     return: String themCat.label
      */
-    String getThematicCategory(Decision decision){
+    static String getThematicCategory(Decision decision){
         DictionaryItem themCat=DictionaryItem.createCriteria().get{
             and{
                 eq("ada",decision.ada)
