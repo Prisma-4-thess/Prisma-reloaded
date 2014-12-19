@@ -7,6 +7,7 @@ import org.apache.lucene.analysis.core.WhitespaceTokenizer
 import org.apache.lucene.analysis.el.GreekLowerCaseFilter
 import org.apache.lucene.analysis.el.GreekStemFilterFactory
 import org.apache.lucene.analysis.el.GreekStemmer
+import org.apache.lucene.analysis.standard.StandardAnalyzer
 import org.apache.lucene.util.Version
 
 @Transactional
@@ -47,6 +48,7 @@ class SearchService {
         TokenStream stream = factory.create(normalized);
         println stream.toString()
 //        assertTokenStreamContents(stream, new String[] { "????????" });
+        Analyzer analyzer = new StandardAnalyzer(matchVersion);
         TokenStream input
         GreekLowerCaseFilter(input)
     }
