@@ -1,6 +1,7 @@
 package com.meerkat
 
 import grails.transaction.Transactional
+import org.apache.lucene.analysis.Analyzer
 import org.apache.lucene.analysis.TokenStream
 import org.apache.lucene.analysis.Tokenizer
 import org.apache.lucene.analysis.core.WhitespaceTokenizer
@@ -40,16 +41,16 @@ class SearchService {
         }
         return pois
     }
-    public void StemFilter(String param) throws Exception {
-        Reader reader = new StringReader(param);
-        Tokenizer tokenizer = new WhitespaceTokenizer(DEFAULT_VERSION, reader);
-        TokenStream normalized = new GreekLowerCaseFilter(DEFAULT_VERSION, tokenizer);
-        GreekStemFilterFactory factory = new GreekStemFilterFactory();
-        TokenStream stream = factory.create(normalized);
-        println stream.toString()
-//        assertTokenStreamContents(stream, new String[] { "????????" });
-        Analyzer analyzer = new StandardAnalyzer(matchVersion);
-        TokenStream input
-        GreekLowerCaseFilter(input)
-    }
+//    public void StemFilter(String param) throws Exception {
+//        Reader reader = new StringReader(param);
+//        Tokenizer tokenizer = new WhitespaceTokenizer(DEFAULT_VERSION, reader);
+//        TokenStream normalized = new GreekLowerCaseFilter(DEFAULT_VERSION, tokenizer);
+//        GreekStemFilterFactory factory = new GreekStemFilterFactory();
+//        TokenStream stream = factory.create(normalized);
+//        println stream.toString()
+////        assertTokenStreamContents(stream, new String[] { "????????" });
+//        Analyzer analyzer = new StandardAnalyzer(Version.LATEST);
+//        TokenStream input=analyzer.tokenStream("search",param)
+//        GreekLowerCaseFilter filter=GreekLowerCaseFilter(input)
+//    }
 }
