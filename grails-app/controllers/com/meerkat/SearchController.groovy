@@ -1,5 +1,7 @@
 package com.meerkat
 
+import javax.validation.constraints.Null
+
 class SearchController {
 
     def showSearchResults(List<Decision> decisionList, List<Signer> signerList, List<Type> typeList, List<Geo> geoList, int numOfResultsDec, int numOfResultsSigner, int numOfResultsType, int numOfResultsGeo) {
@@ -72,6 +74,6 @@ class SearchController {
     }
 
     def index() {
-        SearchService.StemFilter("λευκός")
+        SearchService.searchForPOI("στο Λευκό το πύργο man",10,10,"","")
     }
 }

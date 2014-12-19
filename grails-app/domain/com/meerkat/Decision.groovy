@@ -19,6 +19,6 @@ class Decision implements Serializable {
         id composite: ['ada', 'versionId']
         type column: "type_id", generator: "assigned", sqlType: "varchar(20)"
         organization column: "org_id", generator: "assigned", sqlType: "varchar(20)"
-        subject sqlType: "varchar(500)"
+        subject sqlType: "varchar(1000)"
     }
 }
