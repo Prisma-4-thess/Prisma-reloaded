@@ -41,9 +41,11 @@
         margin-top: -25%;
         margin-left: 43%;
     }
+
     .search {
         margin-left: -11%;
     }
+
     .form-actions {
         margin: 0;
         background-color: transparent;
@@ -94,15 +96,18 @@
 
 <div id="mainContent" class="jumbotron" style="padding-top: 2%;">
     <div id="map-canvas"></div>
+
     <div class="row search">
         <div id="overMap">
-            <h2>Welcome to Prisma</h2>
+            <h2 id="welcomeTag">Welcome to Prisma</h2>
+
             <form role="form">
-                <div class="form-group">
+                <div class="form-group" id="mainSearch">
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Search decisions, signatories, locations, etc...">
                 </div>
-                <div class="form-actions">
-                <button type="submit" class="btn btn-default" style="background: #1BBC9B; padding: 10px 35px;">Search</button>
+
+                <div class="form-actions" id="submitBtn">
+                    <button type="submit" class="btn btn-default" style="background: #1BBC9B; padding: 10px 35px;">Search</button>
                 </div>
             </form>
         </div>
@@ -126,7 +131,12 @@
 </footer>
 
 <script>
-    document.getElementById('map-canvas').style.pointerEvents = 'none';
+    $(document).ready(function () {
+        document.getElementById('map-canvas').style.pointerEvents = 'none';
+        $('#welcomeTag').hide().delay(500).fadeIn('slow');
+        $('#mainSearch').hide().delay(600).fadeIn('slow');
+        $('#submitBtn').hide().delay(700).fadeIn('slow');
+    });
     $('#fadeIn').click(function () {
         document.getElementById('map-canvas').style.pointerEvents = 'auto';
         $('#mainContent').css({
@@ -140,7 +150,7 @@
         });
         $('#map-canvas').css({
             'opacity': '1',
-            'filter': 'alpha(opacity=30)'
+            'filter': 'alpha(opacity=100)'
         });
         $('#overMap').fadeOut('slow');
     });
