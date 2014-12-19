@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Prisma</title>
-    <meta name="description" content="Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version."/>
+    <title>Prisma | Meerkat</title>
+    <meta name="description" content=""/>
 
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
 
@@ -26,16 +26,30 @@
     #map-canvas {
         width: 100%;
         height: 400px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        transition: all .5s ease-out 0.1s;
     }
 
     #mainContent {
-        background-color: #1abc9c;
-        opacity: 0.4;
-        filter: Alpha(opacity=40);
-        transition: opacity 1s linear;
+        background: rgba(26, 188, 156, 0.3);
+        transition: all .5s ease-out 0.1s;
     }
 
-</style>
+    #overMap {
+        position: absolute;
+        margin-top: -25%;
+        margin-left: 43%;
+    }
+    .search {
+        margin-left: -11%;
+    }
+    .form-actions {
+        margin: 0;
+        background-color: transparent;
+        text-align: center;
+    }
+    </style>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script>
         function initialize() {
@@ -56,31 +70,45 @@
 <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0%;">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Prisma</a>
+            <g:link base="/Prisma"><img src="img/site-logo.png"/></g:link>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Default</a></li>
-                <li><a href="#">Static top</a></li>
-                <li><a href="#">Fixed top</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact us</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </nav>
 
 <div class="container">
     <div class="row">
         <div class="col-xs-offset-6">
-            <button type="button" class="btn btn-default arrow-down" id="fadeIn">display map</button>
-            <button type="button" class="btn btn-default" id="fadeOut" style="display: none;">hide map</button>
+            <button type="button" class="btn btn-default" id="fadeIn" style="padding:2px 4px;"><img src="img/icons/png/down-arrow-circle-hi.png"/></button>
+            <button type="button" class="btn btn-default" id="fadeOut" style="display: none; padding:2px 4px;"><img src="img/icons/png/up-arrow-circle-hi.png"/></button>
         </div>
     </div>
 </div>
 
 <div id="mainContent" class="jumbotron" style="padding-top: 2%;">
     <div id="map-canvas"></div>
+    <div class="row search">
+        <div id="overMap">
+            <h2>Welcome to Prisma</h2>
+            <form role="form">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Search decisions, signatories, locations, etc...">
+                </div>
+                <div class="form-actions">
+                <button type="submit" class="btn btn-default" style="background: #1BBC9B; padding: 10px 35px;">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
 
 <footer style="background-color: #003333;">
     <div class="container">
@@ -102,8 +130,7 @@
     $('#fadeIn').click(function () {
         document.getElementById('map-canvas').style.pointerEvents = 'auto';
         $('#mainContent').css({
-            'background-color': '#1abc9c',
-            'opacity': '1'
+            background: 'rgba(26, 188, 156,1)'
         });
         $('#fadeIn').css({
             'display': 'none'
@@ -111,13 +138,16 @@
         $('#fadeOut').css({
             'display': 'inline'
         });
+        $('#map-canvas').css({
+            'opacity': '1',
+            'filter': 'alpha(opacity=30)'
+        });
+        $('#overMap').fadeOut('slow');
     });
     $('#fadeOut').click(function () {
         document.getElementById('map-canvas').style.pointerEvents = 'none';
         $('#mainContent').css({
-            'background-color': '#1abc9c',
-            'opacity': '0.4',
-            'filter': 'Alpha(opacity=40)'
+            background: 'rgba(26, 188, 156,0.3)'
         });
         $('#fadeIn').css({
             'display': 'inline'
@@ -125,6 +155,11 @@
         $('#fadeOut').css({
             'display': 'none'
         });
+        $('#map-canvas').css({
+            'opacity': '0.3',
+            'filter': 'alpha(opacity=30)'
+        });
+        $('#overMap').fadeIn('slow');
     });
 </script>
 <script src="js/flat-ui.min.js"></script>
