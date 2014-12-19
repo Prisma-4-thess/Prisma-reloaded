@@ -10,7 +10,7 @@ class Decision implements Serializable {
     Organization organization
     boolean privateData
     long submissionTimestamp
-    Decision correctedDecision
+    String correctedVersionId
     static belongsTo = [geo: Geo]
     static constraints = {
     }
