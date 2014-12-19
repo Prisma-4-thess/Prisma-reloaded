@@ -17,5 +17,7 @@ class Decision implements Serializable {
     static mapping = {
         version false
         id composite: ['ada', 'versionId']
+        type column: "type_id", generator: "assigned", sqlType: "varchar(20)"
+        type column: "org_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }
