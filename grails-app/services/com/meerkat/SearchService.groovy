@@ -41,16 +41,12 @@ class SearchService {
         }
         return pois
     }
-//    public void StemFilter(String param) throws Exception {
-//        Reader reader = new StringReader(param);
-//        Tokenizer tokenizer = new WhitespaceTokenizer(DEFAULT_VERSION, reader);
-//        TokenStream normalized = new GreekLowerCaseFilter(DEFAULT_VERSION, tokenizer);
-//        GreekStemFilterFactory factory = new GreekStemFilterFactory();
-//        TokenStream stream = factory.create(normalized);
-//        println stream.toString()
-////        assertTokenStreamContents(stream, new String[] { "????????" });
-//        Analyzer analyzer = new StandardAnalyzer(Version.LATEST);
-//        TokenStream input=analyzer.tokenStream("search",param)
-//        GreekLowerCaseFilter filter=GreekLowerCaseFilter(input)
-//    }
+    static def StemFilter(String param) throws Exception {
+        Analyzer analyzer = new StandardAnalyzer(Version.LATEST);
+        TokenStream input=analyzer.tokenStream("search",new StringReader(param))
+        GreekLowerCaseFilter filter=new GreekLowerCaseFilter(input)
+        while (filter.incrementToken()){
+            println input.incrementToken()
+        }
+    }
 }

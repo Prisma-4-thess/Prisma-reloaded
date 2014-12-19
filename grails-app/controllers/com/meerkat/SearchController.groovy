@@ -71,5 +71,7 @@ class SearchController {
 
     }
 
-    def index() {}
+    def index() {
+        SearchService.StemFilter("λευκός")
+    }
 }
