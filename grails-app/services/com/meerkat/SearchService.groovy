@@ -5,6 +5,7 @@ import org.apache.lucene.analysis.Analyzer
 import org.apache.lucene.analysis.TokenStream
 import org.apache.lucene.analysis.Tokenizer
 import org.apache.lucene.analysis.core.WhitespaceTokenizer
+import org.apache.lucene.analysis.el.GreekAnalyzer
 import org.apache.lucene.analysis.el.GreekLowerCaseFilter
 import org.apache.lucene.analysis.el.GreekStemFilterFactory
 import org.apache.lucene.analysis.el.GreekStemmer
@@ -46,7 +47,8 @@ class SearchService {
     }
     static String StemFilter(String param) throws Exception {
         String filteredText=""
-        Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_4_10_2);
+        Analyzer analyzer = new GreekAnalyzer(Version.LUCENE_4_10_2);
+        println analyzer.getStopwordSet().toString()
         TokenStream input=analyzer.tokenStream("search",new StringReader(param))
         CharTermAttribute termAtt = input.addAttribute(CharTermAttribute.class);
         GreekLowerCaseFilter filter=new GreekLowerCaseFilter(input)
