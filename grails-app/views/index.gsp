@@ -51,6 +51,7 @@
         background-color: transparent;
         text-align: center;
     }
+
     .tooltip-actions {
         position: absolute;
         margin-top: -31%;
@@ -108,16 +109,19 @@
 
 <div id="mainContent" class="jumbotron" style="padding-top: 2%;">
     <div id="map-canvas"></div>
-    <span class="tooltip-actions" data-trigger="hover"  data-placement="bottom" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-        <img  src="img/icons/png/information-icon.png"/>
+    <span class="tooltip-actions" data-trigger="hover" data-placement="bottom" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+        <img src="img/icons/png/information-icon.png"/>
     </span>
+
     <div class="row search">
         <div id="overMap">
             <h2 id="welcomeTag">Welcome to Prisma</h2>
+
             <form role="form">
                 <div class="form-group" id="mainSearch">
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Search decisions, signatories, locations, etc...">
                 </div>
+
                 <div class="form-actions" id="submitBtn">
                     <button type="submit" class="btn btn-default" style="background: #1BBC9B; padding: 10px 35px;">Search</button>
                 </div>
@@ -166,6 +170,7 @@
             'filter': 'alpha(opacity=100)'
         });
         $('#overMap').fadeOut('slow');
+        $('.tooltip-actions').fadeOut('slow');
     });
     $('#fadeOut').click(function () {
         document.getElementById('map-canvas').style.pointerEvents = 'none';
@@ -183,6 +188,7 @@
             'filter': 'alpha(opacity=30)'
         });
         $('#overMap').fadeIn('slow');
+        $('.tooltip-actions').fadeIn('slow');
     });
 </script>
 <script src="js/bootstrap.min.js"></script>
