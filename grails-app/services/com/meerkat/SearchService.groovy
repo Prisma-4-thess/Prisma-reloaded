@@ -36,10 +36,11 @@ class SearchService {
 
     static def searchForPOI(String search_param,int par_max,int par_offset,String sort,String orderList){
         def nmgrk=Stem(search_param)
-        indexSearch(nmgrk,"/tmp/geoindex")
+        def pois=indexSearch(nmgrk,"/tmp/geoindex")
     }
 
     static def indexSearch(String param,String index_directory){
+        def returnList=[]
         Analyzer analyzer=new GreekAnalyzer()
         File fsdFile=new File(index_directory)
         Directory directory = FSDirectory.open(fsdFile);
@@ -53,10 +54,11 @@ class SearchService {
         // Iterate through the results:
         for (int i = 0; i < hits.length; i++) {
             Document hitDoc = isearcher.doc(hits[i].doc);
-            println hitDoc.get("prototype");
+            returnList.add(hitDoc.get("prototype"));
         }
         ireader.close();
         directory.close()
+        return returnList
     }
 
     static String Stem(String search_param){
