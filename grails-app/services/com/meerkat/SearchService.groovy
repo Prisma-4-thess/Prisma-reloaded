@@ -3,13 +3,9 @@ package com.meerkat
 import grails.transaction.Transactional
 import org.apache.lucene.analysis.Analyzer
 import org.apache.lucene.analysis.TokenStream
-import org.apache.lucene.analysis.Tokenizer
-import org.apache.lucene.analysis.core.WhitespaceTokenizer
 import org.apache.lucene.analysis.el.GreekAnalyzer
 import org.apache.lucene.analysis.el.GreekLowerCaseFilter
-import org.apache.lucene.analysis.el.GreekStemFilterFactory
 import org.apache.lucene.analysis.el.GreekStemmer
-import org.apache.lucene.analysis.standard.StandardAnalyzer
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
 import org.apache.lucene.util.Version
 
@@ -42,6 +38,9 @@ class SearchService {
         println nmgrk
         def pois=Geo.createCriteria().list(max: par_max, offset: par_offset){
             like("namegrk",nmgrk)
+            if (sort){
+                order(sort,orderList)
+            }
         }
         return pois
     }

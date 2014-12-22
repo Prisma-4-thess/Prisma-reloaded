@@ -74,6 +74,6 @@ class SearchController {
     }
 
     def index() {
-        SearchService.searchForPOI("στο Λευκό το πύργο man",10,10,"","")
+        SearchService.searchForPOI("στο Μπουτάρη Ιωαννης",10,10,"","")
     }
 }
