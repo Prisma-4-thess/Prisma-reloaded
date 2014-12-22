@@ -37,6 +37,7 @@ class SearchService {
     static def searchForPOI(String search_param,int par_max,int par_offset,String sort,String orderList){
         def nmgrk=Stem(search_param)
         def pois=indexSearch(nmgrk,"/tmp/geoindex")
+        println(pois)
     }
 
     static def indexSearch(String param,String index_directory){
