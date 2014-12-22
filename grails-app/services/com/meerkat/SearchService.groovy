@@ -48,7 +48,8 @@ class SearchService {
         // Parse a simple query that searches for "text":
         QueryParser parser = new QueryParser("stemed_namegrk", analyzer);
         Query query = parser.parse(param)
-        ScoreDoc[] hits = isearcher.search(query, null, 10).scoreDocs;
+        ScoreDoc[] hits = isearcher.search(query, null, 20).scoreDocs;
+        println hits.toString()
         // Iterate through the results:
         for (int i = 0; i < hits.length; i++) {
             Document hitDoc = isearcher.doc(hits[i].doc);
@@ -76,7 +77,6 @@ class SearchService {
     static String StemFilter(String param) throws Exception {
         String filteredText=""
         Analyzer analyzer = new GreekAnalyzer(Version.LUCENE_4_10_2);
-        println analyzer.getStopwordSet().toString()
         TokenStream input=analyzer.tokenStream("search",new StringReader(param))
         CharTermAttribute termAtt = input.addAttribute(CharTermAttribute.class);
         GreekLowerCaseFilter filter=new GreekLowerCaseFilter(input)
