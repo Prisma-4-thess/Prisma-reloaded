@@ -24,6 +24,16 @@ class SearchService {
      */
 
     static def searchForPOI(String search_param,int par_max,int par_offset,String sort,String orderList){
+        def nmgrk=Stem(search_param)
+        def pois=Geo.createCriteria().list(max: par_max, offset: par_offset){
+            like("namegrk",nmgrk)
+            if (sort){
+                order(sort,orderList)
+            }
+        }
+        return pois
+    }
+    static String Stem(String search_param){
         GreekStemmer stemmer=new GreekStemmer()
         search_param=StemFilter(search_param)
         String nmgrk=""
@@ -35,15 +45,9 @@ class SearchService {
             char_array=char_array[0..param_stem-1]
             nmgrk=nmgrk+char_array.toString()+" "
         }
-        println nmgrk
-        def pois=Geo.createCriteria().list(max: par_max, offset: par_offset){
-            like("namegrk",nmgrk)
-            if (sort){
-                order(sort,orderList)
-            }
-        }
-        return pois
+        return nmgrk
     }
+
     static String StemFilter(String param) throws Exception {
         String filteredText=""
         Analyzer analyzer = new GreekAnalyzer(Version.LUCENE_4_10_2);
