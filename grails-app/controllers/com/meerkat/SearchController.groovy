@@ -74,6 +74,7 @@ class SearchController {
     }
 
     def index() {
-        SearchService.searchForPOI("στο λευκό τον πυργο πήρα τα φιλιά της",10,10,"","")
+        def poi=SearchService.searchForDecisions("στο λευκό τον πυργο πήρα τα φιλιά της",10,10,"","")
+        println poi
     }
 }

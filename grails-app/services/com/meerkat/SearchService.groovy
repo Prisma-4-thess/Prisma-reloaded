@@ -35,9 +35,24 @@ class SearchService {
      */
 
     static def searchForPOI(String search_param,int par_max,int par_offset,String sort,String orderList){
+        def returnPOI=[]
         def nmgrk=Stem(search_param)
         def pois=indexSearch(nmgrk,"/tmp/geoindex")
-        println(pois)
+        pois.each {poi->
+            returnPOI.add(Geo.findAllByNamegrk(poi))
+        }
+        return returnPOI
+    }
+
+    static def searchForDecisions(String search_param,int par_max,int par_offset,String sort,String orderList){
+        def returnDEC=[]
+        def subject=Stem(search_param)
+        def dec=indexSearch(subject,"/tmp/decindex")
+        dec.each {s->
+           println s
+//            returnDEC.add(Decision.findAllByAdaAndVersionId())
+        }
+        return returnDEC
     }
 
     static def indexSearch(String param,String index_directory){

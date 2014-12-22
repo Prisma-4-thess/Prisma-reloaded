@@ -13,6 +13,7 @@ class DecisionExtraFieldValue implements Serializable{
         version false
         ada column: "decision_ada", generator: "assigned", sqlType: "varchar(20)"
         versionId column: "decision_version", generator: "assigned", sqlType: "varchar(50)"
+        extra column: "extra_field_id", generator: "assigned", sqlType: "varchar(50)"
     }
 
 }
