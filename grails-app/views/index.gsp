@@ -51,6 +51,11 @@
         background-color: transparent;
         text-align: center;
     }
+    .tooltip-actions {
+        position: absolute;
+        margin-top: -31%;
+        margin-left: 94%;
+    }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script>
@@ -64,6 +69,13 @@
             var map = new google.maps.Map(mapCanvas, mapOptions);
         }
         google.maps.event.addDomListener(window, 'load', initialize);
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
     </script>
 </head>
 
@@ -88,24 +100,24 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-offset-6">
-            <button type="button" class="btn btn-default" id="fadeIn" style="padding:2px 4px;"><img src="img/icons/png/down-arrow-circle-hi.png"/></button>
-            <button type="button" class="btn btn-default" id="fadeOut" style="display: none; padding:2px 4px;"><img src="img/icons/png/up-arrow-circle-hi.png"/></button>
+            <button type="button" class="btn btn-default" id="fadeIn" style="padding:2px 4px;"><img src="img/icons/png/up-arrow-circle-hi.png"/></button>
+            <button type="button" class="btn btn-default" id="fadeOut" style="display: none; padding:2px 4px;"><img src="img/icons/png/down-arrow-circle-hi.png"/></button>
         </div>
     </div>
 </div>
 
 <div id="mainContent" class="jumbotron" style="padding-top: 2%;">
     <div id="map-canvas"></div>
-
+    <span class="tooltip-actions" data-trigger="hover"  data-placement="bottom" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+        <img  src="img/icons/png/information-icon.png"/>
+    </span>
     <div class="row search">
         <div id="overMap">
             <h2 id="welcomeTag">Welcome to Prisma</h2>
-
             <form role="form">
                 <div class="form-group" id="mainSearch">
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Search decisions, signatories, locations, etc...">
                 </div>
-
                 <div class="form-actions" id="submitBtn">
                     <button type="submit" class="btn btn-default" style="background: #1BBC9B; padding: 10px 35px;">Search</button>
                 </div>
@@ -113,6 +125,7 @@
         </div>
     </div>
 </div>
+
 
 
 <footer style="background-color: #003333;">
@@ -123,7 +136,6 @@
                 <h6 class="footer-title"><g:link base="http://www.meerkat.gr" target="_blank">Meerkat</g:link> &copy  All Rights Reserved ${currentYear} <br/>
                     <g:link base="https://www.facebook.com/meerkat.gr?ref=ts&fref=ts" target="_blank"><span class="fui-facebook"></span></g:link>
                     <g:link base="https://twitter.com/meerkat_team "><span class="fui-twitter"></span></g:link>
-                    <span class="fui-linkedin"></span>
                 </h6>
             </div>
         </div>
@@ -133,9 +145,10 @@
 <script>
     $(document).ready(function () {
         document.getElementById('map-canvas').style.pointerEvents = 'none';
+        $('.tooltip-actions').hide().delay(300).fadeIn('slow');
         $('#welcomeTag').hide().delay(500).fadeIn('slow');
-        $('#mainSearch').hide().delay(600).fadeIn('slow');
-        $('#submitBtn').hide().delay(700).fadeIn('slow');
+        $('#mainSearch').hide().delay(700).fadeIn('slow');
+        $('#submitBtn').hide().delay(900).fadeIn('slow');
     });
     $('#fadeIn').click(function () {
         document.getElementById('map-canvas').style.pointerEvents = 'auto';
@@ -172,6 +185,7 @@
         $('#overMap').fadeIn('slow');
     });
 </script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/flat-ui.min.js"></script>
 <script src="js/application.js"></script>
 
