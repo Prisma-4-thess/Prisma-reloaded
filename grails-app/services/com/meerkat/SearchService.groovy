@@ -36,24 +36,24 @@ class SearchService {
 
     static def searchForPOI(String search_param,int par_max,int par_offset,String sort,String orderList){
         def nmgrk=Stem(search_param)
-        indexSearch(nmgrk)
+        indexSearch(nmgrk,"/tmp/geoindex")
     }
 
-    static def indexSearch(String param){
+    static def indexSearch(String param,String index_directory){
         Analyzer analyzer=new GreekAnalyzer()
-        File fsdFile=new File("/tmp/geoindex")
+        File fsdFile=new File(index_directory)
         Directory directory = FSDirectory.open(fsdFile);
         DirectoryReader ireader = DirectoryReader.open(directory);
         IndexSearcher isearcher = new IndexSearcher(ireader);
         // Parse a simple query that searches for "text":
-        QueryParser parser = new QueryParser("stemed_namegrk", analyzer);
+        QueryParser parser = new QueryParser("stemed", analyzer);
         Query query = parser.parse(param)
         ScoreDoc[] hits = isearcher.search(query, null, 20).scoreDocs;
         println hits.toString()
         // Iterate through the results:
         for (int i = 0; i < hits.length; i++) {
             Document hitDoc = isearcher.doc(hits[i].doc);
-            println hitDoc.get("namegrk");
+            println hitDoc.get("prototype");
         }
         ireader.close();
         directory.close()
