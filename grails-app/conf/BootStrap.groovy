@@ -1,6 +1,7 @@
 import com.meerkat.Geo
 import com.meerkat.SearchService
 import org.apache.lucene.analysis.Analyzer
+import org.apache.lucene.analysis.el.GreekAnalyzer
 import org.apache.lucene.analysis.el.GreekStemmer
 import org.apache.lucene.analysis.standard.StandardAnalyzer
 import org.apache.lucene.document.Document
@@ -9,16 +10,15 @@ import org.apache.lucene.document.TextField
 import org.apache.lucene.index.IndexWriter
 import org.apache.lucene.index.IndexWriterConfig
 import org.apache.lucene.store.Directory
-import org.apache.lucene.store.RAMDirectory
+import org.apache.lucene.store.FSDirectory
 import org.apache.lucene.util.Version
 
 class BootStrap {
-
     def init = { servletContext ->
 //        indexing geo for custom lucene search
         println "Indexing geos ..."
-        Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_4_10_2);
-        Directory directory = new RAMDirectory();
+        Analyzer analyzer = new GreekAnalyzer(Version.LUCENE_4_10_2);
+        Directory directory = FSDirectory.open("/tmp/geoindex");
         IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_4_10_2, analyzer);
         IndexWriter iwriter = new IndexWriter(directory, config);
         GreekStemmer stemmer=new GreekStemmer()
@@ -35,7 +35,8 @@ class BootStrap {
                 char_array=char_array[0..param_stem-1]
                 nmgrk=nmgrk+char_array.toString()+" "
             }
-            doc.add(new Field(g.namegrk, nmgrk, TextField.TYPE_STORED));
+            doc.add(new Field("namegrk", g.namegrk, TextField.TYPE_STORED));
+            doc.add(new Field("stemed_namegrk", nmgrk, TextField.TYPE_STORED));
             iwriter.addDocument(doc);
         }
         iwriter.close();

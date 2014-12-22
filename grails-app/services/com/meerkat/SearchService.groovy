@@ -7,7 +7,16 @@ import org.apache.lucene.analysis.el.GreekAnalyzer
 import org.apache.lucene.analysis.el.GreekLowerCaseFilter
 import org.apache.lucene.analysis.el.GreekStemmer
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
+import org.apache.lucene.document.Document
+import org.apache.lucene.index.DirectoryReader
+import org.apache.lucene.queryparser.classic.QueryParser
+import org.apache.lucene.search.IndexSearcher
+import org.apache.lucene.search.Query
+import org.apache.lucene.search.ScoreDoc
 import org.apache.lucene.util.Version
+
+
+
 
 @Transactional
 class SearchService {
@@ -25,14 +34,25 @@ class SearchService {
 
     static def searchForPOI(String search_param,int par_max,int par_offset,String sort,String orderList){
         def nmgrk=Stem(search_param)
-        def pois=Geo.createCriteria().list(max: par_max, offset: par_offset){
-            like("namegrk",nmgrk)
-            if (sort){
-                order(sort,orderList)
-            }
-        }
-        return pois
+        indexSearch(nmgrk)
     }
+
+    static def indexSearch(String param){
+        Analyzer analyzer=new GreekAnalyzer()
+        DirectoryReader ireader = DirectoryReader.open("/tmp/geoindex");
+        IndexSearcher isearcher = new IndexSearcher(ireader);
+        // Parse a simple query that searches for "text":
+        QueryParser parser = new QueryParser("stemed_namegrk", analyzer);
+        Query query = parser.parse(param)
+        ScoreDoc[] hits = isearcher.search(query, null, 10).scoreDocs;
+        // Iterate through the results:
+        for (int i = 0; i < hits.length; i++) {
+            Document hitDoc = isearcher.doc(hits[i].doc);
+            println hitDoc.get("namegrk");
+        }
+        ireader.close();
+    }
+
     static String Stem(String search_param){
         GreekStemmer stemmer=new GreekStemmer()
         search_param=StemFilter(search_param)
