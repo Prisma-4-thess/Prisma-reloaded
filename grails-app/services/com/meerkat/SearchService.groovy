@@ -13,6 +13,8 @@ import org.apache.lucene.queryparser.classic.QueryParser
 import org.apache.lucene.search.IndexSearcher
 import org.apache.lucene.search.Query
 import org.apache.lucene.search.ScoreDoc
+import org.apache.lucene.store.Directory
+import org.apache.lucene.store.FSDirectory
 import org.apache.lucene.util.Version
 
 
@@ -39,7 +41,9 @@ class SearchService {
 
     static def indexSearch(String param){
         Analyzer analyzer=new GreekAnalyzer()
-        DirectoryReader ireader = DirectoryReader.open("/tmp/geoindex");
+        File fsdFile=new File("/tmp/geoindex")
+        Directory directory = FSDirectory.open(fsdFile);
+        DirectoryReader ireader = DirectoryReader.open(directory);
         IndexSearcher isearcher = new IndexSearcher(ireader);
         // Parse a simple query that searches for "text":
         QueryParser parser = new QueryParser("stemed_namegrk", analyzer);
@@ -51,6 +55,7 @@ class SearchService {
             println hitDoc.get("namegrk");
         }
         ireader.close();
+        directory.close()
     }
 
     static String Stem(String search_param){

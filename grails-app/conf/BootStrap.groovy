@@ -18,7 +18,8 @@ class BootStrap {
 //        indexing geo for custom lucene search
         println "Indexing geos ..."
         Analyzer analyzer = new GreekAnalyzer(Version.LUCENE_4_10_2);
-        Directory directory = FSDirectory.open("/tmp/geoindex");
+        File fsdFile=new File("/tmp/geoindex")
+        Directory directory = FSDirectory.open(fsdFile);
         IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_4_10_2, analyzer);
         IndexWriter iwriter = new IndexWriter(directory, config);
         GreekStemmer stemmer=new GreekStemmer()
@@ -40,6 +41,7 @@ class BootStrap {
             iwriter.addDocument(doc);
         }
         iwriter.close();
+        directory.close()
         println "Finished Indexing geos ..."
     }
     def destroy = {
