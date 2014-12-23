@@ -1,0 +1,55 @@
+#map-canvas {
+    width: 100%;
+    height: 400px;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+    transition: all .5s ease-out 0.1s;
+}
+
+#mainContent {
+    background: rgba(26, 188, 156, 0.3);
+    transition: all .5s ease-out 0.1s;
+}
+
+#overMap {
+    position: absolute;
+    margin-top: -25%;
+    margin-left: 43%;
+}
+
+.search {
+    margin-left: -11%;
+}
+
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+
+.tooltip-actions {
+    position: absolute;
+    margin-top: -31%;
+    margin-left: 94%;
+}
+
+.customNavbar {
+    margin-bottom: 0%;
+}
+
+.customJumbotron {
+    padding-top: 2%;
+}
+
+.customFooter {
+    background-color: #003333;
+}
+
+.customFadeInBtn {
+    padding:2px 4px;
+}
+
+.customFadeOutBtn {
+    display: none;
+    padding:2px 4px;
+}
