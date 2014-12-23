@@ -53,3 +53,7 @@
     display: none;
     padding:2px 4px;
 }
+.searchBtn {
+    background: #1BBC9B;
+    padding: 10px 35px;
+}

@@ -33,8 +33,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-offset-6">
-            <button type="button" class="btn btn-default customFadeInBtn" id="fadeIn"><img src="img/icons/png/up-arrow-circle-hi.png"/></button>
-            <button type="button" class="btn btn-default customFadeOutBtn" id="fadeOut"><img src="img/icons/png/down-arrow-circle-hi.png"/></button>
+
+            <button type="button" class="btn btn-default customFadeInBtn" id="fadeIn"><g:img dir="images" file="icons/png/up-arrow-circle-hi.png" /></button>
+            <button type="button" class="btn btn-default customFadeOutBtn" id="fadeOut"><g:img dir="images" file="icons/png/down-arrow-circle-hi.png" /></button>
         </div>
     </div>
 </div>
@@ -42,7 +43,7 @@
 <div id="mainContent" class="jumbotron customJumbotron">
     <div id="map-canvas"></div>
     <span class="tooltip-actions" data-trigger="hover" data-placement="bottom" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-        <img src="img/icons/png/information-icon.png"/>
+        <g:img dir="images" file="icons/png/information-icon.png" />
     </span>
     <div class="row search">
         <div id="overMap">
