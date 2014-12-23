@@ -19,11 +19,11 @@ class DecisionService {
     parameters: String ada
     return: Decision decisions
      */
-    static def getCorrectDecisionByAda(String ada){
+    static Decision getCorrectDecisionByAda(String ada){
         def decisions=Decision.findAllByAda(ada)
-        def returnDecision
+        Decision returnDecision
         decisions.each {d->
-            if(!d.correctedDecision){
+            if(d.correctedVersionId.isEmpty()){
                 returnDecision=d
             }
         }

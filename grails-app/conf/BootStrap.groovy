@@ -61,7 +61,7 @@ class BootStrap {
             IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_4_10_2, analyzer);
             IndexWriter iwriter = new IndexWriter(directory, config);
             GreekStemmer stemmer = new GreekStemmer()
-            def decs = Decision.all
+            def decs = Decision.findAll()
             decs.each { g ->
                 Document doc = new Document();
                 String text = SearchService.StemFilter(g.subject)
