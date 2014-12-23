@@ -11,11 +11,12 @@ class GeoService {
      parameters: double centerLat,double centerLon,double radius
      return: List retPois
       */
-    static def findPOINearLatLng(double centerLat,double centerLon,double radius){
-        def retPois=[]
-        def pois=Geo.getAll()
-        pois.each{poi->
-            if(calculateDistance(poi.latitude,poi.longitude,centerLat,centerLon)<radius){
+
+    static def findPOINearLatLng(double centerLat, double centerLon, double radius) {
+        def retPois = []
+        def pois = Geo.getAll()
+        pois.each { poi ->
+            if (calculateDistance(poi.latitude, poi.longitude, centerLat, centerLon) < radius) {
                 retPois.add(poi)
             }
         }
@@ -28,17 +29,18 @@ class GeoService {
     parameters: double lat1 double lon1 double lat2 double lon2
     return: double distance
      */
-    static double calculateDistance(double lat1,double lon1,double lat2,double lon2){
-        def R = 6371; // km
-        def φ1 = lat1.toRadians();
-        def φ2 = lat2.toRadians();
-        def Δφ = (lat2-lat1).toRadians();
-        def Δλ = (lon2-lon1).toRadians();
 
-        def a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+    static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        def R = 6371; // km
+        def φ1 = Math.toRadians(lat1);
+        def φ2 = Math.toRadians(lat2);
+        def Δφ = Math.toRadians(lat2 - lat1);
+        def Δλ = Math.toRadians(lon2 - lon1);
+
+        def a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
                 Math.cos(φ1) * Math.cos(φ2) *
-                Math.sin(Δλ/2) * Math.sin(Δλ/2);
-        def c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+        def c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         def d = R * c;
         return d

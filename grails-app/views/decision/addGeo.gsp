@@ -7,12 +7,24 @@
   This page shows a map to insert a geo to a decision
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+  <meta name="layout" content="main_layout"/>
   <title></title>
 </head>
 <body>
+
+<div id="nearbyGeos">
+skataki
+</div>
+
+<script>
+  ${remoteFunction( controller: 'geo',
+                    action: 'showNearbyGeos',
+                    update: [success: 'nearbyGeos', failure: 'nearbyGeos'],
+                    params: '\'lat=\' + 40.636 + \'&lon=\' + 22.938')}
+
+</script>
 
 </body>
 </html>

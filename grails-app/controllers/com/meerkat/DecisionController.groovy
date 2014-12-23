@@ -10,6 +10,15 @@ class DecisionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    /**
+     * Page to add geo to decision
+     * @return
+     */
+    def addGeo(){
+        //def geoList = GeoService.findPOINearLatLng(params.lat, params.lon, getGrailsApplication().getConfig().geo.nearby.radius.toInteger())
+        return
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Decision.list(params), model:[decisionInstanceCount: Decision.count()]

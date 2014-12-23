@@ -11,7 +11,7 @@ class GeoController {
 
     /**
      * Loads the template responsible to show all given geos. If no geos are given it shows all of them.
-     * @param geoList: List of geos to show.
+     * @param geoList : List of geos to show.
      * @return
      */
     def listGeo(List<Geo> geoList) {
@@ -21,11 +21,26 @@ class GeoController {
 
     /**
      * Loads the template responsible to show one geo.
-     * @param geoInstance: Geo to show. Can have a value if this function is called like: <g:link action="showGeo" id="${geoInstance.id}">
+     * @param geoInstance : Geo to show. Can have a value if this function is called like: <g:link action="showGeo" id="${geoInstance.id}">
      * @return
      */
     def showGeo(Geo geoInstance) {
         render(template: 'show', model: ['geoInstance': geoInstance, 'entityName': 'Geo'])
+    }
+
+    /**
+     * Gets nearby geos and load the template to show them
+     * @param lat : latitude
+     * @param lon : longitude
+     * @return geoList: List of Geo
+     */
+    def showNearbyGeos(double lat, double lon) {
+        if (lat == null) lat = params.lat.toDouble()
+        if (lon == null) lon = params.lon.toDouble()
+        print params
+        def geoList = GeoService.findPOINearLatLng(lat, lon, getGrailsApplication().getConfig().geo.nearby.radius.toDouble())
+        print geoList
+        render(template: 'nearby_geo', model: ['geoList': geoList, 'numOfResults':geoList.size()])
     }
 
     def index(Integer max) {
