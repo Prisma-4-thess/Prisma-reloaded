@@ -1,6 +1,6 @@
 package com.meerkat
 
-class Decision_signer {
+class Decision_signer implements Serializable{
     Decision decision
     Signer signer
 
