@@ -1,9 +1,6 @@
 %{--This shows a paginated table with Geos--}%
 %{--parameters: geoList, numOfResults (for the pagination)--}%
 
-%{--This shows a paginated table with Geos--}%
-%{--parameters: geoList, numOfResults (for the pagination)--}%
-
 <div id="list-geo" class="content scaffold-list" role="main">
 %{--<h1><g:message code="default.list.label" args="[entityName]" /></h1>--}%
     <g:if test="${flash.message}">

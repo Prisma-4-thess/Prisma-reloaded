@@ -1,7 +1,5 @@
 package com.meerkat
 
-import javax.validation.constraints.Null
-
 class SearchController {
 
     def showSearchResults(List<Decision> decisionList, List<Signer> signerList, List<Type> typeList, List<Geo> geoList, int numOfResultsDec, int numOfResultsSigner, int numOfResultsType, int numOfResultsGeo) {
@@ -19,12 +17,12 @@ class SearchController {
         }
 
         String searchQuery = params.searchBarQuery;
-        if (searchQuery == null) searchQuery = " " //TODO: Should be removed
         def decisionList
         def signerList
         def typeList
         def geoList
         int numOfResultsDec = 0, numOfResultsSigner = 0, numOfResultsType = 0, numOfResultsGeo = 0
+        if (searchQuery == null || searchQuery.isEmpty() || searchQuery.equals(" ")) return
 
         //TODO: Call service for sort/paginate
         if (params.clicked == "decision") {
@@ -40,7 +38,6 @@ class SearchController {
             geoList = Geo.list(params)
 //            geoList = SearchService.searchForPOI(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
             numOfResultsGeo = geoList.totalCount
-//            geoList = SearchService.searchForPOI(searchQuery,params.max,params.offset,params.sort,params.order)
         } else {
             //TODO: Call service for search
             if (decisionList == null) {
