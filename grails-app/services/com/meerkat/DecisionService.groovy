@@ -135,22 +135,4 @@ class DecisionService {
         return themCat
     }
 
-    /**
-    return a map containing label of extra field and value of the given as parameter decision
-    parameters: Decision decision
-    return: Map returnMap
-     */
-    static def getExtraFields(Decision decision){
-        def returnMap=[:]
-        def extras=DecisionExtraFieldValue.createCriteria().list {
-            eq("ada",decision.ada)
-            eq("versionId",decision.versionId)
-        }
-        extras.each {extra->
-            extra.value.ownerExtraField.id
-            returnMap.put(extra.value.ownerExtraField.id,extra.value.value)
-        }
-        return returnMap
-    }
-
 }
