@@ -57,3 +57,21 @@
     background: #1BBC9B;
     padding: 10px 35px;
 }
+.customSearchBar {
+    margin-top: -8%;
+    float: right;
+    margin-right: 3%;
+}
+
+.searchRow {
+    margin-left: 0%;
+}
+
+.emptyRow {
+    margin-top:2%;
+}
+
+.searchBarDefaultSize {
+    width: 442px;
+    height: 42px;
+}

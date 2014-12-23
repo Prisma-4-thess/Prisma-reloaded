@@ -33,7 +33,6 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-offset-6">
-
             <button type="button" class="btn btn-default customFadeInBtn" id="fadeIn"><g:img dir="images" file="icons/png/up-arrow-circle-hi.png" /></button>
             <button type="button" class="btn btn-default customFadeOutBtn" id="fadeOut"><g:img dir="images" file="icons/png/down-arrow-circle-hi.png" /></button>
         </div>
@@ -52,6 +51,7 @@
         </div>
     </div>
 </div>
+
 
 
 </body>
