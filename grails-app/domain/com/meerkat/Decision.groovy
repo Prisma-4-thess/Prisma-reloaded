@@ -7,18 +7,16 @@ class Decision implements Serializable {
     String subject
     long issueDate
     Type type
-    Organization organization
-    boolean privateData
-    long submissionTimestamp
     String correctedVersionId
     static belongsTo = [geo: Geo]
+    static hasMany = [extraFields:ExtraField]
     static constraints = {
+        issueDate(null:false)
     }
     static mapping = {
         version false
         id composite: ['ada', 'versionId']
         type column: "type_id", generator: "assigned", sqlType: "varchar(20)"
-        organization column: "org_id", generator: "assigned", sqlType: "varchar(20)"
-        subject sqlType: "varchar(1000)"
+        subject sqlType: "varchar(2000)"
     }
 }

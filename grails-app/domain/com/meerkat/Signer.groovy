@@ -7,7 +7,6 @@ class Signer {
     Organization org
     Long activeFrom
     Long activeUntil
-    Boolean hasOrganizationSignRights
     static constraints = {
 
     }

@@ -1,16 +1,16 @@
 package com.meerkat
 
-class SignerUnitPosition {
+class Signer_unit implements Serializable{
     Signer signer
     Unit unit
-    OrgPosition position
+    String position
 
     static constraints = {
-
     }
     static mapping = {
+        version false
+        id composite: ['signer','unit','position']
         signer column: "signer_id", generator: "assigned", sqlType: "varchar(20)"
         unit column: "unit_id", generator: "assigned", sqlType: "varchar(20)"
-        position column: "org_pos_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }

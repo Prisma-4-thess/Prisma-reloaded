@@ -10,19 +10,11 @@ class Geo {
     String phone
     String dimos
     String newSubCat
-    static hasMany = [decisions: Decision]
+    static hasMany = [decisions: Decision,units:Unit]
 
     static constraints = {
         latitude(nullable: false)
         longitude(nullable: false)
-        address(nullable: true)
-        tk(nullable: true)
-        newCat(nullable: true)
-        namegrk(nullable: true)
-        phone(nullable: true)
-        dimos(nullable: true)
-        newSubCat(nullable: true)
-        decisions(nullable: true)
     }
 
     String toString() {
