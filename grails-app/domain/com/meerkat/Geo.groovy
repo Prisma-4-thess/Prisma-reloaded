@@ -16,6 +16,9 @@ class Geo {
         latitude(nullable: false)
         longitude(nullable: false)
     }
+    static mapping = {
+        version false
+    }
 
     String toString() {
         return namegrk
