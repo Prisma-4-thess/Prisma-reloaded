@@ -46,12 +46,17 @@
 }
 
 .customFadeInBtn {
-    padding:2px 4px;
+    width: 100%;
+    background-color: #34495e;
+    padding:0px 15px;
 }
 
 .customFadeOutBtn {
     display: none;
-    padding:2px 4px;
+    width: 100%;
+    padding:0px 15px;
+    background-color: #34495e;
+
 }
 .searchBtn {
     background: #1BBC9B;
