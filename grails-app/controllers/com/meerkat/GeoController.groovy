@@ -43,6 +43,10 @@ class GeoController {
         render(template: 'nearby_geo', model: ['geoList': geoList, 'numOfResults':geoList.size()])
     }
 
+    def mapTest(){
+        render(template: 'map_with_decisions')
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Geo.list(params), model: [geoInstanceCount: Geo.count()]
