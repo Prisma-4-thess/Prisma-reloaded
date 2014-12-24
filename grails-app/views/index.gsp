@@ -30,20 +30,17 @@
 
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-offset-6">
-            <button type="button" class="btn btn-default customFadeInBtn" id="fadeIn"><g:img dir="images" file="icons/png/up-arrow-circle-hi.png" /></button>
-            <button type="button" class="btn btn-default customFadeOutBtn" id="fadeOut"><g:img dir="images" file="icons/png/down-arrow-circle-hi.png" /></button>
-        </div>
-    </div>
+<div>
+    <button type="button" class="btn  customFadeInBtn" id="fadeIn"><g:img dir="images" file="icons/png/up-icon.png"/></button>
+    <button type="button" class="btn  customFadeOutBtn" id="fadeOut"><g:img dir="images" file="icons/png/down-icon.png"/></button>
 </div>
 
 <div id="mainContent" class="jumbotron customJumbotron">
     <div id="map-canvas"></div>
     <span class="tooltip-actions" data-trigger="hover" data-placement="bottom" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-        <g:img dir="images" file="icons/png/information-icon.png" />
+        <g:img dir="images" file="icons/png/information-icon.png"/>
     </span>
+
     <div class="row search">
         <div id="overMap">
             <h2 id="welcomeTag">Welcome to Prisma</h2>
@@ -51,8 +48,6 @@
         </div>
     </div>
 </div>
-
-
 
 </body>
 </html>
