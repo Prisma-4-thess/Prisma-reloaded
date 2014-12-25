@@ -1,8 +1,8 @@
 %{--This should create the Footer of the website--}%
 <footer class="customFooter">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12" align="center">
+            <div class="col-md-12" align="center">
                 <g:set var="currentYear" value="${new Date()[Calendar.YEAR]}"/>
                 <h6 class="footer-title"><g:link base="http://www.meerkat.gr" target="_blank">Meerkat</g:link> &copy  All Rights Reserved ${currentYear} <br/>
                     <g:link base="https://www.facebook.com/meerkat.gr?ref=ts&fref=ts" target="_blank"><span class="fui-facebook"></span></g:link>
