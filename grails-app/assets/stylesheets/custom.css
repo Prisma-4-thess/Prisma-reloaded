@@ -12,9 +12,10 @@
 }
 
 #overMap {
+    margin-top: -75%;
     position: absolute;
-    margin-top: -25%;
-    margin-left: 43%;
+   //margin-top: -25%;
+   // margin-left: 43%;
 }
 
 .search {
@@ -28,9 +29,11 @@
 }
 
 .tooltip-actions {
+
     position: absolute;
-    margin-top: -31%;
-    margin-left: 94%;
+
+    // margin-top: -31%;
+   // margin-left: 94%;
 }
 
 .customNavbar {
@@ -64,7 +67,7 @@
     padding: 10px 35px;
 }
 .customSearchBar {
-    margin-top: -8%;
+    margin-top: -9%;
     float: right;
     margin-right: 3%;
 }
@@ -80,4 +83,29 @@
 .searchBarDefaultSize {
     width: 442px;
     height: 42px;
+}
+
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+.col-fixed {
+    /* custom width */
+    width: 440px;
+}
+
+.item {
+    display:table;
+}
+.content {
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
 }
