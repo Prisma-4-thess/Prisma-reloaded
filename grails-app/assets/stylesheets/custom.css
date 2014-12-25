@@ -14,8 +14,7 @@
 #overMap {
     margin-top: -75%;
     position: absolute;
-   //margin-top: -25%;
-   // margin-left: 43%;
+
 }
 
 .search {
@@ -29,9 +28,9 @@
 }
 
 .tooltip-actions {
-
     position: absolute;
-
+    top: 121px;
+    right: 15px;
     // margin-top: -31%;
    // margin-left: 94%;
 }

@@ -39,7 +39,7 @@
 <div id="mainContent" class="jumbotron customJumbotron">
     <div id="map-canvas"></div>
 
-    <div class="tooltip-actions" data-trigger="hover" data-placement="bottom" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+    <div class="tooltip-actions" data-trigger="hover" data-placement="left" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
         <g:img dir="images" file="icons/png/information-icon.png"/>
     </div>
 
