@@ -34,11 +34,12 @@ class GeoController {
      * @param lon : longitude
      * @return geoList: List of Geo
      */
-    def showNearbyGeos(double lat, double lon) {
+    def showNearbyGeos(double lat, double lon, int max) {
         if (lat == null) lat = params.lat.toDouble()
         if (lon == null) lon = params.lon.toDouble()
+        if (max == null) max = params.max.toDouble()    //TODO: if no max is sent via params get geo.nearby.max from config
         print params
-        def geoList = GeoService.findPOINearLatLng(lat, lon, getGrailsApplication().getConfig().geo.nearby.radius.toDouble(), getGrailsApplication().getConfig().geo.nearby.max.toDouble())
+        def geoList = GeoService.findPOINearLatLng(lat, lon, getGrailsApplication().getConfig().geo.nearby.radius.toDouble(), max)
         print geoList
         render(template: 'nearby_geo', model: ['geoList': geoList, 'numOfResults':geoList.size()])
     }
