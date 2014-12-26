@@ -122,3 +122,4 @@ grails.gorm.default.constraints = {
 pagination.defaultMax = "10"
 pagination.defaultOffset = "0"
 geo.nearby.radius = "0.05"
+geo.nearby.max = "10"

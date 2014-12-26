@@ -38,7 +38,7 @@ class GeoController {
         if (lat == null) lat = params.lat.toDouble()
         if (lon == null) lon = params.lon.toDouble()
         print params
-        def geoList = GeoService.findPOINearLatLng(lat, lon, getGrailsApplication().getConfig().geo.nearby.radius.toDouble())
+        def geoList = GeoService.findPOINearLatLng(lat, lon, getGrailsApplication().getConfig().geo.nearby.radius.toDouble(), getGrailsApplication().getConfig().geo.nearby.max.toDouble())
         print geoList
         render(template: 'nearby_geo', model: ['geoList': geoList, 'numOfResults':geoList.size()])
     }
