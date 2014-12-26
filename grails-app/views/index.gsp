@@ -45,9 +45,9 @@
     <div id="map-canvas" class="col-md-12"></div>
 
 
-    %{--<div class="tooltip-actions" data-trigger="hover" data-placement="left" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+    <div class="tooltip-actions" data-trigger="hover" data-placement="left" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
         <g:img dir="images" file="icons/png/information-icon.png"/>
-    </div>--}%
+    </div>
 
     <div class="row-fluid homepageSearchBar">
         <div class="col-md-3"></div>
