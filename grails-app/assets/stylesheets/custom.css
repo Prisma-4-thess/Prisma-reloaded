@@ -1,9 +1,11 @@
 #map-canvas {
     width: 100%;
-    height: 400px;
+    height: 75vh;
+    position: absolute;
     opacity: 0.3;
     filter: alpha(opacity=30);
     transition: all .5s ease-out 0.1s;
+    left: 0;
 }
 
 #mainContent {
@@ -11,11 +13,11 @@
     transition: all .5s ease-out 0.1s;
 }
 
-#overMap {
-    margin-top: -75%;
+/*#overMap {
     position: absolute;
-
-}
+    margin-top: -25%;
+    margin-left: 43%;
+}*/
 
 .search {
     margin-left: -11%;
@@ -29,10 +31,8 @@
 
 .tooltip-actions {
     position: absolute;
-    top: 121px;
-    right: 15px;
-    // margin-top: -31%;
-   // margin-left: 94%;
+    margin-top: 1vh;
+    right: 1vh;
 }
 
 .customNavbar {
@@ -65,14 +65,14 @@
     background: #1BBC9B;
     padding: 10px 35px;
 }
-.customSearchBar {
-    margin-top: -9%;
+/*.customSearchBar {
+    margin-top: -8%;
     float: right;
     margin-right: 3%;
-}
+}*/
 
 .searchRow {
-    margin-left: 0%;
+    margin-left: 0;
 }
 
 .emptyRow {
@@ -84,27 +84,21 @@
     height: 42px;
 }
 
-.row-centered {
-    text-align:center;
-}
-.col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align:left;
-    /* inline-block space fix */
-    margin-right:-4px;
-}
-.col-fixed {
-    /* custom width */
-    width: 440px;
+.customActionSubmitImage{
+    padding: 0;
+    pointer-events: visible;
 }
 
-.item {
-    display:table;
+.customTextField{
+    width: 100%;
+    padding-right: 40px;
 }
-.content {
-    display:table-cell;
-    vertical-align:middle;
-    text-align:center;
+
+.customSearchBar{
+    width: 100%;
+}
+
+.homepageSearchBar{
+    height: 75vh;
+    padding-top: 20vh;
 }
