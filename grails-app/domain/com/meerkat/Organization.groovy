@@ -2,15 +2,17 @@ package com.meerkat
 
 class Organization {
     String label
+    String uid
     String status
     String website
     String odeManagerEmail
     String vatNumber
     static constraints = {
         label(nullable: false)
+        uid(unique: true)
     }
     static mapping = {
         version false
-        id column: "organization_id", generator: "assigned", sqlType: "varchar(20)"
+        uid column: "organization_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }

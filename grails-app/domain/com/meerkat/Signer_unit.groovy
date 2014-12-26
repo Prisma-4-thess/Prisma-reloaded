@@ -6,11 +6,9 @@ class Signer_unit implements Serializable{
     String position
 
     static constraints = {
+        signer(unique: ["unit","position"])
     }
     static mapping = {
         version false
-        id composite: ['signer','unit','position']
-        signer column: "signer_id", generator: "assigned", sqlType: "varchar(20)"
-        unit column: "unit_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }

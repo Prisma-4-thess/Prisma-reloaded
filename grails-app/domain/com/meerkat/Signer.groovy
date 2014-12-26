@@ -3,16 +3,17 @@ package com.meerkat
 class Signer {
     String firstName
     String lastName
+    String uid
     Boolean active
     Organization org
     Long activeFrom
     Long activeUntil
     static constraints = {
+        uid(unique: true)
 
     }
     static mapping = {
         version false
-        id column: "signer_id", generator: "assigned", sqlType: "varchar(20)"
-        org column: "org_id", generator: "assigned", sqlType: "varchar(20)"
+        uid column: "signer_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }

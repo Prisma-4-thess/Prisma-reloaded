@@ -2,16 +2,16 @@ package com.meerkat
 
 class Unit {
     String label
+    String uid
     Boolean active
     Organization parent
     static belongsTo = [geo:Geo]
 
     static constraints = {
-
+        uid(unique: true)
     }
     static mapping = {
         version false
-        id column: "unit_id", generator: "assigned", sqlType: "varchar(20)"
-        parent column: "org_id", generator: "assigned", sqlType: "varchar(20)"
+        uid column: "unit_id", generator: "assigned", sqlType: "varchar(20)"
     }
 }

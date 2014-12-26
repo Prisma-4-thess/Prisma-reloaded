@@ -12,11 +12,10 @@ class Decision implements Serializable {
     static hasMany = [extraFields:ExtraField]
     static constraints = {
         issueDate(null:false)
+        ada(unique: "versionId")
     }
     static mapping = {
         version false
-        id composite: ['ada', 'versionId']
-        type column: "type_id", generator: "assigned", sqlType: "varchar(20)"
         subject sqlType: "varchar(2000)"
     }
 }
