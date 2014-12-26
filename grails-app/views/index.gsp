@@ -29,32 +29,38 @@
 </head>
 
 <body>
+
 <div>
-    <button type="button" class="btn  customFadeInBtn" id="fadeIn"><g:img dir="images" file="icons/png/up-icon.png"/></button>
-    <button type="button" class="btn  customFadeOutBtn" id="fadeOut"><g:img dir="images" file="icons/png/down-icon.png"/></button>
+    <button type="button" class="btn  customFadeInBtn" id="fadeIn">
+        <g:img dir="images" file="icons/png/up-icon.png"/>
+    </button>
+
+    <button type="button" class="btn  customFadeOutBtn" id="fadeOut">
+        <g:img dir="images" file="icons/png/down-icon.png"/>
+    </button>
 </div>
 
+<div id="mainContent" class="container-fluid">
 
-<div id="mainContent" class="jumbotron customJumbotron">
-    <div id="map-canvas"></div>
-    <div class="tooltip-actions" data-trigger="hover" data-placement="left" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+    <div id="map-canvas" class="col-md-12"></div>
+
+
+    %{--<div class="tooltip-actions" data-trigger="hover" data-placement="left" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
         <g:img dir="images" file="icons/png/information-icon.png"/>
-    </div>
+    </div>--}%
 
-    <div class="container">
-        <div class="row row-centered">
-            <div class="col-xs-6 col-centered col-fixed">
-                <div class="item">
-                    <div class="content">
-                        <div id="overMap">
-                            <h2 id="welcomeTag">Welcome to Prisma</h2>
-                            <g:render template="/search/search_bar"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row-fluid homepageSearchBar">
+        <div class="col-md-3"></div>
+
+        <div id="overMap" class="col-md-6">
+            <h2 id="welcomeTag" class="text-center">Welcome to Prisma</h2>
+            <g:render template="/search/search_bar"/>
+
         </div>
+
+        <div class="col-md-3"></div>
     </div>
 </div>
+
 </body>
 </html>
