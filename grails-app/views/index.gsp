@@ -42,7 +42,7 @@
 
 <div id="mainContent" class="container-fluid">
 
-    <div id="map-canvas" class="col-md-12"></div>
+    <div  id="map-canvas" class="col-md-12 mapWithDec"></div>
 
 
     <div class="tooltip-actions" data-trigger="hover" data-placement="left" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">

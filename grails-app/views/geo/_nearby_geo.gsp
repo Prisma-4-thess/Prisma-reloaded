@@ -1,19 +1,19 @@
 %{--This template shows the nearby points of interest of a geo.--}%
 %{--parameters: geoList--}%
 
-<ul>
-    <li>${numOfResults}</li>
+<div class="list-group">
     <g:each in="${geoList}" var="geoInstance">
 
         <g:if test="${geoInstance?.namegrk}">
-            <li>
+
+            <a class="list-group-item list-group-item-info">
                 <g:message code="geo.namegrk.label" default="Namegrk"/>
 
                 <g:fieldValue bean="${geoInstance}" field="namegrk"/>
+              </a>
 
-            </li>
         </g:if>
 
     </g:each>
 
-</ul>
+</div>
