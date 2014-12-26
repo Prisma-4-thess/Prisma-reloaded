@@ -12,6 +12,6 @@ class Unit {
     }
     static mapping = {
         version false
-        uid column: "unit_id", generator: "assigned", sqlType: "varchar(20)"
+        uid column: "uid", generator: "assigned", sqlType: "varchar(20)"
     }
 }

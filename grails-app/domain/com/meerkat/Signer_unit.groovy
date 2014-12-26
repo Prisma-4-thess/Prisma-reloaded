@@ -1,6 +1,6 @@
 package com.meerkat
 
-class Signer_unit implements Serializable{
+class Signer_unit{
     Signer signer
     Unit unit
     String position

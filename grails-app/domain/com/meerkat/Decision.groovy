@@ -1,6 +1,6 @@
 package com.meerkat
 
-class Decision implements Serializable {
+class Decision{
     String ada
     String versionId
     String protocolNumber
@@ -9,7 +9,7 @@ class Decision implements Serializable {
     Type type
     String correctedVersionId
     static belongsTo = [geo: Geo]
-    static hasMany = [extraFields:ExtraField]
+    static hasMany = [extraFields:ExtraField,thematic_cat:DictionaryItem,signers:Signer,units:Unit]
     static constraints = {
         issueDate(null:false)
         ada(unique: "versionId")
