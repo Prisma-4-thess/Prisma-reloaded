@@ -2,11 +2,27 @@ package com.meerkat
 
 class SearchController {
 
+    /**
+     * Function to load template for showing table with search results
+     * @param decisionList
+     * @param signerList
+     * @param typeList
+     * @param geoList
+     * @param numOfResultsDec
+     * @param numOfResultsSigner
+     * @param numOfResultsType
+     * @param numOfResultsGeo
+     * @return
+     */
     def showSearchResults(List<Decision> decisionList, List<Signer> signerList, List<Type> typeList, List<Geo> geoList, int numOfResultsDec, int numOfResultsSigner, int numOfResultsType, int numOfResultsGeo) {
 
         render(template: 'search_results', model: ['decisionList': decisionList, 'signerList': signerList, 'typeList': typeList, 'geoList': geoList, 'numOfResultsGeo': numOfResultsGeo, 'numOfResultsDec': numOfResultsDec, 'numOfResultsType': numOfResultsType, 'numOfResultsSigner': numOfResultsSigner])
     }
 
+    /**
+     * Loads page after searching from searchbar, showing the results
+     * @return
+     */
     def searchFromBar() {
 
         if (params.max == null) {
@@ -40,27 +56,21 @@ class SearchController {
             numOfResultsGeo = geoList.totalCount
         } else {
             //TODO: Call service for search
-            if (decisionList == null) {
+
                 decisionList = Decision.list(params)
 //                numOfResultsDec = Decision.getAll().size()
                 numOfResultsDec = decisionList.totalCount
-            }
-            if (signerList == null) {
-                signerList = Signer.list(params)
+                 signerList = Signer.list(params)
 //                numOfResultsSigner = Signer.getAll().size()
                 numOfResultsSigner = signerList.totalCount
-            }
-            if (typeList == null) {
                 typeList = Type.list(params)
 //                numOfResultsType = Type.getAll().size()
                 numOfResultsType = typeList.totalCount
-            }
-            if (geoList == null) {
                 geoList = Geo.list(params)
                 //numOfResultsGeo = Geo.getAll().size()
 //                geoList = SearchService.searchForPOI(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
                 numOfResultsGeo = geoList.totalCount
-            }
+
         }
 
         print(params)

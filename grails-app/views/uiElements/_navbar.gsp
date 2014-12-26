@@ -1,16 +1,23 @@
 %{--This should create the Navbar of the website--}%
-
-<nav class="navbar navbar-default customNavbar" role="navigation">
-    <div class="container">
+<!-- Static navbar -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <g:link  url="${createLink(uri: '/')}"><asset:image src="site-logo.png" alt="Prisma logo"/></g:link>
+
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Default</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact us</a></li>
+                <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+                <li><a href="../navbar-static-top/">Static top</a></li>
+                <li><a href="../navbar-fixed-top/">Fixed top</a></li>
             </ul>
-        </div>
-    </div>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
 </nav>

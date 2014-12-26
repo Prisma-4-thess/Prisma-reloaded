@@ -10,6 +10,25 @@ class DecisionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    /**
+     * Page to add geo to decision
+     * @return
+     */
+    def showAddGeo(){
+        //def geoList = GeoService.findPOINearLatLng(params.lat, params.lon, getGrailsApplication().getConfig().geo.nearby.radius.toInteger())
+        return
+    }
+
+    /**
+     * Adds a geo to a decision
+     * @param max
+     * @return
+     */
+    def addGeo(){
+        print 'Ela mpika'
+        render(template:'add_geo_success')  //TODO: Add geo to decision an load the correct template for success or fail
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Decision.list(params), model:[decisionInstanceCount: Decision.count()]
