@@ -14,9 +14,9 @@ class GeoController {
      * @param geoList : List of geos to show.
      * @return
      */
-    def listGeo(List<Geo> geoList) {
+    def listGeos(List<Geo> geoList) {
         if (geoList == null) geoList = Geo.list(params)
-        render(template: 'list', model: ['geoList': geoList, 'numOfResults': Geo.count()])
+        render(template: 'list', model: ['geoList': geoList, 'numOfResults': geoList.size()])
     }
 
     /**

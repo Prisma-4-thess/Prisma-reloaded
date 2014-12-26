@@ -49,7 +49,7 @@
         <g:img dir="images" file="icons/png/information-icon.png"/>
     </div>
 
-    <div class="row-fluid homepageSearchBar">
+    <div class="row homepageSearchBar">
         <div class="col-md-3"></div>
 
         <div id="overMap" class="col-md-6">
