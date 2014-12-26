@@ -13,6 +13,6 @@ class Organization {
     }
     static mapping = {
         version false
-        uid column: "organization_id", generator: "assigned", sqlType: "varchar(20)"
+        uid column: "uid", generator: "assigned", sqlType: "varchar(20)"
     }
 }

@@ -9,6 +9,6 @@ class DictionaryItem {
     }
     static mapping = {
         version false
-        uid column: "dictionary_item_id", generator: "assigned", sqlType: "varchar(50)"
+        uid column: "uid", generator: "assigned", sqlType: "varchar(50)"
     }
 }
