@@ -31,8 +31,8 @@
 
 .tooltip-actions {
     position: absolute;
-    top: 121px;
-    right: 15px;
+    margin-top: 1vh;
+    right: 1vh;
 }
 
 .customNavbar {
