@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="admin_panel">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'unit.label', default: 'Unit')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -11,7 +11,7 @@
 		<a href="#show-unit" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/admin_panel')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -23,20 +23,11 @@
 			</g:if>
 			<ol class="property-list unit">
 			
-				<g:if test="${unitInstance?.parent}">
+				<g:if test="${unitInstance?.uid}">
 				<li class="fieldcontain">
-					<span id="parent-label" class="property-label"><g:message code="unit.parent.label" default="Parent" /></span>
+					<span id="uid-label" class="property-label"><g:message code="unit.uid.label" default="Uid" /></span>
 					
-						<span class="property-value" aria-labelledby="parent-label"><g:link controller="organization" action="show" id="${unitInstance?.parent?.id}">${unitInstance?.parent?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${unitInstance?.abbreviation}">
-				<li class="fieldcontain">
-					<span id="abbreviation-label" class="property-label"><g:message code="unit.abbreviation.label" default="Abbreviation" /></span>
-					
-						<span class="property-value" aria-labelledby="abbreviation-label"><g:fieldValue bean="${unitInstance}" field="abbreviation"/></span>
+						<span class="property-value" aria-labelledby="uid-label"><g:fieldValue bean="${unitInstance}" field="uid"/></span>
 					
 				</li>
 				</g:if>
@@ -50,11 +41,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${unitInstance?.category}">
+				<g:if test="${unitInstance?.geo}">
 				<li class="fieldcontain">
-					<span id="category-label" class="property-label"><g:message code="unit.category.label" default="Category" /></span>
+					<span id="geo-label" class="property-label"><g:message code="unit.geo.label" default="Geo" /></span>
 					
-						<span class="property-value" aria-labelledby="category-label"><g:link controller="dictionaryItem" action="show" id="${unitInstance?.category?.id}">${unitInstance?.category?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="geo-label"><g:link controller="geo" action="show" id="${unitInstance?.geo?.id}">${unitInstance?.geo?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -68,13 +59,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${unitInstance?.unitDomains}">
+				<g:if test="${unitInstance?.parent}">
 				<li class="fieldcontain">
-					<span id="unitDomains-label" class="property-label"><g:message code="unit.unitDomains.label" default="Unit Domains" /></span>
+					<span id="parent-label" class="property-label"><g:message code="unit.parent.label" default="Parent" /></span>
 					
-						<g:each in="${unitInstance.unitDomains}" var="u">
-						<span class="property-value" aria-labelledby="unitDomains-label"><g:link controller="dictionaryItem" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="parent-label"><g:link controller="organization" action="show" id="${unitInstance?.parent?.id}">${unitInstance?.parent?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

@@ -16,7 +16,7 @@ class GeoController {
      */
     def listGeos(List<Geo> geoList) {
         if (geoList == null) geoList = Geo.list(params)
-        render(template: 'list', model: ['geoList': geoList, 'numOfResults': geoList.size()])
+        render(template: 'list', model: ['geoList': geoList, 'numOfResults': Geo.count()])
     }
 
     /**
@@ -34,18 +34,13 @@ class GeoController {
      * @param lon : longitude
      * @return geoList: List of Geo
      */
-    def showNearbyGeos(double lat, double lon, int max) {
+    def showNearbyGeos(double lat, double lon) {
         if (lat == null) lat = params.lat.toDouble()
         if (lon == null) lon = params.lon.toDouble()
-        if (max == null) max = params.max.toDouble()    //TODO: if no max is sent via params get geo.nearby.max from config
         print params
-        def geoList = GeoService.findPOINearLatLng(lat, lon, getGrailsApplication().getConfig().geo.nearby.radius.toDouble(), max)
+        def geoList = GeoService.findPOINearLatLng(lat, lon, getGrailsApplication().getConfig().geo.nearby.radius.toDouble())
         print geoList
-        render(template: 'nearby_geo', model: ['geoList': geoList, 'numOfResults':geoList.size()])
-    }
-
-    def mapTest(){
-        render(template: 'map_with_decisions')
+        render(template: 'nearby_geo', model: ['geoList': geoList, 'numOfResults': geoList.size()])
     }
 
     def index(Integer max) {

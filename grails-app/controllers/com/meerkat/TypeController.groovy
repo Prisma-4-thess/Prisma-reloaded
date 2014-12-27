@@ -1,18 +1,36 @@
 package com.meerkat
 
-
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class TypeController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    /**
+     * Loads the template responsible to show all given types. If no types are given it shows all of them.
+     * @param typeList : List of types to show.
+     * @return
+     */
+    def listTypes(List<Type> typeList) {
+        if (typeList == null) typeList = Type.list(params)
+        render(template: 'list', model: ['typeList': typeList, 'numOfResults': typeList.size()])
+    }
+
+/**
+ * Loads the template responsible to show one type.
+ * @param typeInstance : Type to show. Can have a value if this function is called like: <g:link action="showType" id="${typeInstance.id}">
+ * @return
+ */
+    def showType(Type typeInstance) {
+        render(template: 'show', model: ['typeInstance': typeInstance, 'entityName': 'Type'])
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Type.list(params), model:[typeInstanceCount: Type.count()]
+        respond Type.list(params), model: [typeInstanceCount: Type.count()]
     }
 
     def show(Type typeInstance) {
@@ -31,11 +49,11 @@ class TypeController {
         }
 
         if (typeInstance.hasErrors()) {
-            respond typeInstance.errors, view:'create'
+            respond typeInstance.errors, view: 'create'
             return
         }
 
-        typeInstance.save flush:true
+        typeInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -58,18 +76,18 @@ class TypeController {
         }
 
         if (typeInstance.hasErrors()) {
-            respond typeInstance.errors, view:'edit'
+            respond typeInstance.errors, view: 'edit'
             return
         }
 
-        typeInstance.save flush:true
+        typeInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Type.label', default: 'Type'), typeInstance.id])
                 redirect typeInstance
             }
-            '*'{ respond typeInstance, [status: OK] }
+            '*' { respond typeInstance, [status: OK] }
         }
     }
 
@@ -81,14 +99,14 @@ class TypeController {
             return
         }
 
-        typeInstance.delete flush:true
+        typeInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Type.label', default: 'Type'), typeInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -98,7 +116,7 @@ class TypeController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'type.label', default: 'Type'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

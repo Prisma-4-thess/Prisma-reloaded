@@ -1,9 +1,8 @@
 package com.meerkat
 
-
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class ExtraFieldController {
@@ -12,7 +11,7 @@ class ExtraFieldController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ExtraField.list(params), model:[extraFieldInstanceCount: ExtraField.count()]
+        respond ExtraField.list(params), model: [extraFieldInstanceCount: ExtraField.count()]
     }
 
     def show(ExtraField extraFieldInstance) {
@@ -31,11 +30,11 @@ class ExtraFieldController {
         }
 
         if (extraFieldInstance.hasErrors()) {
-            respond extraFieldInstance.errors, view:'create'
+            respond extraFieldInstance.errors, view: 'create'
             return
         }
 
-        extraFieldInstance.save flush:true
+        extraFieldInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -58,18 +57,18 @@ class ExtraFieldController {
         }
 
         if (extraFieldInstance.hasErrors()) {
-            respond extraFieldInstance.errors, view:'edit'
+            respond extraFieldInstance.errors, view: 'edit'
             return
         }
 
-        extraFieldInstance.save flush:true
+        extraFieldInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'ExtraField.label', default: 'ExtraField'), extraFieldInstance.id])
                 redirect extraFieldInstance
             }
-            '*'{ respond extraFieldInstance, [status: OK] }
+            '*' { respond extraFieldInstance, [status: OK] }
         }
     }
 
@@ -81,14 +80,14 @@ class ExtraFieldController {
             return
         }
 
-        extraFieldInstance.delete flush:true
+        extraFieldInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'ExtraField.label', default: 'ExtraField'), extraFieldInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -98,7 +97,7 @@ class ExtraFieldController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'extraField.label', default: 'ExtraField'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

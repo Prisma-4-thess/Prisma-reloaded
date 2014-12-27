@@ -1,18 +1,38 @@
 package com.meerkat
 
-
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class OrganizationController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    /**
+     * Loads the template responsible to show all given organizations. If no organizations are given it shows all of them.
+     * @param orgList : List of organizations to show.
+     * @return
+     */
+
+    def listOrgs(List<Organization> orgList) {
+        if (orgList == null) orgList = Organization.list(params)
+        render(template: 'list', model: ['orgList': orgList, 'numOfResults': orgList.size()])
+    }
+
+/**
+ * Loads the template responsible to show one organization.
+ * @param orgInstance : Organization to show. Can have a value if this function is called like: <g:link action="showOrg" id="${orgInstance.id}">
+ * @return
+ */
+    def showOrg(Organization orgInstance) {
+        render(template: 'show', model: ['orgInstance': orgInstance, 'entityName': 'Organization'])
+    }
+
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Organization.list(params), model:[organizationInstanceCount: Organization.count()]
+        respond Organization.list(params), model: [organizationInstanceCount: Organization.count()]
     }
 
     def show(Organization organizationInstance) {
@@ -31,11 +51,11 @@ class OrganizationController {
         }
 
         if (organizationInstance.hasErrors()) {
-            respond organizationInstance.errors, view:'create'
+            respond organizationInstance.errors, view: 'create'
             return
         }
 
-        organizationInstance.save flush:true
+        organizationInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -58,18 +78,18 @@ class OrganizationController {
         }
 
         if (organizationInstance.hasErrors()) {
-            respond organizationInstance.errors, view:'edit'
+            respond organizationInstance.errors, view: 'edit'
             return
         }
 
-        organizationInstance.save flush:true
+        organizationInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Organization.label', default: 'Organization'), organizationInstance.id])
                 redirect organizationInstance
             }
-            '*'{ respond organizationInstance, [status: OK] }
+            '*' { respond organizationInstance, [status: OK] }
         }
     }
 
@@ -81,14 +101,14 @@ class OrganizationController {
             return
         }
 
-        organizationInstance.delete flush:true
+        organizationInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Organization.label', default: 'Organization'), organizationInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -98,7 +118,7 @@ class OrganizationController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'organization.label', default: 'Organization'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

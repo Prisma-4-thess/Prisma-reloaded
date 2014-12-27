@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="admin_panel">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'signer.label', default: 'Signer')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -11,7 +11,7 @@
 		<a href="#show-signer" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/admin_panel')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -22,6 +22,15 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list signer">
+			
+				<g:if test="${signerInstance?.uid}">
+				<li class="fieldcontain">
+					<span id="uid-label" class="property-label"><g:message code="signer.uid.label" default="Uid" /></span>
+					
+						<span class="property-value" aria-labelledby="uid-label"><g:fieldValue bean="${signerInstance}" field="uid"/></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${signerInstance?.active}">
 				<li class="fieldcontain">
@@ -59,15 +68,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${signerInstance?.hasOrganizationSignRights}">
-				<li class="fieldcontain">
-					<span id="hasOrganizationSignRights-label" class="property-label"><g:message code="signer.hasOrganizationSignRights.label" default="Has Organization Sign Rights" /></span>
-					
-						<span class="property-value" aria-labelledby="hasOrganizationSignRights-label"><g:formatBoolean boolean="${signerInstance?.hasOrganizationSignRights}" /></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${signerInstance?.lastName}">
 				<li class="fieldcontain">
 					<span id="lastName-label" class="property-label"><g:message code="signer.lastName.label" default="Last Name" /></span>
@@ -82,17 +82,6 @@
 					<span id="org-label" class="property-label"><g:message code="signer.org.label" default="Org" /></span>
 					
 						<span class="property-value" aria-labelledby="org-label"><g:link controller="organization" action="show" id="${signerInstance?.org?.id}">${signerInstance?.org?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${signerInstance?.signUnits}">
-				<li class="fieldcontain">
-					<span id="signUnits-label" class="property-label"><g:message code="signer.signUnits.label" default="Sign Units" /></span>
-					
-						<g:each in="${signerInstance.signUnits}" var="s">
-						<span class="property-value" aria-labelledby="signUnits-label"><g:link controller="signUnit" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
-						</g:each>
 					
 				</li>
 				</g:if>

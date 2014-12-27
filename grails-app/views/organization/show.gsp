@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="admin_panel">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'organization.label', default: 'Organization')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -11,7 +11,7 @@
 		<a href="#show-organization" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/admin_panel')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -32,47 +32,20 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${organizationInstance?.uid}">
+				<li class="fieldcontain">
+					<span id="uid-label" class="property-label"><g:message code="organization.uid.label" default="Uid" /></span>
+					
+						<span class="property-value" aria-labelledby="uid-label"><g:fieldValue bean="${organizationInstance}" field="uid"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${organizationInstance?.odeManagerEmail}">
 				<li class="fieldcontain">
 					<span id="odeManagerEmail-label" class="property-label"><g:message code="organization.odeManagerEmail.label" default="Ode Manager Email" /></span>
 					
 						<span class="property-value" aria-labelledby="odeManagerEmail-label"><g:fieldValue bean="${organizationInstance}" field="odeManagerEmail"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${organizationInstance?.website}">
-				<li class="fieldcontain">
-					<span id="website-label" class="property-label"><g:message code="organization.website.label" default="Website" /></span>
-					
-						<span class="property-value" aria-labelledby="website-label"><g:fieldValue bean="${organizationInstance}" field="website"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${organizationInstance?.fekIssue}">
-				<li class="fieldcontain">
-					<span id="fekIssue-label" class="property-label"><g:message code="organization.fekIssue.label" default="Fek Issue" /></span>
-					
-						<span class="property-value" aria-labelledby="fekIssue-label"><g:link controller="dictionaryItem" action="show" id="${organizationInstance?.fekIssue?.id}">${organizationInstance?.fekIssue?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${organizationInstance?.vatNumber}">
-				<li class="fieldcontain">
-					<span id="vatNumber-label" class="property-label"><g:message code="organization.vatNumber.label" default="Vat Number" /></span>
-					
-						<span class="property-value" aria-labelledby="vatNumber-label"><g:fieldValue bean="${organizationInstance}" field="vatNumber"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${organizationInstance?.supervisor}">
-				<li class="fieldcontain">
-					<span id="supervisor-label" class="property-label"><g:message code="organization.supervisor.label" default="Supervisor" /></span>
-					
-						<span class="property-value" aria-labelledby="supervisor-label"><g:link controller="organization" action="show" id="${organizationInstance?.supervisor?.id}">${organizationInstance?.supervisor?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -86,58 +59,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${organizationInstance?.abbreviation}">
+				<g:if test="${organizationInstance?.vatNumber}">
 				<li class="fieldcontain">
-					<span id="abbreviation-label" class="property-label"><g:message code="organization.abbreviation.label" default="Abbreviation" /></span>
+					<span id="vatNumber-label" class="property-label"><g:message code="organization.vatNumber.label" default="Vat Number" /></span>
 					
-						<span class="property-value" aria-labelledby="abbreviation-label"><g:fieldValue bean="${organizationInstance}" field="abbreviation"/></span>
+						<span class="property-value" aria-labelledby="vatNumber-label"><g:fieldValue bean="${organizationInstance}" field="vatNumber"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${organizationInstance?.category}">
+				<g:if test="${organizationInstance?.website}">
 				<li class="fieldcontain">
-					<span id="category-label" class="property-label"><g:message code="organization.category.label" default="Category" /></span>
+					<span id="website-label" class="property-label"><g:message code="organization.website.label" default="Website" /></span>
 					
-						<span class="property-value" aria-labelledby="category-label"><g:link controller="dictionaryItem" action="show" id="${organizationInstance?.category?.id}">${organizationInstance?.category?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${organizationInstance?.fekNumber}">
-				<li class="fieldcontain">
-					<span id="fekNumber-label" class="property-label"><g:message code="organization.fekNumber.label" default="Fek Number" /></span>
-					
-						<span class="property-value" aria-labelledby="fekNumber-label"><g:fieldValue bean="${organizationInstance}" field="fekNumber"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${organizationInstance?.fekYear}">
-				<li class="fieldcontain">
-					<span id="fekYear-label" class="property-label"><g:message code="organization.fekYear.label" default="Fek Year" /></span>
-					
-						<span class="property-value" aria-labelledby="fekYear-label"><g:fieldValue bean="${organizationInstance}" field="fekYear"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${organizationInstance?.latinName}">
-				<li class="fieldcontain">
-					<span id="latinName-label" class="property-label"><g:message code="organization.latinName.label" default="Latin Name" /></span>
-					
-						<span class="property-value" aria-labelledby="latinName-label"><g:fieldValue bean="${organizationInstance}" field="latinName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${organizationInstance?.orgDomain}">
-				<li class="fieldcontain">
-					<span id="orgDomain-label" class="property-label"><g:message code="organization.orgDomain.label" default="Org Domain" /></span>
-					
-						<g:each in="${organizationInstance.orgDomain}" var="o">
-						<span class="property-value" aria-labelledby="orgDomain-label"><g:link controller="dictionaryItem" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="website-label"><g:fieldValue bean="${organizationInstance}" field="website"/></span>
 					
 				</li>
 				</g:if>

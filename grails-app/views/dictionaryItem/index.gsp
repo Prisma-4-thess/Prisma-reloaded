@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="admin_panel">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'dictionaryItem.label', default: 'DictionaryItem')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
@@ -11,7 +11,7 @@
 		<a href="#list-dictionaryItem" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/admin_panel')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -26,9 +26,7 @@
 					
 						<g:sortableColumn property="label" title="${message(code: 'dictionaryItem.label.label', default: 'Label')}" />
 					
-						<th><g:message code="dictionaryItem.parent.label" default="Parent" /></th>
-					
-						<th><g:message code="dictionaryItem.dictionary.label" default="Dictionary" /></th>
+						<g:sortableColumn property="uid" title="${message(code: 'dictionaryItem.uid.label', default: 'Uid')}" />
 					
 					</tr>
 				</thead>
@@ -38,9 +36,7 @@
 					
 						<td><g:link action="show" id="${dictionaryItemInstance.id}">${fieldValue(bean: dictionaryItemInstance, field: "label")}</g:link></td>
 					
-						<td>${fieldValue(bean: dictionaryItemInstance, field: "parent")}</td>
-					
-						<td>${fieldValue(bean: dictionaryItemInstance, field: "dictionary")}</td>
+						<td>${fieldValue(bean: dictionaryItemInstance, field: "uid")}</td>
 					
 					</tr>
 				</g:each>
