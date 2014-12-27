@@ -41,7 +41,7 @@ class SearchService {
         pois.each {poi->
             returnPOI.add(Geo.findAllByNamegrk(poi))
         }
-        return returnPOI[par_offset..par_max+par_offset]
+        return returnPOI
     }
 
     static def searchForDecisions(String search_param,int par_max,int par_offset,String sort,String orderList){
