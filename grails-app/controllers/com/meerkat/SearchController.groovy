@@ -1,6 +1,5 @@
 package com.meerkat
 
-import javax.validation.constraints.Null
 
 class SearchController {
 
@@ -33,6 +32,12 @@ class SearchController {
         if (params.offset == null) {
             params.offset = getGrailsApplication().getConfig().pagination.defaultOffset
         }
+        if (params.sort == null) {
+            params.sort = "ada"
+        }
+        if (params.order == null) {
+            params.order = "asc"
+        }
 
         String searchQuery = params.searchBarQuery;
         def decisionList
@@ -42,40 +47,47 @@ class SearchController {
         int numOfResultsDec = 0, numOfResultsSigner = 0, numOfResultsType = 0, numOfResultsGeo = 0
         if (searchQuery == null || searchQuery.isEmpty() || searchQuery.equals(" ")) return
 
+        print(params)
+
         //TODO: Call service for sort/paginate
         if (params.clicked == "decision") {
-            decisionList = Decision.list(params)
-            numOfResultsDec = decisionList.totalCount
+//            decisionList = Decision.list(params)
+            decisionList = SearchService.searchForDecisions(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
+            numOfResultsDec = decisionList.size()
         } else if (params.clicked == "signer") {
-            signerList = Signer.list(params)
-            numOfResultsSigner = signerList.totalCount
+//            signerList = Signer.list(params)
+            signerList = SearchService.searchForSigners(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
+            numOfResultsSigner = signerList.size()
         } else if (params.clicked == "type") {
-            typeList = Type.list(params)
-            numOfResultsType = typeList.totalCount
+//            typeList = Type.list(params)
+            typeList = SearchService.searchForTypes(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
+            numOfResultsType = typeList.size()
         } else if (params.clicked == "geo") {
-            geoList = Geo.list(params)
-//            geoList = SearchService.searchForPOI(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
-            numOfResultsGeo = geoList.totalCount
+//            geoList = Geo.list(params)
+            geoList = SearchService.searchForPOI(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
+            numOfResultsGeo = geoList.size()
         } else {
             //TODO: Call service for search
 
-                decisionList = Decision.list(params)
+//                decisionList = Decision.list(params)
+            decisionList = SearchService.searchForDecisions(searchQuery,10,0,"ada","asc")
 //                numOfResultsDec = Decision.getAll().size()
-                numOfResultsDec = decisionList.totalCount
-                 signerList = Signer.list(params)
+            numOfResultsDec = decisionList.size()
+//                 signerList = Signer.list(params)
+            signerList = SearchService.searchForSigners("Λευκός Πύργος", 10,0,"ada","asc")
 //                numOfResultsSigner = Signer.getAll().size()
-                numOfResultsSigner = signerList.totalCount
-                typeList = Type.list(params)
+            numOfResultsSigner = signerList.size()
+//                typeList = Type.list(params)
+            typeList = SearchService.searchForTypes(searchQuery, 10,0,"ada","asc")
 //                numOfResultsType = Type.getAll().size()
-                numOfResultsType = typeList.totalCount
-                geoList = Geo.list(params)
-                //numOfResultsGeo = Geo.getAll().size()
-//                geoList = SearchService.searchForPOI(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
-                numOfResultsGeo = geoList.totalCount
+            numOfResultsType = typeList.size()
+//                geoList = Geo.list(params)
+            //numOfResultsGeo = Geo.getAll().size()
+            geoList = SearchService.searchForPOI(searchQuery, 10,0,"ada","asc")
+            numOfResultsGeo = geoList.size()
 
         }
 
-        print(params)
 
         //showSearchResults(decisionList, signerList, typeList, geoList)
         return ['searchBarQuery': params.searchBarQuery, 'decisionList': decisionList, 'signerList': signerList, 'typeList': typeList, 'geoList': geoList, 'numOfResultsGeo': numOfResultsGeo, 'numOfResultsDec': numOfResultsDec, 'numOfResultsType': numOfResultsType, 'numOfResultsSigner': numOfResultsSigner]
@@ -83,8 +95,8 @@ class SearchController {
     }
 
     def index() {
-        def decisions=SearchService.searchForDecisions("επισκευες",10,0,null," ")
-        decisions.each {d->
+        def decisions = SearchService.searchForSigners("επισκευες", 10, 0, null, " ")
+        decisions.each { d ->
             println d.subject
         }
 
