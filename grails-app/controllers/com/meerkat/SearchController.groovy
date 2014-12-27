@@ -73,19 +73,22 @@ class SearchController {
             decisionList = SearchService.searchForDecisions(searchQuery,10,0,"ada","asc")
 //                numOfResultsDec = Decision.getAll().size()
             numOfResultsDec = decisionList.size()
+            println numOfResultsDec
 //                 signerList = Signer.list(params)
-            signerList = SearchService.searchForSigners("Λευκός Πύργος", 10,0,"ada","asc")
+            signerList = SearchService.searchForSigners(searchQuery, 10,0,"ada","asc")
 //                numOfResultsSigner = Signer.getAll().size()
             numOfResultsSigner = signerList.size()
+            println numOfResultsSigner
 //                typeList = Type.list(params)
             typeList = SearchService.searchForTypes(searchQuery, 10,0,"ada","asc")
 //                numOfResultsType = Type.getAll().size()
             numOfResultsType = typeList.size()
+            println numOfResultsType
 //                geoList = Geo.list(params)
             //numOfResultsGeo = Geo.getAll().size()
             geoList = SearchService.searchForPOI(searchQuery, 10,0,"ada","asc")
             numOfResultsGeo = geoList.size()
-
+            println numOfResultsGeo
         }
 
 
