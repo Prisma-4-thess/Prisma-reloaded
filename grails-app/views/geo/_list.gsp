@@ -31,7 +31,7 @@
         </tr>
         </thead>
         <tbody>
-        <g:each in="${geoInstanceList}" status="i" var="geoInstance">
+        <g:each in="${geoList}" status="i" var="geoInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
@@ -60,6 +60,6 @@
     </table>
 
     <div class="pagination">
-        <g:paginate total="${geoInstanceCount ?: 0}" params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
+        <g:paginate total="${numOfResults ?: 0}" params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>

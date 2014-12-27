@@ -35,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <g:each in="${signerInstanceList}" status="i" var="signerInstance">
+        <g:each in="${signerList}" status="i" var="signerInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
@@ -65,7 +65,7 @@
     </table>
 
     <div class="pagination">
-        <g:paginate total="${signerInstanceCount ?: 0}"
+        <g:paginate total="${numOfResults ?: 0}"
                     params="['clicked': 'signer', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>
