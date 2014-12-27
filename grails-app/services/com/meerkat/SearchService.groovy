@@ -39,7 +39,7 @@ class SearchService {
         def nmgrk=Stem(search_param)
         def pois=indexSearch(nmgrk,"/tmp/geoindex")
         pois.each {poi->
-            returnPOI.add(Geo.findAllByNamegrk(poi))
+            returnPOI.add(Geo.findByNamegrk(poi))
         }
         return returnPOI
     }
