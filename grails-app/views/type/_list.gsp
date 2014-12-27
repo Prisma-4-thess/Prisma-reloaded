@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        <g:each in="${typeInstanceList}" status="i" var="typeInstance">
+        <g:each in="${typeList}" status="i" var="typeInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
@@ -40,6 +40,6 @@
     </table>
 
     <div class="pagination">
-        <g:paginate total="${typeInstanceCount ?: 0}" params="['clicked': 'type', 'searchBarQuery': searchBarQuery]"/>
+        <g:paginate total="${numOfResults ?: 0}" params="['clicked': 'type', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>

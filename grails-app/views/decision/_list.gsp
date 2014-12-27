@@ -33,7 +33,7 @@
         </tr>
         </thead>
         <tbody>
-        <g:each in="${decisionInstanceList}" status="i" var="decisionInstance">
+        <g:each in="${decisionList}" status="i" var="decisionInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
@@ -63,7 +63,7 @@
     </table>
 
     <div class="pagination">
-        <g:paginate total="${decisionInstanceCount ?: 0}"
+        <g:paginate total="${numOfResults ?: 0}"
                     params="['clicked': 'decision', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>

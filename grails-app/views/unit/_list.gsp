@@ -26,7 +26,7 @@
         </tr>
         </thead>
         <tbody>
-        <g:each in="${unitInstanceList}" status="i" var="unitInstance">
+        <g:each in="${unitList}" status="i" var="unitInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
@@ -53,6 +53,6 @@
     </table>
 
     <div class="pagination">
-        <g:paginate total="${unitInstanceCount ?: 0}" params="['clicked': 'unit', 'searchBarQuery': searchBarQuery]"/>
+        <g:paginate total="${numOfResults ?: 0}" params="['clicked': 'unit', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>
