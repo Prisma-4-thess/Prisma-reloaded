@@ -41,7 +41,7 @@ class SearchService {
         pois.each {poi->
             returnPOI.add(Geo.findAllByNamegrk(poi))
         }
-        return returnPOI
+        return returnPOI[par_offset..par_max+par_offset]
     }
 
     static def searchForDecisions(String search_param,int par_max,int par_offset,String sort,String orderList){
@@ -49,10 +49,32 @@ class SearchService {
         def subject=Stem(search_param)
         def dec=indexSearch(subject,"/tmp/decindex")
         dec.each {s->
-           println s
-//            returnDEC.add(Decision.findAllByAdaAndVersionId())
+            def decision=Decision.findByAdaAndVersionId(s.toString().split(' ')[0],s.toString().split(' ')[1])
+            returnDEC.add(decision)
         }
         return returnDEC
+    }
+
+    static def searchForSigners(String search_param,int par_max,int par_offset,String sort,String orderList){
+        def returnSIGN=[]
+        def subject=Stem(search_param)
+        def signer=indexSearch(subject,"/tmp/signerindex")
+        signer.each {s->
+            def decision=Signer.findByFirstNameAndLastName(s.toString().split(' ')[0],s.toString().split(' ')[1])
+            returnSIGN.add(decision)
+        }
+        return returnSIGN
+    }
+
+    static def searchForTypes(String search_param,int par_max,int par_offset,String sort,String orderList){
+        def returnTYPE=[]
+        def subject=Stem(search_param)
+        def type=indexSearch(subject,"/tmp/typeindex")
+        type.each {s->
+            def decision=Type.findByLabel(s.toString())
+            returnTYPE.add(decision)
+        }
+        return returnTYPE
     }
 
     static def indexSearch(String param,String index_directory){

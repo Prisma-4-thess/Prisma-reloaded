@@ -1,5 +1,7 @@
 package com.meerkat
 
+import javax.validation.constraints.Null
+
 class SearchController {
 
     /**
@@ -81,7 +83,10 @@ class SearchController {
     }
 
     def index() {
-        def decisions=Decision.list(max: 10,offset: 0)
+        def decisions=SearchService.searchForDecisions("επισκευες",10,0,null," ")
+        decisions.each {d->
+            println d.subject
+        }
 
     }
 }
