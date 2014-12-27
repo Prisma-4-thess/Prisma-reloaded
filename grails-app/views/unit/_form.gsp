@@ -2,21 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'parent', 'error')} required">
-	<label for="parent">
-		<g:message code="unit.parent.label" default="Parent" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'uid', 'error')} ">
+	<label for="uid">
+		<g:message code="unit.uid.label" default="Uid" />
+		
 	</label>
-	<g:select id="parent" name="parent.id" from="${com.meerkat.Organization.list()}" optionKey="id" required="" value="${unitInstance?.parent?.id}" class="many-to-one"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'abbreviation', 'error')} required">
-	<label for="abbreviation">
-		<g:message code="unit.abbreviation.label" default="Abbreviation" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="abbreviation" required="" value="${unitInstance?.abbreviation}"/>
+	<g:textField name="uid" value="${unitInstance?.uid}"/>
 
 </div>
 
@@ -29,30 +20,30 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'category', 'error')} required">
-	<label for="category">
-		<g:message code="unit.category.label" default="Category" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="category" name="category.id" from="${com.meerkat.DictionaryItem.list()}" optionKey="id" required="" value="${unitInstance?.category?.id}" class="many-to-one"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'label', 'error')} required">
-	<label for="label">
-		<g:message code="unit.label.label" default="Label" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="label" required="" value="${unitInstance?.label}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'unitDomains', 'error')} ">
-	<label for="unitDomains">
-		<g:message code="unit.unitDomains.label" default="Unit Domains" />
+<div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'geo', 'error')} ">
+	<label for="geo">
+		<g:message code="unit.geo.label" default="Geo" />
 		
 	</label>
-	<g:select name="unitDomains" from="${com.meerkat.DictionaryItem.list()}" multiple="multiple" optionKey="id" size="5" value="${unitInstance?.unitDomains*.id}" class="many-to-many"/>
+	<g:select id="geo" name="geo.id" from="${com.meerkat.Geo.list()}" optionKey="id" value="${unitInstance?.geo?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'label', 'error')} ">
+	<label for="label">
+		<g:message code="unit.label.label" default="Label" />
+		
+	</label>
+	<g:textField name="label" value="${unitInstance?.label}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'parent', 'error')} ">
+	<label for="parent">
+		<g:message code="unit.parent.label" default="Parent" />
+		
+	</label>
+	<g:select id="parent" name="parent.id" from="${com.meerkat.Organization.list()}" optionKey="id" value="${unitInstance?.parent?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 

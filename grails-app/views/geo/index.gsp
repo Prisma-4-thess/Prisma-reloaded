@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="admin_panel">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'geo.label', default: 'Geo')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
@@ -11,7 +11,7 @@
 		<a href="#list-geo" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/admin_panel')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -30,11 +30,11 @@
 					
 						<g:sortableColumn property="address" title="${message(code: 'geo.address.label', default: 'Address')}" />
 					
-						<g:sortableColumn property="tk" title="${message(code: 'geo.tk.label', default: 'Tk')}" />
-					
-						<g:sortableColumn property="newCat" title="${message(code: 'geo.newCat.label', default: 'New Cat')}" />
+						<g:sortableColumn property="dimos" title="${message(code: 'geo.dimos.label', default: 'Dimos')}" />
 					
 						<g:sortableColumn property="namegrk" title="${message(code: 'geo.namegrk.label', default: 'Namegrk')}" />
+					
+						<g:sortableColumn property="newCat" title="${message(code: 'geo.newCat.label', default: 'New Cat')}" />
 					
 					</tr>
 				</thead>
@@ -48,11 +48,11 @@
 					
 						<td>${fieldValue(bean: geoInstance, field: "address")}</td>
 					
-						<td>${fieldValue(bean: geoInstance, field: "tk")}</td>
-					
-						<td>${fieldValue(bean: geoInstance, field: "newCat")}</td>
+						<td>${fieldValue(bean: geoInstance, field: "dimos")}</td>
 					
 						<td>${fieldValue(bean: geoInstance, field: "namegrk")}</td>
+					
+						<td>${fieldValue(bean: geoInstance, field: "newCat")}</td>
 					
 					</tr>
 				</g:each>

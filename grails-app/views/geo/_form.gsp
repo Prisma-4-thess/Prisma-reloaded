@@ -29,60 +29,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'tk', 'error')} ">
-	<label for="tk">
-		<g:message code="geo.tk.label" default="Tk" />
-		
-	</label>
-	<g:textField name="tk" value="${geoInstance?.tk}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'newCat', 'error')} ">
-	<label for="newCat">
-		<g:message code="geo.newCat.label" default="New Cat" />
-		
-	</label>
-	<g:textField name="newCat" value="${geoInstance?.newCat}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'namegrk', 'error')} ">
-	<label for="namegrk">
-		<g:message code="geo.namegrk.label" default="Namegrk" />
-		
-	</label>
-	<g:textField name="namegrk" value="${geoInstance?.namegrk}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'phone', 'error')} ">
-	<label for="phone">
-		<g:message code="geo.phone.label" default="Phone" />
-		
-	</label>
-	<g:textField name="phone" value="${geoInstance?.phone}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'dimos', 'error')} ">
-	<label for="dimos">
-		<g:message code="geo.dimos.label" default="Dimos" />
-		
-	</label>
-	<g:textField name="dimos" value="${geoInstance?.dimos}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'newSubCat', 'error')} ">
-	<label for="newSubCat">
-		<g:message code="geo.newSubCat.label" default="New Sub Cat" />
-		
-	</label>
-	<g:textField name="newSubCat" value="${geoInstance?.newSubCat}"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'decisions', 'error')} ">
 	<label for="decisions">
 		<g:message code="geo.decisions.label" default="Decisions" />
@@ -95,6 +41,78 @@
 </g:each>
 <li class="add">
 <g:link controller="decision" action="create" params="['geo.id': geoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'decision.label', default: 'Decision')])}</g:link>
+</li>
+</ul>
+
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'dimos', 'error')} ">
+	<label for="dimos">
+		<g:message code="geo.dimos.label" default="Dimos" />
+		
+	</label>
+	<g:textField name="dimos" value="${geoInstance?.dimos}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'namegrk', 'error')} ">
+	<label for="namegrk">
+		<g:message code="geo.namegrk.label" default="Namegrk" />
+		
+	</label>
+	<g:textField name="namegrk" value="${geoInstance?.namegrk}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'newCat', 'error')} ">
+	<label for="newCat">
+		<g:message code="geo.newCat.label" default="New Cat" />
+		
+	</label>
+	<g:textField name="newCat" value="${geoInstance?.newCat}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'newSubCat', 'error')} ">
+	<label for="newSubCat">
+		<g:message code="geo.newSubCat.label" default="New Sub Cat" />
+		
+	</label>
+	<g:textField name="newSubCat" value="${geoInstance?.newSubCat}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'phone', 'error')} ">
+	<label for="phone">
+		<g:message code="geo.phone.label" default="Phone" />
+		
+	</label>
+	<g:textField name="phone" value="${geoInstance?.phone}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'tk', 'error')} ">
+	<label for="tk">
+		<g:message code="geo.tk.label" default="Tk" />
+		
+	</label>
+	<g:textField name="tk" value="${geoInstance?.tk}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: geoInstance, field: 'units', 'error')} ">
+	<label for="units">
+		<g:message code="geo.units.label" default="Units" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${geoInstance?.units?}" var="u">
+    <li><g:link controller="unit" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="unit" action="create" params="['geo.id': geoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'unit.label', default: 'Unit')])}</g:link>
 </li>
 </ul>
 

@@ -1,18 +1,36 @@
 package com.meerkat
 
-
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class UnitController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+/**
+ * Loads the template responsible to show all given units. If no units are given it shows all of them.
+ * @param unitList : List of units to show.
+ * @return
+ */
+    def listUnits(List<Unit> unitList) {
+        if (unitList == null) unitList = Unit.list(params)
+        render(template: 'list', model: ['unitList': unitList, 'numOfResults': unitList.size()])
+    }
+
+/**
+ * Loads the template responsible to show one unit.
+ * @param unitInstance : Unit to show. Can have a value if this function is called like: <g:link action="showUnit" id="${unitInstance.id}">
+ * @return
+ */
+    def showUnit(Unit unitInstance) {
+        render(template: 'show', model: ['unitInstance': unitInstance, 'entityName': 'Unit'])
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Unit.list(params), model:[unitInstanceCount: Unit.count()]
+        respond Unit.list(params), model: [unitInstanceCount: Unit.count()]
     }
 
     def show(Unit unitInstance) {
@@ -31,11 +49,11 @@ class UnitController {
         }
 
         if (unitInstance.hasErrors()) {
-            respond unitInstance.errors, view:'create'
+            respond unitInstance.errors, view: 'create'
             return
         }
 
-        unitInstance.save flush:true
+        unitInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -58,18 +76,18 @@ class UnitController {
         }
 
         if (unitInstance.hasErrors()) {
-            respond unitInstance.errors, view:'edit'
+            respond unitInstance.errors, view: 'edit'
             return
         }
 
-        unitInstance.save flush:true
+        unitInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Unit.label', default: 'Unit'), unitInstance.id])
                 redirect unitInstance
             }
-            '*'{ respond unitInstance, [status: OK] }
+            '*' { respond unitInstance, [status: OK] }
         }
     }
 
@@ -81,14 +99,14 @@ class UnitController {
             return
         }
 
-        unitInstance.delete flush:true
+        unitInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Unit.label', default: 'Unit'), unitInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -98,7 +116,7 @@ class UnitController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'unit.label', default: 'Unit'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

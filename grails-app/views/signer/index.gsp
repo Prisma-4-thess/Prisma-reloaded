@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="admin_panel">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'signer.label', default: 'Signer')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
@@ -11,7 +11,7 @@
 		<a href="#list-signer" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/admin_panel')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -24,6 +24,8 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="uid" title="${message(code: 'signer.uid.label', default: 'Uid')}" />
+					
 						<g:sortableColumn property="active" title="${message(code: 'signer.active.label', default: 'Active')}" />
 					
 						<g:sortableColumn property="activeFrom" title="${message(code: 'signer.activeFrom.label', default: 'Active From')}" />
@@ -31,8 +33,6 @@
 						<g:sortableColumn property="activeUntil" title="${message(code: 'signer.activeUntil.label', default: 'Active Until')}" />
 					
 						<g:sortableColumn property="firstName" title="${message(code: 'signer.firstName.label', default: 'First Name')}" />
-					
-						<g:sortableColumn property="hasOrganizationSignRights" title="${message(code: 'signer.hasOrganizationSignRights.label', default: 'Has Organization Sign Rights')}" />
 					
 						<g:sortableColumn property="lastName" title="${message(code: 'signer.lastName.label', default: 'Last Name')}" />
 					
@@ -42,15 +42,15 @@
 				<g:each in="${signerInstanceList}" status="i" var="signerInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${signerInstance.id}">${fieldValue(bean: signerInstance, field: "active")}</g:link></td>
+						<td><g:link action="show" id="${signerInstance.id}">${fieldValue(bean: signerInstance, field: "uid")}</g:link></td>
+					
+						<td><g:formatBoolean boolean="${signerInstance.active}" /></td>
 					
 						<td>${fieldValue(bean: signerInstance, field: "activeFrom")}</td>
 					
 						<td>${fieldValue(bean: signerInstance, field: "activeUntil")}</td>
 					
 						<td>${fieldValue(bean: signerInstance, field: "firstName")}</td>
-					
-						<td><g:formatBoolean boolean="${signerInstance.hasOrganizationSignRights}" /></td>
 					
 						<td>${fieldValue(bean: signerInstance, field: "lastName")}</td>
 					

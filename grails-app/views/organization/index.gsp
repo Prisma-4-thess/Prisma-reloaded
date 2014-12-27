@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="admin_panel">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'organization.label', default: 'Organization')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
@@ -11,7 +11,7 @@
 		<a href="#list-organization" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/admin_panel')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -26,15 +26,15 @@
 					
 						<g:sortableColumn property="label" title="${message(code: 'organization.label.label', default: 'Label')}" />
 					
+						<g:sortableColumn property="uid" title="${message(code: 'organization.uid.label', default: 'Uid')}" />
+					
 						<g:sortableColumn property="odeManagerEmail" title="${message(code: 'organization.odeManagerEmail.label', default: 'Ode Manager Email')}" />
 					
-						<g:sortableColumn property="website" title="${message(code: 'organization.website.label', default: 'Website')}" />
-					
-						<th><g:message code="organization.fekIssue.label" default="Fek Issue" /></th>
+						<g:sortableColumn property="status" title="${message(code: 'organization.status.label', default: 'Status')}" />
 					
 						<g:sortableColumn property="vatNumber" title="${message(code: 'organization.vatNumber.label', default: 'Vat Number')}" />
 					
-						<th><g:message code="organization.supervisor.label" default="Supervisor" /></th>
+						<g:sortableColumn property="website" title="${message(code: 'organization.website.label', default: 'Website')}" />
 					
 					</tr>
 				</thead>
@@ -44,15 +44,15 @@
 					
 						<td><g:link action="show" id="${organizationInstance.id}">${fieldValue(bean: organizationInstance, field: "label")}</g:link></td>
 					
+						<td>${fieldValue(bean: organizationInstance, field: "uid")}</td>
+					
 						<td>${fieldValue(bean: organizationInstance, field: "odeManagerEmail")}</td>
 					
-						<td>${fieldValue(bean: organizationInstance, field: "website")}</td>
-					
-						<td>${fieldValue(bean: organizationInstance, field: "fekIssue")}</td>
+						<td>${fieldValue(bean: organizationInstance, field: "status")}</td>
 					
 						<td>${fieldValue(bean: organizationInstance, field: "vatNumber")}</td>
 					
-						<td>${fieldValue(bean: organizationInstance, field: "supervisor")}</td>
+						<td>${fieldValue(bean: organizationInstance, field: "website")}</td>
 					
 					</tr>
 				</g:each>

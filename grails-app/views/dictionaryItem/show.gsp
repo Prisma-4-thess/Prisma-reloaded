@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="admin_panel">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'dictionaryItem.label', default: 'DictionaryItem')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -11,7 +11,7 @@
 		<a href="#show-dictionaryItem" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/admin_panel')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -32,20 +32,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${dictionaryItemInstance?.parent}">
+				<g:if test="${dictionaryItemInstance?.uid}">
 				<li class="fieldcontain">
-					<span id="parent-label" class="property-label"><g:message code="dictionaryItem.parent.label" default="Parent" /></span>
+					<span id="uid-label" class="property-label"><g:message code="dictionaryItem.uid.label" default="Uid" /></span>
 					
-						<span class="property-value" aria-labelledby="parent-label"><g:link controller="dictionaryItem" action="show" id="${dictionaryItemInstance?.parent?.id}">${dictionaryItemInstance?.parent?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${dictionaryItemInstance?.dictionary}">
-				<li class="fieldcontain">
-					<span id="dictionary-label" class="property-label"><g:message code="dictionaryItem.dictionary.label" default="Dictionary" /></span>
-					
-						<span class="property-value" aria-labelledby="dictionary-label"><g:link controller="dictionary" action="show" id="${dictionaryItemInstance?.dictionary?.id}">${dictionaryItemInstance?.dictionary?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="uid-label"><g:fieldValue bean="${dictionaryItemInstance}" field="uid"/></span>
 					
 				</li>
 				</g:if>

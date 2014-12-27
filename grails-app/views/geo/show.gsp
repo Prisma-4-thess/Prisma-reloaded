@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="admin_panel">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'geo.label', default: 'Geo')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -11,7 +11,7 @@
 		<a href="#show-geo" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/admin_panel')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -50,38 +50,13 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${geoInstance?.tk}">
+				<g:if test="${geoInstance?.decisions}">
 				<li class="fieldcontain">
-					<span id="tk-label" class="property-label"><g:message code="geo.tk.label" default="Tk" /></span>
+					<span id="decisions-label" class="property-label"><g:message code="geo.decisions.label" default="Decisions" /></span>
 					
-						<span class="property-value" aria-labelledby="tk-label"><g:fieldValue bean="${geoInstance}" field="tk"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${geoInstance?.newCat}">
-				<li class="fieldcontain">
-					<span id="newCat-label" class="property-label"><g:message code="geo.newCat.label" default="New Cat" /></span>
-					
-						<span class="property-value" aria-labelledby="newCat-label"><g:fieldValue bean="${geoInstance}" field="newCat"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${geoInstance?.namegrk}">
-				<li class="fieldcontain">
-					<span id="namegrk-label" class="property-label"><g:message code="geo.namegrk.label" default="Namegrk" /></span>
-					
-						<span class="property-value" aria-labelledby="namegrk-label"><g:fieldValue bean="${geoInstance}" field="namegrk"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${geoInstance?.phone}">
-				<li class="fieldcontain">
-					<span id="phone-label" class="property-label"><g:message code="geo.phone.label" default="Phone" /></span>
-					
-						<span class="property-value" aria-labelledby="phone-label"><g:fieldValue bean="${geoInstance}" field="phone"/></span>
+						<g:each in="${geoInstance.decisions}" var="d">
+						<span class="property-value" aria-labelledby="decisions-label"><g:link controller="decision" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
@@ -95,6 +70,24 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${geoInstance?.namegrk}">
+				<li class="fieldcontain">
+					<span id="namegrk-label" class="property-label"><g:message code="geo.namegrk.label" default="Namegrk" /></span>
+					
+						<span class="property-value" aria-labelledby="namegrk-label"><g:fieldValue bean="${geoInstance}" field="namegrk"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${geoInstance?.newCat}">
+				<li class="fieldcontain">
+					<span id="newCat-label" class="property-label"><g:message code="geo.newCat.label" default="New Cat" /></span>
+					
+						<span class="property-value" aria-labelledby="newCat-label"><g:fieldValue bean="${geoInstance}" field="newCat"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${geoInstance?.newSubCat}">
 				<li class="fieldcontain">
 					<span id="newSubCat-label" class="property-label"><g:message code="geo.newSubCat.label" default="New Sub Cat" /></span>
@@ -104,12 +97,30 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${geoInstance?.decisions}">
+				<g:if test="${geoInstance?.phone}">
 				<li class="fieldcontain">
-					<span id="decisions-label" class="property-label"><g:message code="geo.decisions.label" default="Decisions" /></span>
+					<span id="phone-label" class="property-label"><g:message code="geo.phone.label" default="Phone" /></span>
 					
-						<g:each in="${geoInstance.decisions}" var="d">
-						<span class="property-value" aria-labelledby="decisions-label"><g:link controller="decision" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="phone-label"><g:fieldValue bean="${geoInstance}" field="phone"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${geoInstance?.tk}">
+				<li class="fieldcontain">
+					<span id="tk-label" class="property-label"><g:message code="geo.tk.label" default="Tk" /></span>
+					
+						<span class="property-value" aria-labelledby="tk-label"><g:fieldValue bean="${geoInstance}" field="tk"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${geoInstance?.units}">
+				<li class="fieldcontain">
+					<span id="units-label" class="property-label"><g:message code="geo.units.label" default="Units" /></span>
+					
+						<g:each in="${geoInstance.units}" var="u">
+						<span class="property-value" aria-labelledby="units-label"><g:link controller="unit" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
