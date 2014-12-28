@@ -97,7 +97,7 @@ class SearchController {
     }
 
     def index() {
-        GeoService.findPOINearLatLng(40.636,22.938,0.05,5)
+        println GeoService.getGeosWithDecisions()
 
     }
 }

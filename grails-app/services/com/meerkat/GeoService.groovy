@@ -77,4 +77,11 @@ class GeoService {
             }
         }
     }
+
+    static def getGeosWithDecisions(){
+        def geos=Geo.createCriteria().list {
+            isNotEmpty("decisions")
+        }
+        return geos
+    }
 }
