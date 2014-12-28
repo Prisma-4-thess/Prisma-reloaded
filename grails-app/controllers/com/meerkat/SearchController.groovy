@@ -97,10 +97,7 @@ class SearchController {
     }
 
     def index() {
-        def decisions = SearchService.searchForSigners("επισκευες", 10, 0, null, " ")
-        decisions.each { d ->
-            println d.subject
-        }
+        GeoService.findPOINearLatLng(40.636,22.938,0.05,5)
 
     }
 }
