@@ -82,7 +82,7 @@ class GeoController {
     }
 
     def mapTest(){
-        render(template: 'map_with_decisions')
+        render(contentType: 'text/html;charset=UTF-8',template: 'map_with_decisions')
     }
 
     def edit(Geo geoInstance) {
