@@ -37,7 +37,7 @@ class SearchService {
     static def searchForPOI(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnPOI=[]
         def nmgrk=Stem(search_param)
-        def pois=indexSearch(nmgrk,"/tmp/geoindex",par_offset+par_max)
+        def pois=indexSearch(nmgrk,"/tmp/geoindex")
         pois.each {poi->
             returnPOI.add(Geo.findByNamegrk(poi))
         }
@@ -47,8 +47,14 @@ class SearchService {
     static def searchForDecisions(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnDEC=[]
         def subject=Stem(search_param)
-        def dec=indexSearch(subject,"/tmp/decindex",par_offset+par_max)
-        dec=dec[par_offset..par_max+par_offset]
+        def dec=indexSearch(subject,"/tmp/decindex")
+        println dec.size()
+        if(dec.size()<par_offset+par_max-1){
+            dec=dec[par_offset..dec.size()-1]
+        }else{
+            dec=dec[par_offset..par_offset+par_max-1]
+        }
+
         dec.each {s->
             def decision=Decision.findByAdaAndVersionId(s.toString().split(' ')[0],s.toString().split(' ')[1])
             returnDEC.add(decision)
@@ -59,7 +65,7 @@ class SearchService {
     static def searchForSigners(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnSIGN=[]
         def subject=Stem(search_param)
-        def signer=indexSearch(subject,"/tmp/signerindex",par_offset+par_max)
+        def signer=indexSearch(subject,"/tmp/signerindex")
         signer.each {s->
             def decision=Signer.findByFirstNameAndLastName(s.toString().split(' ')[0],s.toString().split(' ')[1])
             returnSIGN.add(decision)
@@ -70,7 +76,7 @@ class SearchService {
     static def searchForTypes(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnTYPE=[]
         def subject=Stem(search_param)
-        def type=indexSearch(subject,"/tmp/typeindex",par_offset+par_max)
+        def type=indexSearch(subject,"/tmp/typeindex")
         type.each {s->
             def decision=Type.findByLabel(s.toString())
             returnTYPE.add(decision)
@@ -78,7 +84,7 @@ class SearchService {
         return returnTYPE
     }
 
-    static def indexSearch(String param,String index_directory,int num_of_res){
+    static def indexSearch(String param,String index_directory){
         def returnList=[]
         Analyzer analyzer=new GreekAnalyzer()
         File fsdFile=new File(index_directory)
@@ -88,7 +94,7 @@ class SearchService {
         // Parse a simple query that searches for "text":
         QueryParser parser = new QueryParser("stemed", analyzer);
         Query query = parser.parse(param)
-        ScoreDoc[] hits = isearcher.search(query, null, num_of_res).scoreDocs;
+        ScoreDoc[] hits = isearcher.search(query, null, 100).scoreDocs;
         println hits.toString()
         // Iterate through the results:
         for (int i = 0; i < hits.length; i++) {
