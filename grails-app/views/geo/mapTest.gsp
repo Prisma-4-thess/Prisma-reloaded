@@ -72,7 +72,7 @@
     </div>
 </div>
 <script type="text/javascript">
-//    jQuery.load(alert(1));
+    //    jQuery.load(alert(1));
     var container = document.getElementById('popup');
     var content = document.getElementById('popup-content');
     var map = new ol.Map({
@@ -235,12 +235,16 @@
                         }
                         console.log(returnId);
                         ${remoteFunction( controller: 'geo',
-                    action: 'showNearbyGeo',
-                    params: '\'lat=\' + 40.599+ \'&lon=\' + 22.968')}
+                    action: 'listGeos',
+                    params: '\'geoList=\' + returnId')}
                         return null;
                     }
                     for (index = 0; index < feature.p.features.length; ++index) {
                         console.log(feature.p.features[index].p.uid + ' clicked!');
+                        var returningId = feature.p.features[index].p.uid;
+                        ${remoteFunction( controller: 'geo',
+                    action: 'showGeo',
+                    params: '\'geoInstance=\' + returningId')}
                     }
                     return feature;
                 });
