@@ -12,7 +12,7 @@ class GeoService {
      return: List retPois
       */
 
-    static def findPOINearLatLng(double centerLat, double centerLon, double radius, int max ) { //TODO: Use max parameter to return the results from closest to furthest
+    static def findPOINearLatLng(double centerLat, double centerLon, double radius, int max ) {
         def retPois = []
         def retGeos= []
         def pois = Geo.getAll()
@@ -36,7 +36,6 @@ class GeoService {
                 retGeos.add(g)
             }
         }
-//        println(retGeos)
         return retGeos
     }
 
