@@ -54,10 +54,11 @@ class GeoService {
             try{
                 geo.save(flush: true,failOnError: true)
                 geo.addToDecisions(decision)
+                return [response:"success"]
             }catch (Exception e){
                 println("Failed to save new geo")
+                return [response:"fail"]
             }
         }
-
     }
 }
