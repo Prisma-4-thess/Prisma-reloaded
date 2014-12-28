@@ -7,7 +7,7 @@
         <g:if test="${geoInstance?.namegrk}">
 
             <a class="list-group-item list-group-item-info">
-                <g:message code="geo.namegrk.label" default="Namegrk"/>
+                %{--<g:message code="geo.namegrk.label" default="Namegrk"/>--}%
 
                 <g:fieldValue bean="${geoInstance}" field="namegrk"/>
               </a>

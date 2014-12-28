@@ -36,8 +36,7 @@
         <g:render template="/geo/map_to_add_geo"/>
     </div>
 
-    <div class="col-md-2 tagList" id="nearbyGeos2" ></div>
-    <div class="col-md-2 tagList"  id="nearbyGeos">
+    <div id="nearbyGeos">
         skataki
     </div>
 </div>
@@ -61,14 +60,10 @@
 </div>
 <script>
     ${remoteFunction( controller: 'geo',
-                    action: 'showNearbyGeos',
+                    action: 'showNearbyGeo',
                     update: [success: 'nearbyGeos', failure: 'nearbyGeos'],
-                    params: '\'lat=\' + 40.636 + \'&lon=\' + 22.938')}
+                    params: '\'lat=\' + 40.599+ \'&lon=\' + 22.968')}
 
-    ${remoteFunction( controller: 'geo',
-                    action: 'showNearbyGeos',
-                    update: [success: 'nearbyGeos2', failure: 'nearbyGeos2'],
-                    params: '\'lat=\' + 40.599 + \'&lon=\' + 22.968')}
 </script>
 
 </body>
