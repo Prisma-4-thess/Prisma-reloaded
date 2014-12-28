@@ -68,7 +68,7 @@
     var container = document.getElementById('popup');
     var content = document.getElementById('popup-content');
     var map = new ol.Map({
-        target: 'map',
+        target: document.getElementById('map'),
         layers: [
             new ol.layer.Tile({
                 source: new ol.source.OSM()
@@ -203,7 +203,9 @@
                 });
         if (feature==null){
             container.style.display = 'none';
-
+            map.getTarget().style.cursor = '';
+        }else{
+            map.getTarget().style.cursor = 'pointer';
         }
     });
 
