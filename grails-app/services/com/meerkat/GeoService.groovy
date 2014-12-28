@@ -45,4 +45,19 @@ class GeoService {
         def d = R * c;
         return d
     }
+
+    static def addDecisionToGeo(double lat,double lng,String namegrk,Decision decision){
+        Geo geo=Geo.findByLatitudeAndLongitudeAndNamegrk(lat,lng,namegrk)
+        if(!geo){
+            geo.addToDecisions(decision)
+        }else {
+            try{
+                geo.save(flush: true,failOnError: true)
+                geo.addToDecisions(decision)
+            }catch (Exception e){
+                println("Failed to save new geo")
+            }
+        }
+
+    }
 }
