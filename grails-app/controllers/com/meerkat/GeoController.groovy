@@ -42,7 +42,6 @@ class GeoController {
 
         def geoList = GeoService.findPOINearLatLng(lat, lon, radius, max)
 
-        print geoList
         render(template: 'nearby_geo_tagList', model: ['geoList': geoList, 'numOfResults': geoList.size()])
     }
 
