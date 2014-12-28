@@ -61,14 +61,12 @@
 <h2>My Map</h2>
 <div id="map" class="map">
     <div id="popup" class="ol-popup">
-        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
         <div id="popup-content"></div>
     </div>
 </div>
 <script type="text/javascript">
     var container = document.getElementById('popup');
     var content = document.getElementById('popup-content');
-    var closer = document.getElementById('popup-closer');
     var map = new ol.Map({
         target: 'map',
         layers: [
@@ -109,7 +107,7 @@
             geometry: new
                     ol.geom.Point(ol.proj.transform([22.960+(Math.random()-0.5)*0.1, 40.626+(Math.random()-0.5)*0.1], 'EPSG:4326', 'EPSG:3857')),
             uid: i,
-            test2: 'testing',
+            namegrk: 'testing',
             population: 4000,
             rainfall: 500
         });
@@ -179,25 +177,36 @@
     });
 
     //    map.addLayer(vectorLayer)
+    map.on('pointermove', function(evt) {
+        var feature = map.forEachFeatureAtPixel(evt.pixel,
+                function(feature, layer) {
+                    var index;
+                    if (feature.p.features.length >1) return null;
+                    for (index=0;index < feature.p.features.length;++index) {
+                        overlay.setPosition(feature.p.features[index].p.geometry.j);
+                        content.innerHTML = feature.p.features[index].p.uid + '\n' + feature.p.features[index].p.namegrk;
+                        container.style.display = 'block';
+                    }
+                    return feature;
+                });
+        if (feature==null){
+            container.style.display = 'none';
+
+        }
+    });
+
     map.on('click', function(evt) {
         var feature = map.forEachFeatureAtPixel(evt.pixel,
                 function(feature, layer) {
                     var index;
                     if (feature.p.features.length >1) return null;
                     for (index=0;index < feature.p.features.length;++index) {
-                        console.log(feature.p.features[index].p.uid);
-                        overlay.setPosition(evt.coordinate);
-                        content.innerHTML = feature.p.features[index].p.uid +'\n'+feature.p.features[index].p.test2;
-                        container.style.display = 'block';
+                        console.log(feature.p.features[index].p.uid + ' clicked!');
                     }
-                    console.log(layer);
+                    return feature;
                 });
     });
-    closer.onclick = function() {
-        container.style.display = 'none';
-        closer.blur();
-        return false;
-    };
+
     map.addLayer(clusters)
 </script>
 </body>
