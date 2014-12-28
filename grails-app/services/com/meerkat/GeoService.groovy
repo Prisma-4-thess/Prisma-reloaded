@@ -36,7 +36,8 @@ class GeoService {
                 retGeos.add(g)
             }
         }
-        println(retGeos)
+//        println(retGeos)
+        return retGeos
     }
 
     /*
