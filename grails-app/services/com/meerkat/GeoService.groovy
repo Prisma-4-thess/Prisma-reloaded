@@ -13,14 +13,25 @@ class GeoService {
       */
 
     static def findPOINearLatLng(double centerLat, double centerLon, double radius, int max ) { //TODO: Use max parameter to return the results from closest to furthest
-        def retPois = []
+        def retPois = [:]
         def pois = Geo.getAll()
         pois.each { poi ->
-            if (calculateDistance(poi.latitude, poi.longitude, centerLat, centerLon) < radius) {
-                retPois.add(poi)
+            def dist=calculateDistance(poi.latitude, poi.longitude, centerLat, centerLon)
+            if (dist < radius) {
+                retPois.putAt(poi.namegrk,dist)
             }
         }
-        return retPois
+        println(retPois)
+        retPois=retPois.sort(){ a, b -> a.value <=> b.value }
+        if(retPois.size()<max){
+            retPois[0..retPois.size()-1].each{p->
+                println p
+            }
+        }else {
+            retPois[0..max].each{p->
+                println p
+            }
+        }
     }
 
     /*
