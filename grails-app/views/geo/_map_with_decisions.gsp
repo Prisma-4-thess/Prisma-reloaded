@@ -7,7 +7,48 @@
     <meta name="layout" content="main_layout"/>
     <title>OpenLayers 3 Example</title>
     <link rel="stylesheet" href="http://openlayers.org/en/v3.0.0/css/ol.css" type="text/css">
-    <style>
+    <style type="text/css">
+    .ol-popup {
+        display: none;
+        position: absolute;
+        background-color: rgba(255,255,255,0.7);
+        -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #cccccc;
+        bottom: 12px;
+        left: -50px;
+    }
+    .ol-popup:after, .ol-popup:before {
+        top: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    .ol-popup:after {
+        border-top-color: white;
+        border-width: 10px;
+        left: 48px;
+        margin-left: -10px;
+    }
+    .ol-popup:before {
+        border-top-color: #cccccc;
+        border-width: 11px;
+        left: 48px;
+        margin-left: -11px;
+    }
+    .ol-popup-closer {
+        text-decoration: none;
+        position: absolute;
+        top: 2px;
+        right: 8px;
+    }
+    .ol-popup-closer:after {
+        content: "✖";
+    }
     .map {
         height: 100%;
         width: 100%;
@@ -18,8 +59,14 @@
 
 <body>
 <h2>My Map</h2>
-<div id="map" class="map"></div>
+<div id="map" class="map">
+    <div id="popup" class="ol-popup">
+        <div id="popup-content"></div>
+    </div>
+</div>
 <script type="text/javascript">
+    var container = document.getElementById('popup');
+    var content = document.getElementById('popup-content');
     var map = new ol.Map({
         target: 'map',
         layers: [
@@ -33,24 +80,41 @@
         })
     });
 
+    var overlay = new ol.Overlay({
+        element: container
+    });
+
+    map.addOverlay(overlay)
+
     var vectorSource = new ol.source.Vector({
         //create empty vector
     });
-    console.log("MPES")
+    %{--console.log("MPES")--}%
     <g:each in="${com.meerkat.Geo.all}" var="loc">
-    console.log(${loc.latitude})
+    var name_gemp = ${loc.namegrk};
+    console.log(${loc.latitude});
         var iconFeature = new ol.Feature({
             geometry: new
                     ol.geom.Point(ol.proj.transform([${loc.longitude}, ${loc.latitude}], 'EPSG:4326', 'EPSG:3857')),
-            name: 'Null Pointer ',
+            uid: ${loc.id},
+            namegrk: name_gemp,
             population: 4000,
             rainfall: 500
         });
     vectorSource.addFeature(iconFeature);
     </g:each>
 
-    for (var i=0;i<260;i++) {
-    }
+//    for (var i=0;i<260;i++) {
+//        var iconFeature = new ol.Feature({
+//            geometry: new
+//                    ol.geom.Point(ol.proj.transform([22.960+(Math.random()-0.5)*0.1, 40.626+(Math.random()-0.5)*0.1], 'EPSG:4326', 'EPSG:3857')),
+//            uid: i,
+//            namegrk: 'testing',
+//            population: 4000,
+//            rainfall: 500
+//        });
+//        vectorSource.addFeature(iconFeature);
+//    }
     //    //create the style
     //    var iconStyle = new ol.style.Style({
     //        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
@@ -115,6 +179,36 @@
     });
 
     //    map.addLayer(vectorLayer)
+    map.on('pointermove', function(evt) {
+        var feature = map.forEachFeatureAtPixel(evt.pixel,
+                function(feature, layer) {
+                    var index;
+                    if (feature.p.features.length >1) return null;
+                    for (index=0;index < feature.p.features.length;++index) {
+                        overlay.setPosition(feature.p.features[index].p.geometry.j);
+                        content.innerHTML = feature.p.features[index].p.uid + '\n' + feature.p.features[index].p.namegrk;
+                        container.style.display = 'block';
+                    }
+                    return feature;
+                });
+        if (feature==null){
+            container.style.display = 'none';
+
+        }
+    });
+
+    map.on('click', function(evt) {
+        var feature = map.forEachFeatureAtPixel(evt.pixel,
+                function(feature, layer) {
+                    var index;
+                    if (feature.p.features.length >1) return null;
+                    for (index=0;index < feature.p.features.length;++index) {
+                        console.log(feature.p.features[index].p.uid + ' clicked!');
+                    }
+                    return feature;
+                });
+    });
+
     map.addLayer(clusters)
 </script>
 </body>
