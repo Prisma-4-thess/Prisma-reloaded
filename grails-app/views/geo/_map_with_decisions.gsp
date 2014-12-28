@@ -90,29 +90,31 @@
         //create empty vector
     });
     %{--console.log("MPES")--}%
-    %{--<g:each in="${com.meerkat.Geo.all}" var="loc">--}%
-    %{--console.log(${loc.latitude})--}%
-        %{--var iconFeature = new ol.Feature({--}%
-            %{--geometry: new--}%
-                    %{--ol.geom.Point(ol.proj.transform([${loc.longitude}, ${loc.latitude}], 'EPSG:4326', 'EPSG:3857')),--}%
-            %{--name: 'Null Pointer ',--}%
-            %{--population: 4000,--}%
-            %{--rainfall: 500--}%
-        %{--});--}%
-    %{--vectorSource.addFeature(iconFeature);--}%
-    %{--</g:each>--}%
-
-    for (var i=0;i<260;i++) {
+    <g:each in="${com.meerkat.Geo.all}" var="loc">
+    var name_gemp = ${loc.namegrk};
+    console.log(${loc.latitude});
         var iconFeature = new ol.Feature({
             geometry: new
-                    ol.geom.Point(ol.proj.transform([22.960+(Math.random()-0.5)*0.1, 40.626+(Math.random()-0.5)*0.1], 'EPSG:4326', 'EPSG:3857')),
-            uid: i,
-            namegrk: 'testing',
+                    ol.geom.Point(ol.proj.transform([${loc.longitude}, ${loc.latitude}], 'EPSG:4326', 'EPSG:3857')),
+            uid: ${loc.id},
+            namegrk: name_gemp,
             population: 4000,
             rainfall: 500
         });
-        vectorSource.addFeature(iconFeature);
-    }
+    vectorSource.addFeature(iconFeature);
+    </g:each>
+
+//    for (var i=0;i<260;i++) {
+//        var iconFeature = new ol.Feature({
+//            geometry: new
+//                    ol.geom.Point(ol.proj.transform([22.960+(Math.random()-0.5)*0.1, 40.626+(Math.random()-0.5)*0.1], 'EPSG:4326', 'EPSG:3857')),
+//            uid: i,
+//            namegrk: 'testing',
+//            population: 4000,
+//            rainfall: 500
+//        });
+//        vectorSource.addFeature(iconFeature);
+//    }
     //    //create the style
     //    var iconStyle = new ol.style.Style({
     //        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
