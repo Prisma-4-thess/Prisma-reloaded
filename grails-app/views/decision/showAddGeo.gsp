@@ -63,12 +63,12 @@
     ${remoteFunction( controller: 'geo',
                     action: 'showNearbyGeos',
                     update: [success: 'nearbyGeos', failure: 'nearbyGeos'],
-                    params: '\'lat=\' + 0 + \'&lon=\' + 0 + \'&max=\' + 5')}
+                    params: '\'lat=\' + 40.636 + \'&lon=\' + 22.938')}
 
     ${remoteFunction( controller: 'geo',
                     action: 'showNearbyGeos',
                     update: [success: 'nearbyGeos2', failure: 'nearbyGeos2'],
-                    params: '\'lat=\' + 0 + \'&lon=\' + 0 + \'&max=\' + 5')}
+                    params: '\'lat=\' + 40.599 + \'&lon=\' + 22.968')}
 </script>
 
 </body>

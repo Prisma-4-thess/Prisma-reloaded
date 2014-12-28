@@ -15,7 +15,7 @@ class GeoController {
      * @return
      */
     def listGeos(List<Geo> geoList) {
-        if (geoList == null) geoList = Geo.list(params)
+        if (params.geoList == null) geoList = Geo.list(params)
         render(template: 'list', model: ['geoList': geoList, 'numOfResults': Geo.count()])
     }
 
@@ -34,12 +34,14 @@ class GeoController {
      * @param lon : longitude
      * @return geoList: List of Geo
      */
-    def showNearbyGeos(double lat, double lon) {
-        if (lat == null) lat = params.lat.toDouble()
-        if (lon == null) lon = params.lon.toDouble()
-        print params
-        def geoList = GeoService.findPOINearLatLng(lat, lon, getGrailsApplication().getConfig().geo.nearby.radius.toDouble())
-        print geoList
+    def showNearbyGeos(double lat, double lon, double radius, int max) {
+
+        if (params.radius == null) radius = getGrailsApplication().getConfig().geo.nearby.radius.toDouble()
+
+        if (params.max == null) max = getGrailsApplication().getConfig().geo.nearby.max.toDouble()
+
+        def geoList = GeoService.findPOINearLatLng(lat, lon, radius, max)
+
         render(template: 'nearby_geo', model: ['geoList': geoList, 'numOfResults': geoList.size()])
     }
 
@@ -134,4 +136,5 @@ class GeoController {
             '*' { render status: NOT_FOUND }
         }
     }
+
 }

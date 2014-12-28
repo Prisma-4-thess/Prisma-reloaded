@@ -15,7 +15,7 @@ class UnitController {
  * @return
  */
     def listUnits(List<Unit> unitList) {
-        if (unitList == null) unitList = Unit.list(params)
+        if (params.unitList == null) unitList = Unit.list(params)
         render(template: 'list', model: ['unitList': unitList, 'numOfResults': unitList.size()])
     }
 

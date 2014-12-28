@@ -15,7 +15,7 @@ class SignerController {
      * @return
      */
     def listSigners(List<Signer> signerList) {
-        if (signerList == null) signerList = Signer.list(params)
+        if (params.signerList == null) signerList = Signer.list(params)
         render(template: 'list', model: ['signerList': signerList, 'numOfResults': signerList.size()])
     }
 

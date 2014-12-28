@@ -16,7 +16,7 @@ class OrganizationController {
      */
 
     def listOrgs(List<Organization> orgList) {
-        if (orgList == null) orgList = Organization.list(params)
+        if (params.orgList == null) orgList = Organization.list(params)
         render(template: 'list', model: ['orgList': orgList, 'numOfResults': orgList.size()])
     }
 

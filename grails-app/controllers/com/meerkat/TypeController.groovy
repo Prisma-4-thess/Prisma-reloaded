@@ -15,7 +15,7 @@ class TypeController {
      * @return
      */
     def listTypes(List<Type> typeList) {
-        if (typeList == null) typeList = Type.list(params)
+        if (params.typeList == null) typeList = Type.list(params)
         render(template: 'list', model: ['typeList': typeList, 'numOfResults': typeList.size()])
     }
 
