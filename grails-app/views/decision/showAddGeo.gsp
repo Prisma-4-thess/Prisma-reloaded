@@ -36,15 +36,17 @@
             <g:render template="/geo/map_to_add_geo"/>
         </div>
 
-    <div id="nearbyGeos">
-        skataki
+        <div id="nearbyGeos">
+            skataki
+        </div>
     </div>
 
 <div class="row formToAddGeo">
 
 <div class="col-md-3">
 
-    <g:formRemote url="[controller: 'decision', action: 'addGeo']" onComplete="showResult()" name="add_geo_info" update="response">
+    <g:formRemote url="[controller: 'decision', action: 'addGeo']" onComplete="showResult()" name="add_geo_info"
+                  update="response">
 
         <g:textField class="form-control" name="latitude" placeholder="latitude"/>
         </div>
@@ -67,7 +69,8 @@
         <div class="col-md-5"></div>
         <div class="col-md-2 text-center">
 
-        <g:submitButton id="submit-button" name="submitBtn" class="btn btn-primary submit-btn" value="addGeo" action="addGeo"/>
+        <g:submitButton id="submit-button" name="submitBtn" class="btn btn-primary submit-btn" value="addGeo"
+                        action="addGeo"/>
 
     </g:formRemote>
 </div>
@@ -79,7 +82,10 @@
 <script>
 
     function showResult() {
-        $('#response-image').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1}, 'slow').delay(2000).animate({opacity: 0}, 'slow');
+        $('#response-image').css({
+            opacity: 0.0,
+            visibility: "visible"
+        }).animate({opacity: 1}, 'slow').delay(2000).animate({opacity: 0}, 'slow');
     }
 
     ${remoteFunction( controller: 'geo',
