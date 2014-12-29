@@ -97,10 +97,10 @@
     var vectorSource = new ol.source.Vector({
         //create empty vector
     });
-    %{--console.log("MPES")--}%
-    <g:each in="${com.meerkat.Geo.all}" var="loc">
+
+//    Show only locations that have decisions associated with them
+    <g:each in="${com.meerkat.GeoService.getGeosWithDecisions()}" var="loc">
     var name_gemp = '${loc.namegrk.replace('\n','')}';
-    console.log(${loc.latitude});
     var iconFeature = new ol.Feature({
         geometry: new
                 ol.geom.Point(ol.proj.transform([${loc.longitude}, ${loc.latitude}], 'EPSG:4326', 'EPSG:3857')),
@@ -111,6 +111,20 @@
     });
     vectorSource.addFeature(iconFeature);
     </g:each>
+    %{--console.log("MPES")--}%
+    %{--<g:each in="${com.meerkat.Geo.all}" var="loc">--}%
+    %{--var name_gemp = '${loc.namegrk.replace('\n','')}';--}%
+    %{--console.log(${loc.latitude});--}%
+    %{--var iconFeature = new ol.Feature({--}%
+        %{--geometry: new--}%
+                %{--ol.geom.Point(ol.proj.transform([${loc.longitude}, ${loc.latitude}], 'EPSG:4326', 'EPSG:3857')),--}%
+        %{--uid: ${loc.id},--}%
+        %{--namegrk: name_gemp,--}%
+        %{--population: 4000,--}%
+        %{--rainfall: 500--}%
+    %{--});--}%
+    %{--vectorSource.addFeature(iconFeature);--}%
+    %{--</g:each>--}%
 
     //    for (var i=0;i<260;i++) {
     //        var iconFeature = new ol.Feature({
