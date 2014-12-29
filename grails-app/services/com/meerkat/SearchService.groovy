@@ -76,13 +76,22 @@ class SearchService {
         def returnSIGN=[]
         def subject=Stem(search_param)
         def signer=indexSearch(subject,"./signerindex")
-        signer.each {s->
-            def decision=Signer.findByFirstNameAndLastName(s.toString().split(' ')[0],s.toString().split(' ')[1])
-            if(decision) {
-                returnSIGN.add(decision)
+        def totalNumOfRes=signer.size()
+        if(signer.size()>0) {
+            if (signer.size() < par_offset + par_max - 1) {
+                signer = dec[par_offset..signer.size() - 1]
+            } else {
+                signer = signer[par_offset..par_offset + par_max - 1]
+            }
+
+            signer.each { s ->
+                def signerInstance = Signer.findByFirstNameAndLastName(s.toString().split(' ')[0], s.toString().split(' ')[1])
+                if (signerInstance) {
+                    returnSIGN.add(signerInstance)
+                }
             }
         }
-        return returnSIGN
+        return [list: returnSIGN,totalNumOfRes: totalNumOfRes]
     }
 
     static def searchForTypes(String search_param,int par_max,int par_offset,String sort,String orderList){
