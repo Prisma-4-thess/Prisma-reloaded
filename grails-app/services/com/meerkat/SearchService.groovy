@@ -37,51 +37,80 @@ class SearchService {
     static def searchForPOI(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnPOI=[]
         def nmgrk=Stem(search_param)
-        def pois=indexSearch(nmgrk,"/tmp/geoindex")
-        pois.each {poi->
-            returnPOI.add(Geo.findByNamegrk(poi))
+        def pois=indexSearch(nmgrk,"./geoindex")
+        def totalNumOfRes=pois.size()
+        if(pois.size()>0) {
+            if (pois.size() < par_offset + par_max - 1) {
+                pois = pois[par_offset..pois.size() - 1]
+            } else {
+                pois = pois[par_offset..par_offset + par_max - 1]
+            }
+            pois.each { poi ->
+                returnPOI.add(Geo.findByNamegrk(poi))
+            }
         }
-        return returnPOI
+        return [list: returnPOI,totalNumOfRes: totalNumOfRes]
     }
 
     static def searchForDecisions(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnDEC=[]
         def subject=Stem(search_param)
-        def dec=indexSearch(subject,"/tmp/decindex")
-        println dec.size()
-        if(dec.size()<par_offset+par_max-1){
-            dec=dec[par_offset..dec.size()-1]
-        }else{
-            dec=dec[par_offset..par_offset+par_max-1]
-        }
+        def dec=indexSearch(subject,"./decindex")
+        def totalNumOfRes=dec.size()
+        if(dec.size()>0) {
+            if (dec.size() < par_offset + par_max - 1) {
+                dec = dec[par_offset..dec.size() - 1]
+            } else {
+                dec = dec[par_offset..par_offset + par_max - 1]
+            }
 
-        dec.each {s->
-            def decision=Decision.findByAdaAndVersionId(s.toString().split(' ')[0],s.toString().split(' ')[1])
-            returnDEC.add(decision)
+            dec.each { s ->
+                def decision = Decision.findByAdaAndVersionId(s.toString().split(' ')[0], s.toString().split(' ')[1])
+                returnDEC.add(decision)
+            }
         }
-        return returnDEC
+        return [list:returnDEC,totalNumOfRes:totalNumOfRes]
     }
 
     static def searchForSigners(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnSIGN=[]
         def subject=Stem(search_param)
-        def signer=indexSearch(subject,"/tmp/signerindex")
-        signer.each {s->
-            def decision=Signer.findByFirstNameAndLastName(s.toString().split(' ')[0],s.toString().split(' ')[1])
-            returnSIGN.add(decision)
+        def signer=indexSearch(subject,"./signerindex")
+        def totalNumOfRes=signer.size()
+        if(signer.size()>0) {
+            if (signer.size() < par_offset + par_max - 1) {
+                signer = signer[par_offset..signer.size() - 1]
+            } else {
+                signer = signer[par_offset..par_offset + par_max - 1]
+            }
+
+            signer.each { s ->
+                def signerInstance = Signer.findByFirstNameAndLastName(s.toString().split(' ')[0], s.toString().split(' ')[1])
+                if (signerInstance) {
+                    returnSIGN.add(signerInstance)
+                }
+            }
         }
-        return returnSIGN
+        return [list: returnSIGN,totalNumOfRes: totalNumOfRes]
     }
 
     static def searchForTypes(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnTYPE=[]
         def subject=Stem(search_param)
-        def type=indexSearch(subject,"/tmp/typeindex")
-        type.each {s->
-            def decision=Type.findByLabel(s.toString())
-            returnTYPE.add(decision)
+        def type=indexSearch(subject,"./typeindex")
+        def totalNumOfRes=type.size()
+        if(type.size()>0) {
+            if (type.size() < par_offset + par_max - 1) {
+                type = type[par_offset..type.size() - 1]
+            } else {
+                type = type[par_offset..par_offset + par_max - 1]
+            }
+            type.each { s ->
+                def decision = Type.findByLabel(s.toString())
+                returnTYPE.add(decision)
+            }
         }
-        return returnTYPE
+        return [list: returnTYPE,totalNumOfRes: totalNumOfRes]
     }
 
     static def indexSearch(String param,String index_directory){
@@ -94,7 +123,7 @@ class SearchService {
         // Parse a simple query that searches for "text":
         QueryParser parser = new QueryParser("stemed", analyzer);
         Query query = parser.parse(param)
-        ScoreDoc[] hits = isearcher.search(query, null, 100).scoreDocs;
+        ScoreDoc[] hits = isearcher.search(query, null, 50).scoreDocs;
         println hits.toString()
         // Iterate through the results:
         for (int i = 0; i < hits.length; i++) {

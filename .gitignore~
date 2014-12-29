@@ -24,9 +24,3 @@ target/*
 
 #grail's out classes
 out/*
-
-#lucene index directories
-decindex/*
-geoindex/*
-signerindex/*
-typeindex/*
