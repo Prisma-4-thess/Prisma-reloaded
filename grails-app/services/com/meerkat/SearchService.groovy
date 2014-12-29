@@ -38,10 +38,18 @@ class SearchService {
         def returnPOI=[]
         def nmgrk=Stem(search_param)
         def pois=indexSearch(nmgrk,"./geoindex")
-        pois.each {poi->
-            returnPOI.add(Geo.findByNamegrk(poi))
+        def totalNumOfRes=pois.size()
+        if(pois.size()>0) {
+            if (pois.size() < par_offset + par_max - 1) {
+                pois = pois[par_offset..pois.size() - 1]
+            } else {
+                pois = pois[par_offset..par_offset + par_max - 1]
+            }
+            pois.each { poi ->
+                returnPOI.add(Geo.findByNamegrk(poi))
+            }
         }
-        return returnPOI
+        return [list: returnPOI,totalNumOfRes: totalNumOfRes]
     }
 
     static def searchForDecisions(String search_param,int par_max,int par_offset,String sort,String orderList){

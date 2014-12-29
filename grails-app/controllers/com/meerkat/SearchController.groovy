@@ -65,7 +65,7 @@ class SearchController {
         } else if (params.clicked == "geo") {
 //            geoList = Geo.list(params)
             geoList = SearchService.searchForPOI(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
-            numOfResultsGeo = geoList.size()
+            numOfResultsGeo = geoList.totalNumOfRes
         } else {
             //TODO: Call service for search
 
@@ -87,12 +87,12 @@ class SearchController {
 //                geoList = Geo.list(params)
             //numOfResultsGeo = Geo.getAll().size()
             geoList = SearchService.searchForPOI(searchQuery, 10, 0, "ada", "asc")
-            numOfResultsGeo = geoList.size()
+            numOfResultsGeo = geoList.totalNumOfRes
             println numOfResultsGeo
         }
 
         //showSearchResults(decisionList, signerList, typeList, geoList)
-        return ['searchBarQuery': params.searchBarQuery, 'decisionList': decisionList.list, 'signerList': signerList, 'typeList': typeList, 'geoList': geoList, 'numOfResultsGeo': numOfResultsGeo, 'numOfResultsDec': numOfResultsDec, 'numOfResultsType': numOfResultsType, 'numOfResultsSigner': numOfResultsSigner]
+        return ['searchBarQuery': params.searchBarQuery, 'decisionList': decisionList.list, 'signerList': signerList, 'typeList': typeList, 'geoList': geoList.list, 'numOfResultsGeo': numOfResultsGeo, 'numOfResultsDec': numOfResultsDec, 'numOfResultsType': numOfResultsType, 'numOfResultsSigner': numOfResultsSigner]
 
     }
 
