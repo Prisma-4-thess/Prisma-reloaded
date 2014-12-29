@@ -8,7 +8,7 @@
     <title>OpenLayers 3 Example</title>
     <link rel="stylesheet" href="http://openlayers.org/en/v3.0.0/css/ol.css" type="text/css"/>
     <script src="http://openlayers.org/en/v3.0.0/build/ol.js" type="text/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAH_oa4EC3VCWeqeMvTFkQC697gcs_ncyk&sensor=false"></script>
 </head>
 <body>
 <div id="map" class="mapToAddDec"></div>
