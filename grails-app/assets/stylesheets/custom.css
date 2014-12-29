@@ -122,3 +122,7 @@
 .submit-btn {
     background-color:#1abc9c;
 }
+
+.mouseStyle{
+    cursor: pointer;
+}
