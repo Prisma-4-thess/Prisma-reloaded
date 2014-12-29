@@ -105,6 +105,7 @@ class SearchController {
     }
 
     def index() {
-        LuceneService.decision2geo(2)
+        float score=1
+        LuceneService.decision2geo(score)
     }
 }
