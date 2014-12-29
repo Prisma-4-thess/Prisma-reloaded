@@ -53,7 +53,7 @@ class SearchController {
         if (params.clicked == "decision") {
 //            decisionList = Decision.list(params)
             decisionList = SearchService.searchForDecisions(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
-            numOfResultsDec = decisionList.size()
+            numOfResultsDec = decisionList.totalNumOfRes
         } else if (params.clicked == "signer") {
 //            signerList = Signer.list(params)
             signerList = SearchService.searchForSigners(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
@@ -72,7 +72,7 @@ class SearchController {
 //                decisionList = Decision.list(params)
             decisionList = SearchService.searchForDecisions(searchQuery, 10, 0, "ada", "asc")
 //                numOfResultsDec = Decision.getAll().size()
-            numOfResultsDec = decisionList.size()
+            numOfResultsDec = decisionList.totalNumOfRes
             println numOfResultsDec
 //                 signerList = Signer.list(params)
             signerList = SearchService.searchForSigners(searchQuery, 10, 0, "ada", "asc")
@@ -92,7 +92,7 @@ class SearchController {
         }
 
         //showSearchResults(decisionList, signerList, typeList, geoList)
-        return ['searchBarQuery': params.searchBarQuery, 'decisionList': decisionList, 'signerList': signerList, 'typeList': typeList, 'geoList': geoList, 'numOfResultsGeo': numOfResultsGeo, 'numOfResultsDec': numOfResultsDec, 'numOfResultsType': numOfResultsType, 'numOfResultsSigner': numOfResultsSigner]
+        return ['searchBarQuery': params.searchBarQuery, 'decisionList': decisionList.list, 'signerList': signerList, 'typeList': typeList, 'geoList': geoList, 'numOfResultsGeo': numOfResultsGeo, 'numOfResultsDec': numOfResultsDec, 'numOfResultsType': numOfResultsType, 'numOfResultsSigner': numOfResultsSigner]
 
     }
 

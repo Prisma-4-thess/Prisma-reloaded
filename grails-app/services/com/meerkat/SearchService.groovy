@@ -48,18 +48,20 @@ class SearchService {
         def returnDEC=[]
         def subject=Stem(search_param)
         def dec=indexSearch(subject,"./decindex")
-        println dec.size()
-        if(dec.size()<par_offset+par_max-1){
-            dec=dec[par_offset..dec.size()-1]
-        }else{
-            dec=dec[par_offset..par_offset+par_max-1]
-        }
+        def totalNumOfRes=dec.size()
+        if(dec.size()>0) {
+            if (dec.size() < par_offset + par_max - 1) {
+                dec = dec[par_offset..dec.size() - 1]
+            } else {
+                dec = dec[par_offset..par_offset + par_max - 1]
+            }
 
-        dec.each {s->
-            def decision=Decision.findByAdaAndVersionId(s.toString().split(' ')[0],s.toString().split(' ')[1])
-            returnDEC.add(decision)
+            dec.each { s ->
+                def decision = Decision.findByAdaAndVersionId(s.toString().split(' ')[0], s.toString().split(' ')[1])
+                returnDEC.add(decision)
+            }
         }
-        return returnDEC
+        return [list:returnDEC,totalNumOfRes:totalNumOfRes]
     }
 
     static def searchForSigners(String search_param,int par_max,int par_offset,String sort,String orderList){
@@ -96,7 +98,7 @@ class SearchService {
         // Parse a simple query that searches for "text":
         QueryParser parser = new QueryParser("stemed", analyzer);
         Query query = parser.parse(param)
-        ScoreDoc[] hits = isearcher.search(query, null, 100).scoreDocs;
+        ScoreDoc[] hits = isearcher.search(query, null, 50).scoreDocs;
         println hits.toString()
         // Iterate through the results:
         for (int i = 0; i < hits.length; i++) {
