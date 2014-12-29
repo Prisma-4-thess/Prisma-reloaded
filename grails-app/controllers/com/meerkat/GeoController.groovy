@@ -15,7 +15,7 @@ class GeoController {
      * @return
      */
     def listGeos(List<Geo> geoList) {
-        if (params.geoList == null) geoList = Geo.list(params)
+//        if (params.geoList == null) geoList = Geo.list(params)
         render(template: 'list', model: ['geoList': geoList, 'numOfResults': Geo.count()])
     }
 
@@ -28,6 +28,30 @@ class GeoController {
         render(template: 'show', model: ['geoInstance': geoInstance, 'entityName': 'Geo'])
     }
 
+    /**
+     * Get geo ids that need to be loaded to the map.
+     * @param geoList :
+     */
+    def listGeosFromMap() {
+        List<Geo> geoList;
+        def geoIds = params.ids.toString().split(",")
+        geoIds.each { g ->
+            geoList.add(Geo.findById(g.toLong()))
+        }
+        listGeos(geoList)
+    }
+
+    /**
+     * Renders template to show the decisions of a geo
+     * @return geoInstance: Geo to show its decisions
+     */
+    def showDecisionsOfGeo(Geo geoInstance) {
+        List<Decision> decisionList
+        if (geoInstance == null) geoInstance == Geo.findById(params.geoId.toDouble())
+        decisionList = geoInstance.decisions
+
+        render(template: 'geo_decisions_list', model: ['geoInstance': geoInstance, 'decisionList': decisionList])
+    }
     /**
      * Gets nearby geos and load the template to show them
      * @param lat : latitude
@@ -81,8 +105,8 @@ class GeoController {
         }
     }
 
-    def mapTest(){
-        render(contentType: 'text/html;charset=UTF-8',template: 'map_with_decisions')
+    def mapTest() {
+        render(contentType: 'text/html;charset=UTF-8', template: 'map_with_decisions')
     }
 
     def edit(Geo geoInstance) {

@@ -35,7 +35,7 @@ class DecisionController {
      * @return
      */
     def listDecisions(List<Decision> decList) {
-        if (params.decList == null) decList = Decision.list(params)
+//        if (params.decList == null) decList = Decision.list(params)
         render(template: 'list', model: ['decList': decList, 'numOfResults': decList.size()])
     }
 
