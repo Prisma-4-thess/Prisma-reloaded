@@ -79,7 +79,7 @@ class SearchService {
         def totalNumOfRes=signer.size()
         if(signer.size()>0) {
             if (signer.size() < par_offset + par_max - 1) {
-                signer = dec[par_offset..signer.size() - 1]
+                signer = signer[par_offset..signer.size() - 1]
             } else {
                 signer = signer[par_offset..par_offset + par_max - 1]
             }
@@ -98,11 +98,19 @@ class SearchService {
         def returnTYPE=[]
         def subject=Stem(search_param)
         def type=indexSearch(subject,"./typeindex")
-        type.each {s->
-            def decision=Type.findByLabel(s.toString())
-            returnTYPE.add(decision)
+        def totalNumOfRes=type.size()
+        if(type.size()>0) {
+            if (type.size() < par_offset + par_max - 1) {
+                type = type[par_offset..type.size() - 1]
+            } else {
+                type = type[par_offset..par_offset + par_max - 1]
+            }
+            type.each { s ->
+                def decision = Type.findByLabel(s.toString())
+                returnTYPE.add(decision)
+            }
         }
-        return returnTYPE
+        return [list: returnTYPE,totalNumOfRes: totalNumOfRes]
     }
 
     static def indexSearch(String param,String index_directory){
