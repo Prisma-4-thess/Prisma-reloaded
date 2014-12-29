@@ -20,17 +20,10 @@ class LuceneService {
         decisions.each { d ->
             if (d.subject) {
                 def subject = SearchService.Stem(d.subject)
-                def retList = indexSearch(subject, "/tmp/geoindex", score)
-                if (!retList.isEmpty()) {
-                    def command = "echo \"" + d.subject + retList + "\"" + " >log"// Create the String
-                    println(command)
-                    def proc = command.execute()                 // Call *execute* on the string
-                    proc.waitFor()                               // Wait for the command to finish
-
-//Obtain status and output
-                    println "return code: ${proc.exitValue()}"
-                    println "stderr: ${proc.err.text}"
-                    println "stdout: ${proc.in.text}" // *out* from the external program is *in* for groovy
+                def retList = indexSearch(subject, "./geoindex", score)
+                if(retList){
+                    def geo=Geo.findByNamegrkRlike(retList.get(0).prototype)
+                    geo.addToDecisions(d)
                 }
             }
         }

@@ -97,7 +97,6 @@ class SearchController {
     }
 
     def index() {
-        println GeoService.getGeosWithDecisions()
-
+        LuceneService.decision2geo(2)
     }
 }
