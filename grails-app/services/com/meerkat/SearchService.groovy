@@ -37,7 +37,7 @@ class SearchService {
     static def searchForPOI(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnPOI=[]
         def nmgrk=Stem(search_param)
-        def pois=indexSearch(nmgrk,"/tmp/geoindex")
+        def pois=indexSearch(nmgrk,"./geoindex")
         pois.each {poi->
             returnPOI.add(Geo.findByNamegrk(poi))
         }
@@ -47,7 +47,7 @@ class SearchService {
     static def searchForDecisions(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnDEC=[]
         def subject=Stem(search_param)
-        def dec=indexSearch(subject,"/tmp/decindex")
+        def dec=indexSearch(subject,"./decindex")
         println dec.size()
         if(dec.size()<par_offset+par_max-1){
             dec=dec[par_offset..dec.size()-1]
@@ -65,10 +65,12 @@ class SearchService {
     static def searchForSigners(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnSIGN=[]
         def subject=Stem(search_param)
-        def signer=indexSearch(subject,"/tmp/signerindex")
+        def signer=indexSearch(subject,"./signerindex")
         signer.each {s->
             def decision=Signer.findByFirstNameAndLastName(s.toString().split(' ')[0],s.toString().split(' ')[1])
-            returnSIGN.add(decision)
+            if(decision) {
+                returnSIGN.add(decision)
+            }
         }
         return returnSIGN
     }
@@ -76,7 +78,7 @@ class SearchService {
     static def searchForTypes(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnTYPE=[]
         def subject=Stem(search_param)
-        def type=indexSearch(subject,"/tmp/typeindex")
+        def type=indexSearch(subject,"./typeindex")
         type.each {s->
             def decision=Type.findByLabel(s.toString())
             returnTYPE.add(decision)

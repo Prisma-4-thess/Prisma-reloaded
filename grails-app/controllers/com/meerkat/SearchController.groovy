@@ -78,7 +78,7 @@ class SearchController {
             signerList = SearchService.searchForSigners(searchQuery, 10, 0, "ada", "asc")
 //                numOfResultsSigner = Signer.getAll().size()
             numOfResultsSigner = signerList.size()
-            println numOfResultsSigner
+            println signerList
 //                typeList = Type.list(params)
             typeList = SearchService.searchForTypes(searchQuery, 10, 0, "ada", "asc")
 //                numOfResultsType = Type.getAll().size()
