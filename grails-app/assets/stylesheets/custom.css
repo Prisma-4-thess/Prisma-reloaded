@@ -106,3 +106,19 @@
 .tagList {
     padding-top: 2%;
 }
+.formToAddGeo {
+    padding-top: 1%;
+}
+
+.hidden-element {
+    visibility: hidden;
+    width:50px;
+}
+
+.fixedRow {
+    height: 10vh;
+}
+
+.submit-btn {
+    background-color:#1abc9c;
+}
