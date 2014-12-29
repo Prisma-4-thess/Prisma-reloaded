@@ -159,12 +159,17 @@
     });
 
     var styleCache = {};
+    var zoom = 0;
+    var zoomTemp;
     var clusters = new ol.layer.Vector({
         source: clusterSource,
         style: function (feature, resolution) {
             var size = feature.get('features').length;
             var exp_radius = (size > 10) ? 27 : 17 + size
             var style = styleCache[size];
+            if (map.getView().getZoom()>=15) zoomTemp = 1;
+            else zoomTemp = 0;
+            if (zoomTemp!= zoom) styleCache={};
             if (size == 1) {
                 style = [new ol.style.Style({
                     image: new ol.style.Circle({
@@ -185,16 +190,25 @@
 //                        src: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADaklEQVRYhb1XW2sTQRQ+Dy1eHiyiRUTBPlRN0hgb12R3ZlZom5hmZhTRB/0DBRFBFJGi9KF/QBAUxAcVRLw9CFYRqSbpBdqXFi+VVk0vpNndgmi9PCiU1vGhbrrZNE02ST1wXnbPOd+338ycMwvgwGbD4RqN4lM6JV0GxdMaJ3MaJ3MGxdM6J080hk4m5foNTmoWZUKSqg1KLumc/Jg5pIqVXOP4u05xuwCoqgh48oC/VqdkoBCw3Q1O+sZCrk1lgae4ulGn5L1TcNN1it7OhsM1JRPQOH6WIzHDYqRFEoOqT/TgBtGLvGJQ9YmR0H6hMbKcEo9LA2fKcXux8Ygi+olX9KCGZb0fe8VEq5yrBMNHSvn6d9Yik1FF9KIl8ITi+RJTXF2JoOtpXPF8NZ/3Iq+YiiKbCuqQI/Cpg4HGrAKHVDGg+jLgccVz+XYdrDXjH23fvi4mu6+Y7wdVn5jh2SqkqOwp/usZOWdNTkZkK/jdfHkJ2X3fjBu3LYXO0OmiCRgc3bAmv23elyHwUnLtyZfXHdjZaMa9a5GyCXBy1YkCD63Jw02NGQKdKzSYToAqM264yW8/DXmVy1WAoTvW5NfN/gyBF9KOrfnynu7dtc2Me9PstymAbxZNQGe405o8Fg4u7YGg+0K+vLjsumjGfTgYsPePjqIJTFM5Yls/0Ye9/zah+9creXezPac7sCuUkD2/e1CD6MNeofHspqRR3FI0ASFJ1QbHn60FRsOBjAoxxbMQD7rvxYLutljQ3RZX3A9iimfBfD8WDtjkRzOOh5PGcIe9o1lPQz637/7FmYDbHYEDAAxJ0nqDkZS9WDIiL84BG/Cg6hPJyHJtGE0m6urWFkZcxnSqnMg36VIUiWREFslWWaQozjsR01HlWEngphmU9Jc6jjVOEmWBAwAYXJV0Tv44vgswsqC1BveWTQAAQKf4llMCBkc3KgIOADAZ8m7RGflZvPT4e/KAv7ZiBAAAdIrbiyZA8fmKggMAPK+vX6NxPFFw7Tn6JCSpuuIEAADSUXS0IAGqHF4VcNM0hmMr7PzuVQUHAEiH0R6d4flccDyfag00rDoBAACDkus5HY+Ra/8FHADgY5O02WD429KZx7Nl/wU5NY2isxkCDJ/5r+AA/+4MjHwwOB6t2I+oU0tHZZamCi2nxl90hdeFBd7ucgAAAABJRU5ErkJggg=='
 //                    }))
                 })];
-            }
-            else if (!style) {
+            }else if(!style){
+                var colorStrTemp;
+                var colorFillTemp;
+                if (zoomTemp == 1) {
+                    colorStrTemp =[255, 255, 255, 0.7];
+                    colorFillTemp = [255, 69, 0, 0.4];
+                }
+                else {
+                    colorStrTemp = [0, 0, 0, 0.7];
+                    colorFillTemp = [133, 255, 133, 0.4];
+                }
                 style = [new ol.style.Style({
                     image: new ol.style.Circle({
                         radius: exp_radius,
                         stroke: new ol.style.Stroke({
-                            color: [0, 0, 0, 0.7]
+                            color: colorStrTemp
                         }),
                         fill: new ol.style.Fill({
-                            color: [133, 255, 133, 0.4]
+                            color: colorFillTemp
                         })
                     }),
                     text: new ol.style.Text({
@@ -206,6 +220,7 @@
                 })];
                 styleCache[size] = style;
             }
+            zoom = zoomTemp;
             return style;
         }
     });
@@ -219,7 +234,7 @@
 //                        for (index=0;index < feature.p.features.length;++index) {
 //                            console.log(feature.p.features[index].p.uid);
 //                        }
-
+                        if (map.getView().getZoom()>=15) return feature;
                         return null;
                     }
                     for (index = 0; index < feature.p.features.length; ++index) {
@@ -243,6 +258,7 @@
                     var index;
                     var returnId = [];
                     if (feature.p.features.length > 1) {
+                        if (map.getView().getZoom()<15) return null;
                         for (index = 0; index < feature.p.features.length; ++index) {
                             console.log(feature.p.features[index].p.uid);
                             returnId[returnId.length] = feature.p.features[index].p.uid;
