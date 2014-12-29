@@ -54,6 +54,7 @@ class SearchController {
 //            decisionList = Decision.list(params)
             decisionList = SearchService.searchForDecisions(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
             numOfResultsDec = decisionList.totalNumOfRes
+            println decisionList.list
         } else if (params.clicked == "signer") {
 //            signerList = Signer.list(params)
             signerList = SearchService.searchForSigners(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
@@ -66,31 +67,38 @@ class SearchController {
 //            geoList = Geo.list(params)
             geoList = SearchService.searchForPOI(searchQuery, params.max.toInteger(), params.offset.toInteger(), params.sort, params.order)
             numOfResultsGeo = geoList.totalNumOfRes
-        } else {
+        }
             //TODO: Call service for search
-
+            if(decisionList == null) {
 //                decisionList = Decision.list(params)
-            decisionList = SearchService.searchForDecisions(searchQuery, 10, 0, "ada", "asc")
+                decisionList = SearchService.searchForDecisions(searchQuery, 10, 0, "ada", "asc")
 //                numOfResultsDec = Decision.getAll().size()
-            numOfResultsDec = decisionList.totalNumOfRes
-            println numOfResultsDec
+                numOfResultsDec = decisionList.totalNumOfRes
+                println numOfResultsDec
+            }
+        if(signerList==null) {
 //                 signerList = Signer.list(params)
             signerList = SearchService.searchForSigners(searchQuery, 10, 0, "ada", "asc")
 //                numOfResultsSigner = Signer.getAll().size()
             numOfResultsSigner = signerList.totalNumOfRes
             println signerList
+        }
+        if(typeList == null) {
 //                typeList = Type.list(params)
             typeList = SearchService.searchForTypes(searchQuery, 10, 0, "ada", "asc")
 //                numOfResultsType = Type.getAll().size()
             numOfResultsType = typeList.totalNumOfRes
             println numOfResultsType
+        }
 //                geoList = Geo.list(params)
             //numOfResultsGeo = Geo.getAll().size()
-            geoList = SearchService.searchForPOI(searchQuery, 10, 0, "ada", "asc")
-            numOfResultsGeo = geoList.totalNumOfRes
-            println numOfResultsGeo
-        }
+         if(geoList == null) {
+             geoList = SearchService.searchForPOI(searchQuery, 10, 0, "ada", "asc")
+             numOfResultsGeo = geoList.totalNumOfRes
+             println numOfResultsGeo
+         }
 
+//        println decisionList.list
         //showSearchResults(decisionList, signerList, typeList, geoList)
         return ['searchBarQuery': params.searchBarQuery, 'decisionList': decisionList.list, 'signerList': signerList.list, 'typeList': typeList.list, 'geoList': geoList.list, 'numOfResultsGeo': numOfResultsGeo, 'numOfResultsDec': numOfResultsDec, 'numOfResultsType': numOfResultsType, 'numOfResultsSigner': numOfResultsSigner]
 
