@@ -39,8 +39,9 @@ class SearchService {
         def nmgrk=Stem(search_param)
         def pois=indexSearch(nmgrk,"./geoindex")
         def totalNumOfRes=pois.size()
+        println totalNumOfRes
         if(pois.size()>0) {
-            if (pois.size() < par_offset + par_max - 1) {
+            if (pois.size() <= par_offset + par_max - 1) {
                 pois = pois[par_offset..pois.size() - 1]
             } else {
                 pois = pois[par_offset..par_offset + par_max - 1]
@@ -58,7 +59,7 @@ class SearchService {
         def dec=indexSearch(subject,"./decindex")
         def totalNumOfRes=dec.size()
         if(dec.size()>0) {
-            if (dec.size() < par_offset + par_max - 1) {
+            if (dec.size() <= par_offset + par_max - 1) {
                 dec = dec[par_offset..dec.size() - 1]
             } else {
                 dec = dec[par_offset..par_offset + par_max - 1]
@@ -78,7 +79,7 @@ class SearchService {
         def signer=indexSearch(subject,"./signerindex")
         def totalNumOfRes=signer.size()
         if(signer.size()>0) {
-            if (signer.size() < par_offset + par_max - 1) {
+            if (signer.size() <= par_offset + par_max - 1) {
                 signer = signer[par_offset..signer.size() - 1]
             } else {
                 signer = signer[par_offset..par_offset + par_max - 1]
@@ -100,7 +101,7 @@ class SearchService {
         def type=indexSearch(subject,"./typeindex")
         def totalNumOfRes=type.size()
         if(type.size()>0) {
-            if (type.size() < par_offset + par_max - 1) {
+            if (type.size() <= par_offset + par_max - 1) {
                 type = type[par_offset..type.size() - 1]
             } else {
                 type = type[par_offset..par_offset + par_max - 1]
