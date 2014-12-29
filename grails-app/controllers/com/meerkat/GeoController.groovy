@@ -105,8 +105,8 @@ class GeoController {
         }
     }
 
-    def mapTest() {
-        render(contentType: 'text/html;charset=UTF-8', template: 'map_with_decisions')
+    def mapTest(){
+
     }
 
     def edit(Geo geoInstance) {
