@@ -106,7 +106,7 @@ class GeoController {
     }
 
     def mapTest(){
-        
+
     }
 
     def edit(Geo geoInstance) {

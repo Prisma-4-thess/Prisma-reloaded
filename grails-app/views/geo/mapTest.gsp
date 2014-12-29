@@ -68,7 +68,7 @@
 
 <div id="map" class="map">
     <div id="popup" class="ol-popup">
-        <div id="popup-content"></div>
+        <div id="popup-content" style="font-size: x-small"></div>
     </div>
 </div>
 <script type="text/javascript">
@@ -99,22 +99,8 @@
     });
 
 //    Show only locations that have decisions associated with them
-    <g:each in="${com.meerkat.GeoService.getGeosWithDecisions()}" var="loc">
-    var name_gemp = '${loc.namegrk.replace('\n','')}';
-    var iconFeature = new ol.Feature({
-        geometry: new
-                ol.geom.Point(ol.proj.transform([${loc.longitude}, ${loc.latitude}], 'EPSG:4326', 'EPSG:3857')),
-        uid: ${loc.id},
-        namegrk: name_gemp,
-        population: 4000,
-        rainfall: 500
-    });
-    vectorSource.addFeature(iconFeature);
-    </g:each>
-    %{--console.log("MPES")--}%
-    %{--<g:each in="${com.meerkat.Geo.all}" var="loc">--}%
+    %{--<g:each in="${com.meerkat.GeoService.getGeosWithDecisions()}" var="loc">--}%
     %{--var name_gemp = '${loc.namegrk.replace('\n','')}';--}%
-    %{--console.log(${loc.latitude});--}%
     %{--var iconFeature = new ol.Feature({--}%
         %{--geometry: new--}%
                 %{--ol.geom.Point(ol.proj.transform([${loc.longitude}, ${loc.latitude}], 'EPSG:4326', 'EPSG:3857')),--}%
@@ -123,8 +109,21 @@
         %{--population: 4000,--}%
         %{--rainfall: 500--}%
     %{--});--}%
-    %{--vectorSource.addFeature(iconFeature);--}%
+    %{--vectorSource.addF4787,4807,6034,6052eature(iconFeature);--}%
     %{--</g:each>--}%
+    %{--console.log("MPES")--}%
+    <g:each in="${com.meerkat.Geo.all}" var="loc">
+    var name_gemp = '${loc.namegrk.replace('\n','')}';
+    console.log(${loc.latitude});
+    var iconFeature = new ol.Feature({
+        geometry: new
+                ol.geom.Point(ol.proj.transform([${loc.longitude}, ${loc.latitude}], 'EPSG:4326', 'EPSG:3857')),
+        uid: ${loc.id},
+        namegrk: name_gemp,
+        numOfDecision: ${loc.decisions.size()}
+    });
+    vectorSource.addFeature(iconFeature);
+    </g:each>
 
     //    for (var i=0;i<260;i++) {
     //        var iconFeature = new ol.Feature({
@@ -239,7 +238,7 @@
                     }
                     for (index = 0; index < feature.p.features.length; ++index) {
                         overlay.setPosition(feature.p.features[index].p.geometry.j);
-                        content.innerHTML = feature.p.features[index].p.namegrk;
+                        content.innerHTML = '<p style="font-size:12px">'+feature.p.features[index].p.namegrk+'</p>'+'<font-size="10">'+feature.p.features[index].p.numOfDecision+'</font>';
                         container.style.display = 'block';
                     }
                     return feature;
@@ -265,16 +264,16 @@
                         }
                         console.log(returnId);
                         ${remoteFunction( controller: 'geo',
-                    action: 'listGeos',
-                    params: '\'geoList=\' + returnId')}
+                    action: 'listGeosFromMap',
+                    params: '\'ids=\' + returnId')}
                         return null;
                     }
                     for (index = 0; index < feature.p.features.length; ++index) {
                         console.log(feature.p.features[index].p.uid + ' clicked!');
                         var returningId = feature.p.features[index].p.uid;
                         ${remoteFunction( controller: 'geo',
-                    action: 'showGeo',
-                    params: '\'geoInstance=\' + returningId')}
+                    action: 'showDecisionsOfGeo',
+                    params: '\'geoId=\' + returningId')}
                     }
                     return feature;
                 });
