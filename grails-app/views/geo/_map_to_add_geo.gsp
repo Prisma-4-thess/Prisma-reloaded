@@ -8,10 +8,13 @@
     <title>OpenLayers 3 Example</title>
     <link rel="stylesheet" href="http://openlayers.org/en/v3.0.0/css/ol.css" type="text/css"/>
     <script src="http://openlayers.org/en/v3.0.0/build/ol.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 </head>
 <body>
 <div id="map" class="mapToAddDec"></div>
 <script type="text/javascript">
+    var geocoder;
+    geocoder = new google.maps.Geocoder();
     var map = new ol.Map({
         target: document.getElementById('map'),
         layers: [
@@ -33,8 +36,24 @@
         vectorSource.clear();
         //save position and set map center
         var pos = evt.coordinate;
-        map.getView().setCenter(pos);
-
+        console.log(pos[0],pos[1]);
+        var newPoint = ol.proj.transform([pos[0], pos[1]], 'EPSG:3857', 'EPSG:4326')
+        console.log(newPoint);
+        var latlng = new google.maps.LatLng(newPoint[1], newPoint[0]);
+        geocoder.geocode({'latLng': latlng}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    console.log(results[0].formatted_address);
+                    document.getElementById('latitude').value = newPoint[1];
+                    document.getElementById('longitude').value = newPoint[0];
+                    document.getElementById('address').value = results[0].formatted_address;
+                } else {
+                    alert('No results found');
+                }
+            } else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
         //create icon at new map center
         var iconFeature = new ol.Feature({
             geometry: new ol.geom.Point(pos)
