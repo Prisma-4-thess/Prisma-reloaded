@@ -13,7 +13,16 @@
 </head>
 
 <body>
-${typeInstance.label}
-<g:render template="/decision/list" model="['decisionList': decisionList, 'numOfResults': numOfResults,'offset':offset]"/>
+<div class="container-fluid">
+
+    <div class="row"><div class="col-md-12"><p></p></div></div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">${typeInstance.label}</div>
+
+        <div class="row"><div class="col-md-12"><p></p></div></div>
+        <g:render template="/decision/list" model="['decisionList': decisionList, 'numOfResults': numOfResults, 'offset': offset]"/>
+    </div>
+</div>
 </body>
 </html>
