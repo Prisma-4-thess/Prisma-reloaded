@@ -54,7 +54,11 @@
 
                 <td>${fieldValue(bean: decisionInstance, field: "subject")}</td>
 
-                <td>${fieldValue(bean: decisionInstance, field: "signers")}</td>
+                <td>
+                    <g:each in="${decisionInstance.signers}">
+                        ${it}
+                    </g:each>
+                </td>
 
             </tr>
             <tr id="decision${i}" class="resultsDetails">

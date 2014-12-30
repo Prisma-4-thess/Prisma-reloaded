@@ -20,10 +20,10 @@
         <g:each in="${typeList}" status="i" var="typeInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'} mouseStyle" id="testType${i}" onclick="showType('#type${i}')">
 
-                <td><g:link controller="decision" action="listDecisionOfType"
-                            id="${typeInstance.id}">${fieldValue(bean: typeInstance, field: "label")}</g:link></td>
+                <td>${fieldValue(bean: typeInstance, field: "label")}</td>
 
-                <td></td>
+                <td><g:link controller="decision" action="listDecisionOfType"
+                            id="${typeInstance.id}">${com.meerkat.SearchService.numOfDecisionOfType(typeInstance.id)}</g:link></td>
 
             </tr>
             %{--
