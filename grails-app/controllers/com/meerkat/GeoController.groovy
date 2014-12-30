@@ -46,8 +46,11 @@ class GeoController {
      * @return geoInstance: Geo to show its decisions
      */
     def showDecisionsOfGeo(Geo geoInstance) {
-        def decisionList=geoInstance.decisions
-
+        if(params.geoId) {
+            geoInstance = Geo.get(params.long('geoId'))
+        }
+        def decisionList = geoInstance.decisions
+        println(decisionList)
         render(template: 'geo_decisions_list', model: ['geoInstance': geoInstance, 'decisionList': decisionList])
     }
     /**

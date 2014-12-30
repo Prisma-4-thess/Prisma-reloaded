@@ -265,6 +265,7 @@
                         console.log(returnId);
                         ${remoteFunction( controller: 'geo',
                     action: 'listGeosFromMap',
+                    update: 'results',
                     params: '\'ids=\' + returnId')}
                         return null;
                     }
@@ -273,6 +274,7 @@
                         var returningId = feature.p.features[index].p.uid;
                         ${remoteFunction( controller: 'geo',
                     action: 'showDecisionsOfGeo',
+                    update: 'results',
                     params: '\'geoId=\' + returningId')}
                     }
                     return feature;
@@ -281,5 +283,6 @@
 
     map.addLayer(clusters);
 </script>
+<div id="results"></div>
 </body>
 </html>
