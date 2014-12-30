@@ -13,9 +13,7 @@
             <g:sortableColumn property="label" title="${message(code: 'type.label.label', default: 'Label')}"
                               params="['clicked': 'type', 'searchBarQuery': searchBarQuery]"/>
 
-            <g:sortableColumn property="uid" title="${message(code: 'type.uid.label', default: 'Uid')}"
-                              params="['clicked': 'type', 'searchBarQuery': searchBarQuery]"/>
-
+            <th><g:message code="type.decisions.number" default="Number of decisions"/></th>
         </tr>
         </thead>
         <tbody>
@@ -25,16 +23,17 @@
                 <td><g:link controller="decision" action="listDecisionOfType"
                             id="${typeInstance.id}">${fieldValue(bean: typeInstance, field: "label")}</g:link></td>
 
-                <td>${fieldValue(bean: typeInstance, field: "uid")}</td>
+                <td></td>
 
             </tr>
+            %{--
             <tr class="resultsDetails" id="type${i}">
                 <td colspan="2">
 
                     <g:render template="/type/show" model="['typeInstance': typeInstance, 'entityName': 'Type']"/>
 
                 </td>
-            </tr>
+            </tr>--}%
         </g:each>
         </tbody>
     </table>

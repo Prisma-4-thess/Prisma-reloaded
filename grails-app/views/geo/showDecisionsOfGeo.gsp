@@ -13,7 +13,16 @@
 </head>
 
 <body>
-${geoInstance.namegrk}
-<g:render template="/decision/list" model="['decisionList':decisionList,'numOfResults':decisionList.size()]"/>
+<div class="container-fluid">
+
+    <div class="row"><div class="col-md-12"><p></p></div></div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">${geoInstance.namegrk}</div>
+
+        <div class="row"><div class="col-md-12"><p></p></div></div>
+        <g:render template="/decision/list" model="['decisionList': decisionList, 'numOfResults': decisionList.size()]"/>
+    </div>
+</div>
 </body>
 </html>
