@@ -3,7 +3,7 @@
 %{--This should use the _list templates of the above domains--}%
 
 <div class="row"><div class="col-md-12"><p></p></div></div>
- <div class="panel panel-info" style="width: 115%">
+ <div class="panel panel-info">
     <div class="panel-heading">Decisions</div>
 
     <div class="panel-body">

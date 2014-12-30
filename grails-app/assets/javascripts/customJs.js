@@ -1,13 +1,6 @@
 /**
  * Created by giannis on 23/12/2014.
  */
-$(document).ready(function () {
-    $('.mapWithDec').css({'pointer-events':'none'});
-    $('.tooltip-actions').hide().delay(300).fadeIn('slow');
-    $('#welcomeTag').hide().delay(500).fadeIn('slow');
-    $('#mainSearch').hide().delay(700).fadeIn('slow');
-    $('#submitBtn').hide().delay(900).fadeIn('slow');
-});
 $('#fadeIn').click(function () {
     $('#mainContent').css({
         background: 'rgba(26, 188, 156,1)'

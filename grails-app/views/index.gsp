@@ -61,6 +61,13 @@
         <div class="col-md-3"></div>
     </div>
 </div>
-
+<script>
+    $(document).ready(function () {
+        $('.mapWithDec').css({'pointer-events':'none'});
+        $('.tooltip-actions').hide().delay(300).fadeIn('slow');
+        $('#welcomeTag').hide().delay(500).fadeIn('slow');
+        $('#mainSearch').hide().delay(700).fadeIn('slow');
+    });
+</script>
 </body>
 </html>

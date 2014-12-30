@@ -13,21 +13,24 @@
 </head>
 
 <body>
+<div class="container">
 <div class="row emptyRow">
-    <div class="container"></div>
+    <div class="col-md-12"></div>
 </div>
 
 <div class="row searchRow">
-    <div class="container">
+
         <div class="searchBarDefaultSize">
             <g:render template="search_bar" model="['searchBarQuery': searchBarQuery]"/>
         </div>
+</div>
 
         <g:render template="search_results"
                   model="['decisionList'   : decisionList, 'signerList': signerList, 'typeList': typeList, 'geoList': geoList,
                           'numOfResultsGeo': numOfResultsGeo, 'numOfResultsDec': numOfResultsDec, 'numOfResultsType': numOfResultsType, 'numOfResultsSigner': numOfResultsSigner,
                           'decisionOffset' : decisionOffset, 'signerOffset': signerOffset, 'typeOffset': typeOffset, 'geoOffset': geoOffset
                   ]"/>
+
     </div>
 </div>
 </body>
