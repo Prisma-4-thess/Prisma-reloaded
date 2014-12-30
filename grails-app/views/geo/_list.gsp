@@ -9,24 +9,13 @@
     <table class="table table-hover">
         <thead>
         <tr class="info">
+            <th><g:message code="geo.latitude.label" default="Latitude"/></th>
 
-            <g:sortableColumn property="latitude" title="${message(code: 'geo.latitude.label', default: 'Latitude')}"
-                              params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
+            <th><g:message code="geo.longitude.label" default="Longitude"/></th>
 
-            <g:sortableColumn property="longitude" title="${message(code: 'geo.longitude.label', default: 'Longitude')}"
-                              params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
+            <th><g:message code="geo.address.label" default="Address"/></th>
 
-            <g:sortableColumn property="address" title="${message(code: 'geo.address.label', default: 'Address')}"
-                              params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
-
-            <g:sortableColumn property="dimos" title="${message(code: 'geo.dimos.label', default: 'Dimos')}"
-                              params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
-
-            <g:sortableColumn property="namegrk" title="${message(code: 'geo.namegrk.label', default: 'Namegrk')}"
-                              params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
-
-            <g:sortableColumn property="newCat" title="${message(code: 'geo.newCat.label', default: 'New Cat')}"
-                              params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
+            <th><g:message code="geo.dimos.label" default="Dimos"/></th>
 
         </tr>
         </thead>
@@ -34,8 +23,7 @@
         <g:each in="${geoList}" status="i" var="geoInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'} mouseStyle"  id="testGeo${i}" onclick="showGeo('#geo${i}')">
 
-                <td><g:link action="show"
-                            id="${geoInstance.id}">${fieldValue(bean: geoInstance, field: "latitude")}</g:link></td>
+                <td>${fieldValue(bean: geoInstance, field: "latitude")}</td>
 
                 <td>${fieldValue(bean: geoInstance, field: "longitude")}</td>
 
@@ -43,13 +31,9 @@
 
                 <td>${fieldValue(bean: geoInstance, field: "dimos")}</td>
 
-                <td>${fieldValue(bean: geoInstance, field: "namegrk")}</td>
-
-                <td>${fieldValue(bean: geoInstance, field: "newCat")}</td>
-
             </tr>
             <tr  id="geo${i}" class="resultsDetails">
-                <td colspan="6">
+                <td colspan="4">
                     <g:render template="/geo/show" model="['geoInstance': geoInstance, 'entityName': 'Geo']"/>
                 </td>
             </tr>

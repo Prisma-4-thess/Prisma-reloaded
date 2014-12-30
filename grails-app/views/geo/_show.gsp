@@ -8,28 +8,8 @@
         <thead>
         <tr class="info">
             <th>
-                <g:if test="${geoInstance?.latitude}">
-                    <g:message code="geo.latitude.label" default="Latitude"/>
-                </g:if>
-            </th>
-            <th>
-                <g:if test="${geoInstance?.longitude}">
-                    <g:message code="geo.longitude.label" default="Longitude"/>
-                </g:if>
-            </th>
-            <th>
-                <g:if test="${geoInstance?.address}">
-                    <g:message code="geo.address.label" default="Address"/>
-                </g:if>
-            </th>
-            <th>
                 <g:if test="${geoInstance?.decisions}">
                     <g:message code="geo.decisions.label" default="Decisions"/>
-                </g:if>
-            </th>
-            <th>
-                <g:if test="${geoInstance?.dimos}">
-                    <g:message code="geo.dimos.label" default="Dimos"/>
                 </g:if>
             </th>
             <th>
@@ -39,12 +19,12 @@
             </th>
             <th>
                 <g:if test="${geoInstance?.newCat}">
-                    <g:message code="geo.newCat.label" default="New Cat"/>
+                    <g:message code="geo.newCat.label" default="New Category"/>
                 </g:if>
             </th>
             <th>
                 <g:if test="${geoInstance?.newSubCat}">
-                    <g:message code="geo.newSubCat.label" default="New Sub Cat"/>
+                    <g:message code="geo.newSubCat.label" default="New Sub Category"/>
                 </g:if>
             </th>
             <th>
@@ -66,31 +46,12 @@
         </thead>
         <tbody>
         <tr>
-            <td>
-                <g:if test="${geoInstance?.latitude}">
-                    <g:fieldValue bean="${geoInstance}" field="latitude"/>
-                </g:if>
-            </td>
-            <td>
-                <g:if test="${geoInstance?.longitude}">
-                    <g:fieldValue bean="${geoInstance}" field="longitude"/>
-                </g:if>
-            </td>
-            <td>
-                <g:if test="${geoInstance?.address}">
-                    <g:fieldValue bean="${geoInstance}" field="address"/>
-                </g:if>
-            </td>
+
             <td>
                 <g:if test="${geoInstance?.decisions}">
                     <g:each in="${geoInstance.decisions}" var="d">
-                        <g:link controller="decision" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link>
+                        ${d}
                     </g:each>
-                </g:if>
-            </td>
-            <td>
-                <g:if test="${geoInstance?.dimos}">
-                        <g:fieldValue bean="${geoInstance}" field="dimos"/>
                 </g:if>
             </td>
             <td>
@@ -121,7 +82,7 @@
             <td>
                 <g:if test="${geoInstance?.units}">
                         <g:each in="${geoInstance.units}" var="u">
-                            <g:link controller="unit" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link>
+                            ${u}
                         </g:each>
                 </g:if>
             </td>
