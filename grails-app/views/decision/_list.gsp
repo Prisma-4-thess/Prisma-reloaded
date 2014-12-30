@@ -58,7 +58,7 @@
 
             </tr>
             <tr id="decision${i}" class="decisionDetails">
-                <td colspan="5" >
+                <td colspan="5" style="padding: 0">
                     <g:render template="/decision/show"
                               model="['decisionInstance': decisionInstance, 'entityName': 'Decision']"/>
                 </td>

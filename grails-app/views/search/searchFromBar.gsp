@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container-fluid">
 <div class="row emptyRow">
     <div class="col-md-12"></div>
 </div>
