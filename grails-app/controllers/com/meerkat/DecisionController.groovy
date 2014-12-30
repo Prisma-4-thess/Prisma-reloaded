@@ -39,6 +39,29 @@ class DecisionController {
         render(template: 'list', model: ['decList': decList, 'numOfResults': decList.size()])
     }
 
+    /**
+     *Loads the template responsible to show all decisions of type given
+     */
+    def listDecisionOfType(){
+        if (params.max == null) {
+            params.max = getGrailsApplication().getConfig().pagination.defaultMax
+        }
+        if (params.offset == null) {
+
+            params.offset = getGrailsApplication().getConfig().pagination.defaultOffset.toInteger()
+        }
+        if (params.sort == null) {
+            params.sort = "ada"
+        }
+        if (params.order == null) {
+            params.order = "asc"
+        }
+
+        def type=Type.get(params.long('typeId'))
+        def dec=Decision.findAllByType(type,[max:params.max,offset:params.offset])
+        return ['typeInstance': type, 'decisionList': dec,'numOfResults':dec.size(),'offset':params.offset]
+    }
+
 /**
  * Loads the template responsible to show one decision.
  * @param decInstance : Decision to show. Can have a value if this function is called like: <g:link action="showDecision" id="${decInstance.id}">
