@@ -14,11 +14,6 @@
                     <g:message code="type.label.label" default="Label"/>
                 </g:if>
             </th>
-            <th>
-                <g:if test="${typeInstance?.uid}">
-                    <g:message code="type.uid.label" default="Uid"/>
-                </g:if>
-            </th>
         </tr>
         </thead>
         <tbody>
@@ -28,19 +23,10 @@
                     <g:fieldValue bean="${typeInstance}" field="label"/>
                 </g:if>
             </td>
-            <td>
-                <g:if test="${typeInstance?.uid}">
-                    <g:fieldValue bean="${typeInstance}" field="uid"/>
-                </g:if>
-            </td>
+
         </tr>
         </tbody>
     </table>
-
-
-
-
-
 
 
 %{--
