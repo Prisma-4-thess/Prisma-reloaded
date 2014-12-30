@@ -73,6 +73,7 @@
 
 .searchRow {
     margin-left: 0;
+    margin-right: 0;
 }
 
 .emptyRow {
@@ -125,4 +126,9 @@
 
 .mouseStyle{
     cursor: pointer;
+}
+
+.resultsDetails {
+    display: none;
+    padding:0;
 }
