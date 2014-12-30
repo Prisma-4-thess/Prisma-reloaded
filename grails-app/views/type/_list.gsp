@@ -18,22 +18,13 @@
         </thead>
         <tbody>
         <g:each in="${typeList}" status="i" var="typeInstance">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'} mouseStyle" id="testType${i}" onclick="showType('#type${i}')">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'} ">
 
                 <td>${fieldValue(bean: typeInstance, field: "label")}</td>
 
-                <td><g:link controller="decision" action="listDecisionOfType"
+                <td class="mouseStyle"><g:link controller="decision" action="listDecisionOfType"
                             id="${typeInstance.id}">${com.meerkat.SearchService.numOfDecisionOfType(typeInstance.id)}</g:link></td>
-
             </tr>
-            %{--
-            <tr class="resultsDetails" id="type${i}">
-                <td colspan="2">
-
-                    <g:render template="/type/show" model="['typeInstance': typeInstance, 'entityName': 'Type']"/>
-
-                </td>
-            </tr>--}%
         </g:each>
         </tbody>
     </table>
@@ -42,8 +33,3 @@
         <g:paginate total="${numOfResults ?: 0}" offset="${offset}" params="['clicked': 'type', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>
-<script>
-    function showType(type){
-        $(type).fadeToggle(500);
-    }
-</script>
