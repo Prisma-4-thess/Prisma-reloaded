@@ -57,7 +57,7 @@ class DecisionController {
             params.order = "asc"
         }
 
-        def type=Type.get(params.long('typeId'))
+        def type=Type.get(params.long('id'))
         def dec=Decision.findAllByType(type,[max:params.max,offset:params.offset])
         return ['typeInstance': type, 'decisionList': dec,'numOfResults':dec.size(),'offset':params.offset]
     }

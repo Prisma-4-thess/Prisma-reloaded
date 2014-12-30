@@ -163,4 +163,9 @@ class SearchService {
         }
         return filteredText
     }
+
+    static numOfDecisionOfType(long id){
+        def type=Type.get(id)
+        return Decision.findAllByType(type).size()
+    }
 }

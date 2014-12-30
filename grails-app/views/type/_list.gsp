@@ -22,7 +22,7 @@
         <g:each in="${typeList}" status="i" var="typeInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'} mouseStyle" id="testType${i}" onclick="showType('#type${i}')">
 
-                <td><g:link action="show"
+                <td><g:link controller="decision" action="listDecisionOfType"
                             id="${typeInstance.id}">${fieldValue(bean: typeInstance, field: "label")}</g:link></td>
 
                 <td>${fieldValue(bean: typeInstance, field: "uid")}</td>
