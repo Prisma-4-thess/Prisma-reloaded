@@ -18,7 +18,7 @@
 </div>
 
 
-<div class="panel panel-info" style="width: 115%">
+<div class="panel panel-info" >
     <div class="panel-heading">Signers</div>
     <div class="panel-body">
         <p>Here we can add some info about the heading</p>
@@ -31,18 +31,29 @@
 </g:else>
 </div>
 
-
-<h1>Types</h1>
+<div class="panel panel-info" >
+    <div class="panel-heading">Types</div>
+    <div class="panel-body">
+        <p>Here we can add some info about the heading</p>
+    </div>
 <g:if test="${typeList}">
     <g:render template="/type/list" model="['typeList': typeList, 'numOfResults': numOfResultsType, 'offset':typeOffset]"/>
 </g:if>
 <g:else>
     <g:render template="search_no_results"/>
 </g:else>
-<h1>Geos</h1>
+</div>
+
+
+<div class="panel panel-info" >
+    <div class="panel-heading">Geos</div>
+    <div class="panel-body">
+        <p>Here we can add some info about the heading</p>
+    </div>
 <g:if test="${geoList}">
     <g:render template="/geo/list" model="['geoList': geoList, 'numOfResults': numOfResultsGeo, 'offset':geoOffset]"/>
 </g:if>
 <g:else>
     <g:render template="search_no_results"/>
 </g:else>
+</div>

@@ -2,15 +2,55 @@
 %{--parameters: typeInstance--}%
 
 <div id="show-type" class="content scaffold-show" role="main">
-    <h1><g:message code="default.show.label" args="[entityName]" /> <g:fieldValue bean="${typeInstance}" field="label"/></h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
+
+    <table class="table table-hover">
+        <thead>
+        <tr class="info">
+            <th>
+                <g:if test="${typeInstance?.label}">
+                    <g:message code="type.label.label" default="Label"/>
+                </g:if>
+            </th>
+            <th>
+                <g:if test="${typeInstance?.uid}">
+                    <g:message code="type.uid.label" default="Uid"/>
+                </g:if>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <g:if test="${typeInstance?.label}">
+                    <g:fieldValue bean="${typeInstance}" field="label"/>
+                </g:if>
+            </td>
+            <td>
+                <g:if test="${typeInstance?.uid}">
+                    <g:fieldValue bean="${typeInstance}" field="uid"/>
+                </g:if>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+%{--
+
+
     <ol class="property-list type">
 
         <g:if test="${typeInstance?.label}">
             <li class="fieldcontain">
-                <span id="label-label" class="property-label"><g:message code="type.label.label" default="Label" /></span>
+                <span id="label-label" class="property-label"><g:message code="type.label.label" default="Label"/></span>
 
                 <span class="property-value" aria-labelledby="label-label"><g:fieldValue bean="${typeInstance}" field="label"/></span>
 
@@ -19,12 +59,12 @@
 
         <g:if test="${typeInstance?.uid}">
             <li class="fieldcontain">
-                <span id="uid-label" class="property-label"><g:message code="type.uid.label" default="Uid" /></span>
+                <span id="uid-label" class="property-label"><g:message code="type.uid.label" default="Uid"/></span>
 
                 <span class="property-value" aria-labelledby="uid-label"><g:fieldValue bean="${typeInstance}" field="uid"/></span>
 
             </li>
         </g:if>
 
-    </ol>
+    </ol>--}%
 </div>

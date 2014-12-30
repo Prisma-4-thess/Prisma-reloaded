@@ -6,9 +6,9 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <table>
+    <table class="table table-hover">
         <thead>
-        <tr>
+        <tr class="info">
 
             <g:sortableColumn property="latitude" title="${message(code: 'geo.latitude.label', default: 'Latitude')}"
                               params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
@@ -32,7 +32,7 @@
         </thead>
         <tbody>
         <g:each in="${geoList}" status="i" var="geoInstance">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'} mouseStyle"  id="testGeo${i}" onclick="showGeo('#geo${i}')">
 
                 <td><g:link action="show"
                             id="${geoInstance.id}">${fieldValue(bean: geoInstance, field: "latitude")}</g:link></td>
@@ -48,13 +48,11 @@
                 <td>${fieldValue(bean: geoInstance, field: "newCat")}</td>
 
             </tr>
-            %{--<tr>
+            <tr  id="geo${i}" class="resultsDetails">
                 <td colspan="6">
-
                     <g:render template="/geo/show" model="['geoInstance': geoInstance, 'entityName': 'Geo']"/>
-
                 </td>
-            </tr>--}%
+            </tr>
         </g:each>
         </tbody>
     </table>
@@ -63,3 +61,8 @@
         <g:paginate total="${numOfResults ?: 0}" offset="${offset}" params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>
+<script>
+    function showGeo(geo){
+        $(geo).fadeToggle(500);
+    }
+</script>
