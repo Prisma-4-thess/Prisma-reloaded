@@ -48,18 +48,18 @@
                 <td>${fieldValue(bean: geoInstance, field: "newCat")}</td>
 
             </tr>
-            <tr>
+            %{--<tr>
                 <td colspan="6">
 
                     <g:render template="/geo/show" model="['geoInstance': geoInstance, 'entityName': 'Geo']"/>
 
                 </td>
-            </tr>
+            </tr>--}%
         </g:each>
         </tbody>
     </table>
 
     <div class="pagination">
-        <g:paginate total="${numOfResults ?: 0}" params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
+        <g:paginate total="${numOfResults ?: 0}" offset="${offset}" params="['clicked': 'geo', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>

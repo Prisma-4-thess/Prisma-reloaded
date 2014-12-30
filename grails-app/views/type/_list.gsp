@@ -28,18 +28,18 @@
                 <td>${fieldValue(bean: typeInstance, field: "uid")}</td>
 
             </tr>
-            <tr>
+            %{--<tr>
                 <td colspan="6">
 
                     <g:render template="/type/show" model="['typeInstance': typeInstance, 'entityName': 'Type']"/>
 
                 </td>
-            </tr>
+            </tr>--}%
         </g:each>
         </tbody>
     </table>
 
     <div class="pagination">
-        <g:paginate total="${numOfResults ?: 0}" params="['clicked': 'type', 'searchBarQuery': searchBarQuery]"/>
+        <g:paginate total="${numOfResults ?: 0}" offset="${offset}" params="['clicked': 'type', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>
