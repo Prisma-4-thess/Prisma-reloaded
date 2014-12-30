@@ -12,7 +12,17 @@
 </head>
 
 <body>
-<g:render template="list" model="['geoList': geoList, 'numOfResults': geoList.size(), 'offset':geoOffset]"/>
+<div class="container-fluid">
 
+    <div class="row"><div class="col-md-12"><p></p></div></div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Locations</div>
+
+        <div class="row"><div class="col-md-12"><p></p></div></div>
+
+        <g:render template="list" model="['geoList': geoList, 'numOfResults': geoList.size(), 'offset': geoOffset]"/>
+    </div>
+</div>
 </body>
 </html>
