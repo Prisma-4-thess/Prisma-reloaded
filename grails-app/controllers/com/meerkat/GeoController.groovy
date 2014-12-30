@@ -35,10 +35,11 @@ class GeoController {
     def listGeosFromMap() {
         def geoList=[]
         def geoIds = params.ids.toString().split(",")
+        print geoIds[0]
         geoIds.each { g ->
             geoList.add(Geo.findById(g.toLong()))
         }
-        listGeos(geoList)
+        return ['geoList':geoList]
     }
 
     /**
@@ -46,12 +47,13 @@ class GeoController {
      * @return geoInstance: Geo to show its decisions
      */
     def showDecisionsOfGeo(Geo geoInstance) {
+        print params.long('geoId')
         if(params.geoId) {
             geoInstance = Geo.get(params.long('geoId'))
         }
         def decisionList = geoInstance.decisions
         println(decisionList)
-        render(template: 'geo_decisions_list', model: ['geoInstance': geoInstance, 'decisionList': decisionList])
+        return ['geoInstance': geoInstance, 'decisionList': decisionList]
     }
     /**
      * Gets nearby geos and load the template to show them

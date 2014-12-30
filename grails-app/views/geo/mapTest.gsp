@@ -263,19 +263,14 @@
                             returnId[returnId.length] = feature.p.features[index].p.uid;
                         }
                         console.log(returnId);
-                        ${remoteFunction( controller: 'geo',
-                    action: 'listGeosFromMap',
-                    update: 'results',
-                    params: '\'ids=\' + returnId')}
+                        window.open("${createLink(uri: '/')}geo/listGeosFromMap?geoId="+returnId);
                         return null;
                     }
                     for (index = 0; index < feature.p.features.length; ++index) {
                         console.log(feature.p.features[index].p.uid + ' clicked!');
                         var returningId = feature.p.features[index].p.uid;
-                        ${remoteFunction( controller: 'geo',
-                    action: 'showDecisionsOfGeo',
-                    update: 'results',
-                    params: '\'geoId=\' + returningId')}
+                        window.open("${createLink(uri: '/')}geo/showDecisionsOfGeo?geoId="+returningId);
+
                     }
                     return feature;
                 });
