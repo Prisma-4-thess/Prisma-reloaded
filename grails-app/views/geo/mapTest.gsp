@@ -109,7 +109,7 @@
         population: 4000,
         rainfall: 500
     });
-    vectorSource.addF4787,4807,6034,6052eature(iconFeature);
+    vectorSource.addFeature(iconFeature);
     </g:each>
     //console.log("MPES")
     //<g:each in="${com.meerkat.Geo.all}" var="loc">
