@@ -23,7 +23,11 @@
             <g:render template="search_bar" model="['searchBarQuery': searchBarQuery]"/>
         </div>
 
-        <g:render template="search_results" model="['decisionList': decisionList, 'signerList': signerList, 'typeList': typeList, 'geoList': geoList]"/>
+        <g:render template="search_results"
+                  model="['decisionList'   : decisionList, 'signerList': signerList, 'typeList': typeList, 'geoList': geoList,
+                          'numOfResultsGeo': numOfResultsGeo, 'numOfResultsDec': numOfResultsDec, 'numOfResultsType': numOfResultsType, 'numOfResultsSigner': numOfResultsSigner,
+                          'decisionOffset' : decisionOffset, 'signerOffset': signerOffset, 'typeOffset': typeOffset, 'geoOffset': geoOffset
+                  ]"/>
     </div>
 </div>
 </body>

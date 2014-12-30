@@ -52,20 +52,20 @@
                 <td>${fieldValue(bean: signerInstance, field: "lastName")}</td>
 
             </tr>
-            <tr>
+            %{--<tr>
                 <td colspan="6">
 
                     <g:render template="/signer/show"
                               model="['signerInstance': signerInstance, 'entityName': 'Signer']"/>
 
                 </td>
-            </tr>
+            </tr>--}%
         </g:each>
         </tbody>
     </table>
 
     <div class="pagination">
-        <g:paginate total="${numOfResults ?: 0}"
+        <g:paginate total="${numOfResults ?: 0}" offset="${offset}"
                     params="['clicked': 'signer', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>

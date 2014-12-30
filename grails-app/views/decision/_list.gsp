@@ -68,7 +68,7 @@
     </table>
 
     <div class="pagination">
-        <g:paginate total="${numOfResults ?: 0}"
+        <g:paginate total="${numOfResults ?: 0}" offset="${offset}"
                     params="['clicked': 'decision', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>

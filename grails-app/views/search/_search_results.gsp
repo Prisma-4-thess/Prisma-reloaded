@@ -10,7 +10,7 @@
         <p>Here we can add some info about the heading</p>
     </div>
     <g:if test="${decisionList}">
-        <g:render template="/decision/list" model="['decisionList': decisionList, 'numOfResults': numOfResultsDec]"/>
+        <g:render template="/decision/list" model="['decisionList': decisionList, 'numOfResults': numOfResultsDec, 'offset':decisionOffset]"/>
     </g:if>
     <g:else>
         <g:render template="search_no_results"/>
@@ -19,21 +19,21 @@
 
 <h1>Signers</h1>
 <g:if test="${signerList}">
-    <g:render template="/signer/list" model="['signerList': signerList, 'numOfResults': numOfResultsSigner]"/>
+    <g:render template="/signer/list" model="['signerList': signerList, 'numOfResults': numOfResultsSigner, 'offset':signerOffset]"/>
 </g:if>
 <g:else>
     <g:render template="search_no_results"/>
 </g:else>
 <h1>Types</h1>
 <g:if test="${typeList}">
-    <g:render template="/type/list" model="['typeList': typeList, 'numOfResults': numOfResultsType]"/>
+    <g:render template="/type/list" model="['typeList': typeList, 'numOfResults': numOfResultsType, 'offset':typeOffset]"/>
 </g:if>
 <g:else>
     <g:render template="search_no_results"/>
 </g:else>
 <h1>Geos</h1>
 <g:if test="${geoList}">
-    <g:render template="/geo/list" model="['geoList': geoList, 'numOfResults': numOfResultsGeo]"/>
+    <g:render template="/geo/list" model="['geoList': geoList, 'numOfResults': numOfResultsGeo, 'offset':geoOffset]"/>
 </g:if>
 <g:else>
     <g:render template="search_no_results"/>
