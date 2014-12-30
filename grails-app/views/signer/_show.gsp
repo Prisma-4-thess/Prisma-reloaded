@@ -10,11 +10,6 @@
         <thead>
         <tr class="info">
             <th>
-                <g:if test="${signerInstance?.uid}">
-                    <g:message code="signer.uid.label" default="Uid"/>
-                </g:if>
-            </th>
-            <th>
                 <g:if test="${signerInstance?.active}">
                     <g:message code="signer.active.label" default="Active"/>
                 </g:if>
@@ -30,29 +25,14 @@
                 </g:if>
             </th>
             <th>
-                <g:if test="${signerInstance?.firstName}">
-                    <g:message code="signer.firstName.label" default="First Name"/>
-                </g:if>
-            </th>
-            <th>
-                <g:if test="${signerInstance?.lastName}">
-                    <g:message code="signer.lastName.label" default="Last Name"/>
-                </g:if>
-            </th>
-            <th>
                 <g:if test="${signerInstance?.org}">
-                    <g:message code="signer.org.label" default="Org"/>
+                    <g:message code="signer.org.label" default="Organization"/>
                 </g:if>
             </th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>
-                <g:if test="${signerInstance?.uid}">
-                    <g:fieldValue bean="${signerInstance}" field="uid"/>
-                </g:if>
-            </td>
             <td>
                 <g:if test="${signerInstance?.active}">
                     <g:formatBoolean boolean="${signerInstance?.active}"/>
@@ -68,20 +48,10 @@
                     <g:fieldValue bean="${signerInstance}" field="activeUntil"/>
                 </g:if>
             </td>
-            <td>
-                <g:if test="${signerInstance?.firstName}">
-                    <g:fieldValue bean="${signerInstance}" field="firstName"/>
-                </g:if>
-            </td>
-            <td>
-                <g:if test="${signerInstance?.lastName}">
-                    <g:fieldValue bean="${signerInstance}" field="lastName"/>
-                </g:if>
-            </td>
+
             <td>
                 <g:if test="${signerInstance?.org}">
-                    <g:link controller="organization" action="show"
-                            id="${signerInstance?.org?.id}">${signerInstance?.org?.encodeAsHTML()}</g:link>
+                    <g:fieldValue bean="${signerInstance}" field="org"/>
                 </g:if>
             </td>
         </tr>
