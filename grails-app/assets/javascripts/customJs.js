@@ -37,3 +37,11 @@ $('#fadeOut').click(function () {
     $('#overMap').fadeIn('slow');
     $('.tooltip-actions').fadeIn('slow');
 });
+
+/******START- Smooth scroll to element******/
+function scrollTo(elementId, duration) {
+    $('html, body').animate({
+        scrollTop: $("#" + elementId).offset().top
+    }, duration);
+}
+/******END- Smooth scroll to element******/
