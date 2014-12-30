@@ -7,7 +7,7 @@
     <div class="panel-heading">Decisions</div>
 
     <div class="panel-body">
-        <p>Here we can add some info about the heading</p>
+        <p>Government decisions containing the search terms.</p>
     </div>
     <g:if test="${decisionList}">
         <g:render template="/decision/list" model="['decisionList': decisionList, 'numOfResults': numOfResultsDec, 'offset':decisionOffset]"/>
@@ -21,7 +21,7 @@
 <div class="panel panel-info" >
     <div class="panel-heading">Signers</div>
     <div class="panel-body">
-        <p>Here we can add some info about the heading</p>
+        <p>List of signers whose names include the search terms.</p>
     </div>
 <g:if test="${signerList}">
     <g:render template="/signer/list" model="['signerList': signerList, 'numOfResults': numOfResultsSigner, 'offset':signerOffset]"/>
@@ -34,7 +34,7 @@
 <div class="panel panel-info" >
     <div class="panel-heading">Types</div>
     <div class="panel-body">
-        <p>Here we can add some info about the heading</p>
+        <p>Types containing the search terms.</p>
     </div>
 <g:if test="${typeList}">
     <g:render template="/type/list" model="['typeList': typeList, 'numOfResults': numOfResultsType, 'offset':typeOffset]"/>
@@ -46,9 +46,9 @@
 
 
 <div class="panel panel-info" >
-    <div class="panel-heading">Geos</div>
+    <div class="panel-heading">Locations</div>
     <div class="panel-body">
-        <p>Here we can add some info about the heading</p>
+        <p>Locations containing the search terms.</p>
     </div>
 <g:if test="${geoList}">
     <g:render template="/geo/list" model="['geoList': geoList, 'numOfResults': numOfResultsGeo, 'offset':geoOffset]"/>
