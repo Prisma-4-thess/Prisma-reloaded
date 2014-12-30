@@ -7,6 +7,9 @@ class Unit {
     Organization parent
     static belongsTo = [geo:Geo]
 
+    String toString(){
+        return label
+    }
     static constraints = {
         uid(unique: true)
     }

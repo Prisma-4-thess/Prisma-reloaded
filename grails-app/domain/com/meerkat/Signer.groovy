@@ -8,6 +8,10 @@ class Signer {
     Organization org
     Long activeFrom
     Long activeUntil
+
+    String toString(){
+        return firstName+" "+lastName
+    }
     static constraints = {
         uid(unique: true)
 
