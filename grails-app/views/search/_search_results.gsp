@@ -17,13 +17,21 @@
     </g:else>
 </div>
 
-<h1>Signers</h1>
+
+<div class="panel panel-info" style="width: 115%">
+    <div class="panel-heading">Signers</div>
+    <div class="panel-body">
+        <p>Here we can add some info about the heading</p>
+    </div>
 <g:if test="${signerList}">
     <g:render template="/signer/list" model="['signerList': signerList, 'numOfResults': numOfResultsSigner, 'offset':signerOffset]"/>
 </g:if>
 <g:else>
     <g:render template="search_no_results"/>
 </g:else>
+</div>
+
+
 <h1>Types</h1>
 <g:if test="${typeList}">
     <g:render template="/type/list" model="['typeList': typeList, 'numOfResults': numOfResultsType, 'offset':typeOffset]"/>

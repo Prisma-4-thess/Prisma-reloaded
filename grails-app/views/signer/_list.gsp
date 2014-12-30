@@ -6,9 +6,9 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <table>
+    <table class="table table-hover">
         <thead>
-        <tr>
+        <tr class="info">
 
             <g:sortableColumn property="uid" title="${message(code: 'signer.uid.label', default: 'Uid')}"
                               params="['clicked': 'signer', 'searchBarQuery': searchBarQuery]"/>
@@ -36,7 +36,7 @@
         </thead>
         <tbody>
         <g:each in="${signerList}" status="i" var="signerInstance">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'} mouseStyle" id="testSigner${i}" onclick="showSigner('#signer${i}')">
 
                 <td><g:link action="show"
                             id="${signerInstance.id}">${fieldValue(bean: signerInstance, field: "uid")}</g:link></td>
@@ -52,14 +52,14 @@
                 <td>${fieldValue(bean: signerInstance, field: "lastName")}</td>
 
             </tr>
-            %{--<tr>
+            <tr class="resultsDetails" id="signer${i}">
                 <td colspan="6">
 
                     <g:render template="/signer/show"
                               model="['signerInstance': signerInstance, 'entityName': 'Signer']"/>
 
                 </td>
-            </tr>--}%
+            </tr>
         </g:each>
         </tbody>
     </table>
@@ -69,3 +69,8 @@
                     params="['clicked': 'signer', 'searchBarQuery': searchBarQuery]"/>
     </div>
 </div>
+<script>
+    function showSigner(signer){
+        $(signer).fadeToggle(500);
+    }
+</script>

@@ -57,8 +57,8 @@
                 <td>${fieldValue(bean: decisionInstance, field: "signers")}</td>
 
             </tr>
-            <tr id="decision${i}" class="decisionDetails">
-                <td colspan="5" style="padding: 0">
+            <tr id="decision${i}" class="resultsDetails">
+                <td colspan="5" >
                     <g:render template="/decision/show"
                               model="['decisionInstance': decisionInstance, 'entityName': 'Decision']"/>
                 </td>
@@ -74,9 +74,6 @@
 </div>
 
 <script>
-    $(document).ready(function(){
-        $(".decisionDetails").hide();
-    });
     function showDecision(decision){
             $(decision).fadeToggle(500);
     }
