@@ -62,7 +62,9 @@ class GeoController {
      * @return geoList: List of Geo
      */
     def showNearbyGeo(double lat, double lon, double radius, int max) {
-
+        if (lat==null || lat==0) lat = params.double('lat');
+        if (lon==null || lon==0) lat = params.double('lon');
+        print(lat.toString()+lon.toString())
         if (params.radius == null) radius = getGrailsApplication().getConfig().geo.nearby.radius.toDouble()
 
         if (params.max == null) max = getGrailsApplication().getConfig().geo.nearby.max.toDouble()

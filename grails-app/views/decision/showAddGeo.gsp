@@ -1,3 +1,4 @@
+<%@ page import="com.meerkat.Geo" %>
 <%--
   Created by IntelliJ IDEA.
   User: spirosbond
@@ -25,7 +26,6 @@
         </div>
 
         <div id="nearbyGeos">
-            skataki
         </div>
     </div>
 
@@ -68,6 +68,15 @@
 </div>
 </div>
 <script>
+    function updateFields(name, lat, lng, addr) {
+        document.getElementById('latitude').value = lat;
+        document.getElementById('longitude').value = lng;
+        document.getElementById('address').value = addr;
+        document.getElementById('namegrk').value = name;
+        updateMarker(lat,lng);
+//        marker.setMap(null);
+//        placeMarker(new google.maps.LatLng(lat, lng), map);
+    }
 
     function showResult() {
         $('#response-image').css({
@@ -75,11 +84,14 @@
             visibility: "visible"
         }).animate({opacity: 1}, 'slow').delay(2000).animate({opacity: 0}, 'slow');
     }
-
+    function getNearbyGeoFromController(){
+    var paramStr = 'lat='+document.getElementById('latitude').value+'&lon='+document.getElementById('longitude').value;
+    console.log(paramStr)
     ${remoteFunction( controller: 'geo',
                     action: 'showNearbyGeo',
                     update: [success: 'nearbyGeos', failure: 'nearbyGeos'],
-                    params: '\'lat=\' + 40.599+ \'&lon=\' + 22.968')}
+                    params: 'paramStr')}
+    }
 
 </script>
 
@@ -122,6 +134,7 @@
                     document.getElementById('latitude').value = newPoint[1];
                     document.getElementById('longitude').value = newPoint[0];
                     document.getElementById('address').value = results[0].formatted_address;
+                    getNearbyGeoFromController();
                 } else {
                     alert('No results found');
                 }
@@ -151,6 +164,14 @@
         })
     });
     map.addLayer(vectorLayer);
+
+    function updateMarker(lat,lng){
+        vectorSource.clear();
+        var iconFeature = new ol.Feature({
+            geometry: new ol.geom.Point(ol.proj.transform([lng, lat], 'EPSG:4326', 'EPSG:3857'))
+        });
+        vectorSource.addFeature(iconFeature);
+    }
 
 </script>
 
