@@ -33,7 +33,7 @@ class GeoController {
      * @param geoList :
      */
     def listGeosFromMap() {
-        List<Geo> geoList;
+        def geoList=[]
         def geoIds = params.ids.toString().split(",")
         geoIds.each { g ->
             geoList.add(Geo.findById(g.toLong()))
@@ -46,10 +46,11 @@ class GeoController {
      * @return geoInstance: Geo to show its decisions
      */
     def showDecisionsOfGeo(Geo geoInstance) {
-        List<Decision> decisionList
-        if (geoInstance == null) geoInstance == Geo.findById(params.geoId.toDouble())
-        decisionList = geoInstance.decisions
-
+        if(params.geoId) {
+            geoInstance = Geo.get(params.long('geoId'))
+        }
+        def decisionList = geoInstance.decisions
+        println(decisionList)
         render(template: 'geo_decisions_list', model: ['geoInstance': geoInstance, 'decisionList': decisionList])
     }
     /**

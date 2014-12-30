@@ -109,7 +109,7 @@
         population: 4000,
         rainfall: 500
     });
-    vectorSource.addF4787,4807,6034,6052eature(iconFeature);
+    vectorSource.addFeature(iconFeature);
     </g:each>
     //console.log("MPES")
     //<g:each in="${com.meerkat.Geo.all}" var="loc">
@@ -265,6 +265,7 @@
                         console.log(returnId);
                         ${remoteFunction( controller: 'geo',
                     action: 'listGeosFromMap',
+                    update: 'results',
                     params: '\'ids=\' + returnId')}
                         return null;
                     }
@@ -273,6 +274,7 @@
                         var returningId = feature.p.features[index].p.uid;
                         ${remoteFunction( controller: 'geo',
                     action: 'showDecisionsOfGeo',
+                    update: 'results',
                     params: '\'geoId=\' + returningId')}
                     }
                     return feature;
@@ -281,5 +283,6 @@
 
     map.addLayer(clusters);
 </script>
+<div id="results"></div>
 </body>
 </html>
