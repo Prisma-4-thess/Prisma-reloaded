@@ -33,7 +33,7 @@ class GeoController {
      * @param geoList :
      */
     def listGeosFromMap() {
-        List<Geo> geoList;
+        def geoList=[]
         def geoIds = params.ids.toString().split(",")
         geoIds.each { g ->
             geoList.add(Geo.findById(g.toLong()))
