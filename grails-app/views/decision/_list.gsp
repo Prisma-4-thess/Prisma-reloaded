@@ -9,44 +9,22 @@
     <table class="table table-hover">
         <thead>
         <tr class="info">
-            %{--
-            <g:sortableColumn property="issueDate"
-                              title="${message(code: 'decision.issueDate.label', default: 'Issue Date')}"
-                              params="['clicked': 'decision', 'searchBarQuery': searchBarQuery]"/>
---}%
-            <g:sortableColumn property="ada" title="${message(code: 'decision.ada.label', default: 'Ada')}"
-                              params="['clicked': 'decision', 'searchBarQuery': searchBarQuery]"/>
+            <th><g:message code="decision.ada.label" default="Ada"/></th>
 
-    %{--        <g:sortableColumn property="correctedVersionId"
-                              title="${message(code: 'decision.correctedVersionId.label', default: 'Corrected Version Id')}"
-                              params="['clicked': 'decision', 'searchBarQuery': searchBarQuery]"/>
---}%
             <th><g:message code="decision.geo.label" default="Geo"/></th>
 
-            <g:sortableColumn property="protocolNumber"
-                              title="${message(code: 'decision.protocolNumber.label', default: 'Protocol Number')}"
-                              params="['clicked': 'decision', 'searchBarQuery': searchBarQuery]"/>
+            <th><g:message code="decision.protocolNumber.label" default="Protocol Number"/></th>
 
-            <g:sortableColumn property="subject" title="${message(code: 'decision.subject.label', default: 'Subject')}"
-                              params="['clicked': 'decision', 'searchBarQuery': searchBarQuery]"/>
+            <th><g:message code="decision.subject.label" default="Subject"/></th>
 
-            <g:sortableColumn property="signers" title="${message(code: 'decision.signers.label', default: 'Signers')}"
-                               params="['clicked':'decision','searchBarQuery': searchBarQuery]" />
-
+            <th><g:message code="decision.signers.label" default="Signers"/></th>
         </tr>
         </thead>
         <tbody>
         <g:each in="${decisionList}" status="i" var="decisionInstance">
             <tr id="test${i}" class="${(i % 2) == 0 ? 'even' : 'odd'} mouseStyle" onclick="showDecision('#decision${i}')">
-%{--
-
-                <td ><g:link action="show"
-                            id="${decisionInstance.id}">${fieldValue(bean: decisionInstance, field: "issueDate")}</g:link></td>
---}%
 
                 <td>${fieldValue(bean: decisionInstance, field: "ada")}</td>
-
-%{--                <td>${fieldValue(bean: decisionInstance, field: "correctedVersionId")}</td>--}%
 
                 <td>${fieldValue(bean: decisionInstance, field: "geo")}</td>
 

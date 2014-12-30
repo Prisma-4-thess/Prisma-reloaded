@@ -2,7 +2,6 @@
 %{--parameters: decisionInstance--}%
 
 <div id="show-decision" class="content scaffold-show" role="main">
-   %{-- <h1><g:message code="default.show.label" args="[entityName]"/> <g:fieldValue bean="${decisionInstance}" field="ada"/></h1>--}%
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -16,23 +15,8 @@
                 </g:if>
             </th>
             <th>
-                <g:if test="${decisionInstance?.extraFields}">
-                    <g:message code="decision.extraFields.label" default="Extra Fields"/>
-                </g:if>
-            </th>
-            %{-- <th>
-                 <g:if test="${decisionInstance?.geo}">
-                     <g:message code="decision.geo.label" default="Geo"/>
-                 </g:if>
-             </th>
-             <th>
-                 <g:if test="${decisionInstance?.signers}">
-                     <g:message code="decision.signers.label" default="Signers"/>
-                 </g:if>
-             </th>--}%
-            <th>
                 <g:if test="${decisionInstance?.thematic_cat}">
-                    <g:message code="decision.thematic_cat.label" default="Thematiccat"/>
+                    <g:message code="decision.thematic_cat.label" default="Thematic Category"/>
                 </g:if>
             </th>
             <th>
@@ -57,43 +41,21 @@
             </td>
 
             <td>
-                <g:if test="${decisionInstance?.extraFields}">
-                    <g:each in="${decisionInstance.extraFields}" var="e">
-                        <g:link controller="extraField" action="show"
-                                id="${e.id}">${e?.extra_field_name.encodeAsHTML()}
-                        </g:link>
-                    </g:each>
-                </g:if>
-            </td>
-            %{--<td>
-                <g:if test="${decisionInstance?.signers}">
-                    <g:each in="${decisionInstance.signers}" var="s">
-                        <g:link controller="signer" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link>
-                    </g:each>
-                </g:if>
-            </td>
-            <td>
-                <g:if test="${decisionInstance?.subject}">
-                    <g:fieldValue bean="${decisionInstance}" field="subject"/>
-                </g:if>
-            </td>--}%
-            <td>
                 <g:if test="${decisionInstance?.thematic_cat}">
-                    <g:each in="${decisionInstance.thematic_cat}" var="t">
-                        <g:link controller="dictionaryItem" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link>
+                    <g:each in="${decisionInstance.thematic_cat}">
+                        ${it}
                     </g:each>
                 </g:if>
             </td>
             <td>
                 <g:if test="${decisionInstance?.type}">
-                    <g:link controller="type" action="show"
-                            id="${decisionInstance?.type?.id}">${decisionInstance?.type?.encodeAsHTML()}</g:link>
+                    <g:fieldValue bean="${decisionInstance}" field="type"/>
                 </g:if>
             </td>
             <td>
                 <g:if test="${decisionInstance?.units}">
                     <g:each in="${decisionInstance.units}" var="u">
-                        <g:link controller="unit" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link>
+                        ${u}
                     </g:each>
                 </g:if>
             </td>
