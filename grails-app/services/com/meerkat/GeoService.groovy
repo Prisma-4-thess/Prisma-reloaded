@@ -24,16 +24,18 @@ class GeoService {
             }
         }
         println(retPois)
-        retPois=retPois.sort{it.distance}
-        if(retPois.size()<max){
-            retPois[0..retPois.size()-1].each {r->
-                def g=Geo.findByLatitudeAndLongitudeAndNamegrk(r.lat,r.lng,r.namegrk)
-                retGeos.add(g)
-            }
-        }else {
-            retPois[0..max-1].each {r->
-                def g=Geo.findByLatitudeAndLongitudeAndNamegrk(r.lat,r.lng,r.namegrk)
-                retGeos.add(g)
+        if(retPois.size()>0) {
+            retPois = retPois.sort { it.distance }
+            if (retPois.size() < max) {
+                retPois[0..retPois.size() - 1].each { r ->
+                    def g = Geo.findByLatitudeAndLongitudeAndNamegrk(r.lat, r.lng, r.namegrk)
+                    retGeos.add(g)
+                }
+            } else {
+                retPois[0..max - 1].each { r ->
+                    def g = Geo.findByLatitudeAndLongitudeAndNamegrk(r.lat, r.lng, r.namegrk)
+                    retGeos.add(g)
+                }
             }
         }
         return retGeos
