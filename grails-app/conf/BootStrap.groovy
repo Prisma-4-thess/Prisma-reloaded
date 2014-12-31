@@ -27,7 +27,7 @@ class BootStrap {
     def geoIndex(){
         //        indexing geo for custom lucene search
         Analyzer analyzer = new GreekAnalyzer(Version.LUCENE_4_10_2);
-        File fsdFile=new File("geoindex")
+        File fsdFile=new File("/tmp/geoindex")
         if(!fsdFile.exists()) {
             println "Indexing geos ..."
             Directory directory = FSDirectory.open(fsdFile);
@@ -58,7 +58,7 @@ class BootStrap {
     def decIndex(){
         //        indexing decision for custom lucene search
         Analyzer analyzer = new GreekAnalyzer(Version.LUCENE_4_10_2);
-        File fsdFile=new File("decindex")
+        File fsdFile=new File("/tmp/decindex")
         if(!fsdFile.exists()) {
             println "Indexing decisions ..."
             Directory directory = FSDirectory.open(fsdFile);
@@ -91,7 +91,7 @@ class BootStrap {
     def signerIndex(){
         //        indexing decision for custom lucene search
         Analyzer analyzer = new GreekAnalyzer(Version.LUCENE_4_10_2);
-        File fsdFile=new File("signerindex")
+        File fsdFile=new File("/tmp/signerindex")
         if(!fsdFile.exists()) {
             println "Indexing signers ..."
             Directory directory = FSDirectory.open(fsdFile);
@@ -122,7 +122,7 @@ class BootStrap {
     def typeIndex(){
         //        indexing types for custom lucene search
         Analyzer analyzer = new GreekAnalyzer(Version.LUCENE_4_10_2);
-        File fsdFile=new File("typeindex")
+        File fsdFile=new File("/tmp/typeindex")
         if(!fsdFile.exists()) {
             println "Indexing types ..."
             Directory directory = FSDirectory.open(fsdFile);
