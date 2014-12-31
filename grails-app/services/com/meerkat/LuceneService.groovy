@@ -20,7 +20,7 @@ class LuceneService {
         decisions.each { d ->
             if (d.subject) {
                 def subject = SearchService.Stem(d.subject)
-                def retList = indexSearch(subject, "~/geoindex", score)
+                def retList = indexSearch(subject, "geoindex", score)
                 if(retList){
                     def geo=Geo.findByNamegrk(retList.get(0).prototype)
                     if(!geo.decisions.contains(d)){
