@@ -37,7 +37,7 @@ class SearchService {
     static def searchForPOI(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnPOI=[]
         def nmgrk=Stem(search_param)
-        def pois=indexSearch(nmgrk,"./geoindex")
+        def pois=indexSearch(nmgrk,"~/geoindex")
         def totalNumOfRes=pois.size()
         println totalNumOfRes
         if(pois.size()>0) {
@@ -56,7 +56,7 @@ class SearchService {
     static def searchForDecisions(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnDEC=[]
         def subject=Stem(search_param)
-        def dec=indexSearch(subject,"./decindex")
+        def dec=indexSearch(subject,"~/decindex")
         def totalNumOfRes=dec.size()
         if(dec.size()>0) {
             if (dec.size() <= par_offset + par_max - 1) {
@@ -76,7 +76,7 @@ class SearchService {
     static def searchForSigners(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnSIGN=[]
         def subject=Stem(search_param)
-        def signer=indexSearch(subject,"./signerindex")
+        def signer=indexSearch(subject,"~/signerindex")
         def totalNumOfRes=signer.size()
         if(signer.size()>0) {
             if (signer.size() <= par_offset + par_max - 1) {
@@ -98,7 +98,7 @@ class SearchService {
     static def searchForTypes(String search_param,int par_max,int par_offset,String sort,String orderList){
         def returnTYPE=[]
         def subject=Stem(search_param)
-        def type=indexSearch(subject,"./typeindex")
+        def type=indexSearch(subject,"~/typeindex")
         def totalNumOfRes=type.size()
         if(type.size()>0) {
             if (type.size() <= par_offset + par_max - 1) {
