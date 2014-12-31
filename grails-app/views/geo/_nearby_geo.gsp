@@ -7,7 +7,7 @@
         <g:if test="${geoInstance?.namegrk}">
 
             <a class="list-group-item list-group-item-info" id="${geoInstance?.id}"
-            onClick="updateFields('${geoInstance.namegrk}', ${geoInstance.latitude}, ${geoInstance.longitude}, '${geoInstance.address}')"">
+            onClick="updateFields('${geoInstance.namegrk}', ${geoInstance.latitude}, ${geoInstance.longitude}, '${geoInstance.address}')">
                 %{--<g:message code="geo.namegrk.label" default="Namegrk"/>--}%
 
                 <g:fieldValue bean="${geoInstance}" field="namegrk"/>

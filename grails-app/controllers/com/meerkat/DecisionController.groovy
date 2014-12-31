@@ -13,9 +13,9 @@ class DecisionController {
      * Page to add geo to decision
      * @return
      */
-    def showAddGeo() {
+    def showAddGeo(Decision decisionInstance) {
         //def geoList = GeoService.findPOINearLatLng(params.lat, params.lon, getGrailsApplication().getConfig().geo.nearby.radius.toInteger())
-        return
+        return ['decisionInstance': decisionInstance]
     }
 
     /**
@@ -23,9 +23,13 @@ class DecisionController {
      * @param max
      * @return
      */
-    def addGeo() {
-        print 'Ela mpika'
-        render(template: 'add_geo_success')
+    def addGeo(Decision decisionInstance) {
+        print 'Ela mpika: ' + decisionInstance.ada + "   : " + params.id
+
+        def response = GeoService.addDecisionToGeo(params.double('latitude'), params.double('longitude'), params.namegrk, decisionInstance)
+        print "response: " + response
+        if (response.equals("success")) render(template: 'add_geo_success')
+        else render(template: 'add_geo_failed')
         //TODO: Add geo to decision an load the correct template for success or fail
     }
 
@@ -37,29 +41,6 @@ class DecisionController {
     def listDecisions(List<Decision> decList) {
 //        if (params.decList == null) decList = Decision.list(params)
         render(template: 'list', model: ['decList': decList, 'numOfResults': decList.size()])
-    }
-
-    /**
-     *Loads the template responsible to show all decisions of type given
-     */
-    def listDecisionOfType(){
-        if (params.max == null) {
-            params.max = getGrailsApplication().getConfig().pagination.defaultMax
-        }
-        if (params.offset == null) {
-
-            params.offset = getGrailsApplication().getConfig().pagination.defaultOffset.toInteger()
-        }
-        if (params.sort == null) {
-            params.sort = "ada"
-        }
-        if (params.order == null) {
-            params.order = "asc"
-        }
-
-        def type=Type.get(params.long('id'))
-        def dec=Decision.findAllByType(type,[max:params.max,offset:params.offset])
-        return ['typeInstance': type, 'decisionList': dec,'numOfResults':dec.size(),'offset':params.offset]
     }
 
 /**

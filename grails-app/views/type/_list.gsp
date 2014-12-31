@@ -1,3 +1,4 @@
+<%@ page import="com.meerkat.Decision" %>
 %{--This shows a paginated table with Types--}%
 %{--parameters: typeList, numOfResults (for the pagination)--}%
 
@@ -10,8 +11,7 @@
         <thead>
         <tr  class="info">
 
-            <g:sortableColumn property="label" title="${message(code: 'type.label.label', default: 'Label')}"
-                              params="['clicked': 'type', 'searchBarQuery': searchBarQuery]"/>
+            <th><g:message code="type.label.label" default="Name"/></th>
 
             <th><g:message code="type.decisions.number" default="Number of decisions"/></th>
         </tr>
@@ -22,8 +22,15 @@
 
                 <td>${fieldValue(bean: typeInstance, field: "label")}</td>
 
-                <td class="mouseStyle"><g:link controller="decision" action="listDecisionOfType"
-                            id="${typeInstance.id}">${com.meerkat.SearchService.numOfDecisionOfType(typeInstance.id)}</g:link></td>
+                <g:if test="${(numOfDecOfType = Decision.findAllByType(typeInstance).size())>0}">
+                <td class="mouseStyle"><g:link controller="type" action="listDecisionOfType"
+                            id="${typeInstance.id}">${numOfDecOfType}</g:link></td>
+                </g:if>
+                <g:else>
+                    <td>
+                        <g:message code="type.decisions.zero" default="0"/>
+                    </td>
+                </g:else>
             </tr>
         </g:each>
         </tbody>

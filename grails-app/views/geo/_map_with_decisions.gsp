@@ -62,7 +62,7 @@
     %{--<script src="http://openlayers.org/en/v3.0.0/build/ol.js" type="text/javascript"></script>--}%
 %{--</head>--}%
 
-<div id="map-canvas" class="col-md-12 mapWithDec">
+<div id="map-canvas" class="mapWithDec">
     <div id="popup" class="ol-popup">
         <div id="popup-content"></div>
     </div>

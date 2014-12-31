@@ -20,6 +20,17 @@
 <body>
 %{--Todo: Load Map--}%
 <div class="container-fluid">
+    <div class="row"><div class="col-md-12"><p></p></div></div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><h3>${decisionInstance.ada}</h3></div>
+
+        <div class="panel-body">
+            <p>Define the location of this decision.</p>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-md-8 ">
             <g:render template="/geo/map_to_add_geo"/>
@@ -33,7 +44,8 @@
 
 <div class="col-md-3">
 
-    <g:formRemote url="[controller: 'decision', action: 'addGeo']" onComplete="showResult()" name="add_geo_info"
+    <g:formRemote url="[controller: 'decision', action: 'addGeo', params: ['id': decisionInstance.id]]"
+                  onComplete="showResult()" name="add_geo_info"
                   update="response">
 
         <g:textField class="form-control" name="latitude" placeholder="latitude"/>
@@ -57,7 +69,7 @@
         <div class="col-md-5"></div>
         <div class="col-md-2 text-center">
 
-        <g:submitButton id="submit-button" name="submitBtn" class="btn btn-primary submit-btn" value="addGeo"
+        <g:submitButton id="submit-button" name="submitBtn" class="btn btn-primary submit-btn" value="Submit"
                         action="addGeo"/>
 
     </g:formRemote>
@@ -69,11 +81,15 @@
 </div>
 <script>
     function updateFields(name, lat, lng, addr) {
+        document.getElementById('latitude').value = "";
+        document.getElementById('longitude').value = "";
+        document.getElementById('address').value = "";
+        document.getElementById('namegrk').value = "";
         document.getElementById('latitude').value = lat;
         document.getElementById('longitude').value = lng;
         document.getElementById('address').value = addr;
         document.getElementById('namegrk').value = name;
-        updateMarker(lat,lng);
+        updateMarker(lat, lng);
 //        marker.setMap(null);
 //        placeMarker(new google.maps.LatLng(lat, lng), map);
     }
@@ -84,10 +100,10 @@
             visibility: "visible"
         }).animate({opacity: 1}, 'slow').delay(2000).animate({opacity: 0}, 'slow');
     }
-    function getNearbyGeoFromController(){
-    var paramStr = 'lat='+document.getElementById('latitude').value+'&lon='+document.getElementById('longitude').value;
-    console.log(paramStr)
-    ${remoteFunction( controller: 'geo',
+    function getNearbyGeoFromController() {
+        var paramStr = 'lat=' + document.getElementById('latitude').value + '&lon=' + document.getElementById('longitude').value;
+        console.log(paramStr)
+        ${remoteFunction( controller: 'geo',
                     action: 'showNearbyGeo',
                     update: [success: 'nearbyGeos', failure: 'nearbyGeos'],
                     params: 'paramStr')}
@@ -119,18 +135,19 @@
         //create empty vector
     });
 
-    map.on('click', function(evt) {
+    map.on('click', function (evt) {
         vectorSource.clear();
         //save position and set map center
         var pos = evt.coordinate;
-        console.log(pos[0],pos[1]);
+        console.log(pos[0], pos[1]);
         var newPoint = ol.proj.transform([pos[0], pos[1]], 'EPSG:3857', 'EPSG:4326')
         console.log(newPoint);
         var latlng = new google.maps.LatLng(newPoint[1], newPoint[0]);
-        geocoder.geocode({'latLng': latlng}, function(results, status) {
+        geocoder.geocode({'latLng': latlng}, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 if (results[1]) {
                     console.log(results[0].formatted_address);
+                    document.getElementById('namegrk').value = "";
                     document.getElementById('latitude').value = newPoint[1];
                     document.getElementById('longitude').value = newPoint[0];
                     document.getElementById('address').value = results[0].formatted_address;
@@ -153,7 +170,7 @@
 
     var vectorLayer = new ol.layer.Vector({
         source: vectorSource,
-        style:new ol.style.Style({
+        style: new ol.style.Style({
             image: new ol.style.Icon(({
                 anchor: [16, 32],
                 anchorXUnits: 'pixels',
@@ -165,7 +182,7 @@
     });
     map.addLayer(vectorLayer);
 
-    function updateMarker(lat,lng){
+    function updateMarker(lat, lng) {
         vectorSource.clear();
         var iconFeature = new ol.Feature({
             geometry: new ol.geom.Point(ol.proj.transform([lng, lat], 'EPSG:4326', 'EPSG:3857'))

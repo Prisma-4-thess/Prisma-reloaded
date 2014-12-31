@@ -18,4 +18,8 @@ class Decision{
         version false
         subject sqlType: "varchar(2000)"
     }
+
+    String toString(){
+        return ada
+    }
 }

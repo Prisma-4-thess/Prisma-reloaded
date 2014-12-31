@@ -4,7 +4,7 @@
 
 <div class="row"><div class="col-md-12"><p></p></div></div>
  <div class="panel panel-info">
-    <div class="panel-heading">Decisions</div>
+    <div class="panel-heading"><h3>Decisions</h3></div>
 
     <div class="panel-body">
         <p>Government decisions containing the search terms.</p>
@@ -19,7 +19,7 @@
 
 
 <div class="panel panel-info" >
-    <div class="panel-heading">Signers</div>
+    <div class="panel-heading"><h3>Signers</h3></div>
     <div class="panel-body">
         <p>List of signers whose names include the search terms.</p>
     </div>
@@ -32,7 +32,7 @@
 </div>
 
 <div class="panel panel-info" >
-    <div class="panel-heading">Types</div>
+    <div class="panel-heading"><h3>Types</h3></div>
     <div class="panel-body">
         <p>Types containing the search terms.</p>
     </div>
@@ -46,7 +46,7 @@
 
 
 <div class="panel panel-info" >
-    <div class="panel-heading">Locations</div>
+    <div class="panel-heading"><h3>Locations</h3></div>
     <div class="panel-body">
         <p>Locations containing the search terms.</p>
     </div>

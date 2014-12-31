@@ -1,5 +1,5 @@
 %{--This should create the Footer of the website--}%
-<footer class="customFooter">
+<footer class="palette-wet-asphalt">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12" align="center">

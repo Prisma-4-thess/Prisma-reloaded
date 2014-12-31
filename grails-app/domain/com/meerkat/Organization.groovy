@@ -15,4 +15,9 @@ class Organization {
         version false
         uid column: "uid", generator: "assigned", sqlType: "varchar(20)"
     }
+
+    String toString(){
+        return label
+    }
+
 }

@@ -23,10 +23,12 @@ class GeoService {
                 retPois.add(map)
             }
         }
-        println(retPois)
+
         if(retPois.size()>0) {
             retPois = retPois.sort { it.distance }
-            if (retPois.size() < max) {
+            println ("retPois "+retPois)
+            println ("retPois size "+retPois.size())
+            if (retPois.size() <= max) {
                 retPois[0..retPois.size() - 1].each { r ->
                     def g = Geo.findByLatitudeAndLongitudeAndNamegrk(r.lat, r.lng, r.namegrk)
                     retGeos.add(g)
@@ -66,16 +68,18 @@ class GeoService {
 
     static def addDecisionToGeo(double lat,double lng,String namegrk,Decision decision){
         Geo geo=Geo.findByLatitudeAndLongitudeAndNamegrk(lat,lng,namegrk)
+        print "geo: "+geo
         if(!geo){
             geo.addToDecisions(decision)
+            return "success"
         }else {
             try{
                 geo.save(flush: true,failOnError: true)
                 geo.addToDecisions(decision)
-                return [response:"success"]
+                return "success"
             }catch (Exception e){
                 println("Failed to save new geo")
-                return [response:"fail"]
+                return "fail"
             }
         }
     }

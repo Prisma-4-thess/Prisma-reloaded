@@ -1,3 +1,4 @@
+<%@ page import="com.meerkat.Decision" %>
 %{--This shows a paginated table with Geos--}%
 %{--parameters: geoList, numOfResults (for the pagination)--}%
 
@@ -15,7 +16,10 @@
 
             <th><g:message code="geo.address.label" default="Address"/></th>
 
-            <th><g:message code="geo.dimos.label" default="Dimos"/></th>
+            %{--<th><g:message code="geo.dimos.label" default="Dimos"/></th>--}%
+            <th><g:message code="geo.namegrk.label" default="Name"/></th>
+
+            <th><g:message code="geo.decisions.number" default="Number of decisions"/></th>
 
         </tr>
         </thead>
@@ -29,11 +33,26 @@
 
                 <td>${fieldValue(bean: geoInstance, field: "address")}</td>
 
-                <td>${fieldValue(bean: geoInstance, field: "dimos")}</td>
+                %{--<td>${fieldValue(bean: geoInstance, field: "dimos")}</td>--}%
+
+                <td>${fieldValue(bean: geoInstance, field: "namegrk")}</td>
+
+
+                    <g:if test="${(numOfDecOfGeo = Decision.findAllByGeo(geoInstance).size())>0}">
+                        <td class="mouseStyle">
+                    <g:link controller="geo" action="showDecisionsOfGeo"
+                                               id="${geoInstance.id}">${numOfDecOfGeo}</g:link></td>
+                    </g:if>
+                <g:else>
+                    <td>
+                        <g:message code="geo.decisions.zero" default="0"/>
+                    </td>
+
+                </g:else>
 
             </tr>
             <tr  id="geo${i}" class="resultsDetails">
-                <td colspan="4">
+                <td colspan="5">
                     <g:render template="/geo/show" model="['geoInstance': geoInstance, 'entityName': 'Geo']"/>
                 </td>
             </tr>

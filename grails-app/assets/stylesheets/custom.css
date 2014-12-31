@@ -132,3 +132,49 @@
     display: none;
     padding:0;
 }
+
+
+th.asc a {
+    background-image: url(../images/skin/sorted_asc.gif);
+}
+
+th.desc a {
+    background-image: url(../images/skin/sorted_desc.gif);
+}
+
+/* PAGINATION */
+
+.pagination {
+    border-top: 0;
+    margin: 0;
+    padding: 0.3em 0.2em;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.pagination a,
+.pagination .currentStep {
+    color: #34495E;
+    display: inline-block;
+    margin: 0 0.1em;
+    padding: 0.25em 0.7em;
+    text-decoration: none;
+    -moz-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+
+.pagination a:hover, .pagination a:focus,
+.pagination .currentStep {
+    background-color: #34495E;
+    color: #ffffff;
+    outline: none;
+
+}
+
+.no-borderradius .pagination a:hover, .no-borderradius .pagination a:focus,
+.no-borderradius .pagination .currentStep {
+    background-color: transparent;
+    color: #34495E;
+    text-decoration: underline;
+}

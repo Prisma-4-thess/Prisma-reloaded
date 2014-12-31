@@ -8,7 +8,7 @@
 
     <table class="table table-hover">
         <thead>
-        <tr class="info">
+        <tr class="palette-silver">
             <th>
                 <g:if test="${typeInstance?.label}">
                     <g:message code="type.label.label" default="Label"/>

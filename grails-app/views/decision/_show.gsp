@@ -1,3 +1,4 @@
+<%@ page import="java.text.SimpleDateFormat" %>
 %{--This should show the contents of one decision--}%
 %{--parameters: decisionInstance--}%
 
@@ -8,7 +9,7 @@
 
     <table class="table table-hover">
         <thead>
-        <tr class="info">
+        <tr class="palette-silver">
             <th>
                 <g:if test="${decisionInstance?.issueDate}">
                     <g:message code="decision.issueDate.label" default="Issue Date"/>
@@ -29,6 +30,9 @@
                     <g:message code="decision.units.label" default="Units"/>
                 </g:if>
             </th>
+            <th>
+                <g:message code="decision.pdf.link" default="PDF"/>
+            </th>
         </tr>
         </thead>
 
@@ -36,7 +40,8 @@
         <tr>
             <td>
                 <g:if test="${decisionInstance?.issueDate}">
-                    <g:fieldValue bean="${decisionInstance}" field="issueDate"/>
+                    %{--<g:fieldValue bean="${decisionInstance}" field="issueDate"/>--}%
+                    ${new SimpleDateFormat("dd-MM-yyyy").format(new Date((decisionInstance?.issueDate as long)))}
                 </g:if>
             </td>
 
@@ -44,6 +49,7 @@
                 <g:if test="${decisionInstance?.thematic_cat}">
                     <g:each in="${decisionInstance.thematic_cat}">
                         ${it}
+                        <br/>
                     </g:each>
                 </g:if>
             </td>
@@ -56,8 +62,14 @@
                 <g:if test="${decisionInstance?.units}">
                     <g:each in="${decisionInstance.units}" var="u">
                         ${u}
+                        <br/>
                     </g:each>
                 </g:if>
+            </td>
+            <td>
+                <g:link target="_blank" url="https://diavgeia.gov.gr/luminapi/api/decisions/${decisionInstance?.ada}/document">
+                    <asset:image src="icons/svg/pdf.svg"/>
+                </g:link>
             </td>
         </tr>
         </tbody>

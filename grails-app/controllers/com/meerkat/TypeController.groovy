@@ -28,6 +28,29 @@ class TypeController {
         render(template: 'show', model: ['typeInstance': typeInstance, 'entityName': 'Type'])
     }
 
+    /**
+     *Loads the template responsible to show all decisions of type given
+     */
+    def listDecisionOfType(){
+        if (params.max == null) {
+            params.max = getGrailsApplication().getConfig().pagination.defaultMax
+        }
+        if (params.offset == null) {
+
+            params.offset = getGrailsApplication().getConfig().pagination.defaultOffset.toInteger()
+        }
+        if (params.sort == null) {
+            params.sort = "ada"
+        }
+        if (params.order == null) {
+            params.order = "asc"
+        }
+
+        def type=Type.get(params.long('id'))
+        def dec=Decision.findAllByType(type,[max:params.max,offset:params.offset])
+        return ['typeInstance': type, 'decisionList': dec,'numOfResults':dec.size(),'offset':params.offset]
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Type.list(params), model: [typeInstanceCount: Type.count()]

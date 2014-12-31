@@ -1,3 +1,4 @@
+<%@ page import="java.text.SimpleDateFormat" %>
 %{--This should show the contents of one Signer--}%
 %{--parameters: signerInstance--}%
 
@@ -8,7 +9,7 @@
 
     <table class="table table-hover">
         <thead>
-        <tr class="info">
+        <tr class="palette-silver">
             <th>
                 <g:if test="${signerInstance?.active}">
                     <g:message code="signer.active.label" default="Active"/>
@@ -40,12 +41,14 @@
             </td>
             <td>
                 <g:if test="${signerInstance?.activeFrom}">
-                    <g:fieldValue bean="${signerInstance}" field="activeFrom"/>
+                    %{--<g:fieldValue bean="${signerInstance}" field="activeFrom"/>--}%
+                    ${new SimpleDateFormat("dd-MM-yyyy").format(new Date((signerInstance?.activeFrom as long)))}
+                    %{--${signerInstance?.getActiveFrom()}--}%
                 </g:if>
             </td>
             <td>
                 <g:if test="${signerInstance?.activeUntil}">
-                    <g:fieldValue bean="${signerInstance}" field="activeUntil"/>
+                    ${new SimpleDateFormat("dd-MM-yyyy").format(new Date((signerInstance?.activeUntil as long)))}
                 </g:if>
             </td>
 
