@@ -18,6 +18,7 @@ $('#fadeIn').click(function () {
     });
     $('#overMap').fadeOut('slow');
     $('.tooltip-actions').fadeOut('slow');
+    $('.youtube-actions').fadeOut('slow');
 });
 $('#fadeOut').click(function () {
     $('#mainContent').css({
@@ -36,6 +37,7 @@ $('#fadeOut').click(function () {
     });
     $('#overMap').fadeIn('slow');
     $('.tooltip-actions').fadeIn('slow');
+    $('.youtube-actions').fadeIn('slow');
 });
 
 /******START- Smooth scroll to element******/
