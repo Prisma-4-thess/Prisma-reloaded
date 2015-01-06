@@ -34,7 +34,16 @@
     margin-top: 1vh;
     right: 1vh;
 }
+.youtube-actions {
+    position: absolute;
+    margin-top: 7vh;
+    right: 1vh;
+}
 
+.youtube-button {
+    width: 32px;
+    height:32px;
+}
 .customNavbar {
     margin-bottom: 0%;
 }

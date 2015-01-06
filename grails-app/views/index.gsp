@@ -93,6 +93,9 @@
          data-content="<g:message code="homepage.tooltip.content" default="Instructions"/>">
         <g:img dir="images" file="icons/png/information-icon.png"/>
     </div>
+    <div class="youtube-actions">
+        <g:link base="https://www.youtube.com/watch?v=00-dSj6HOLE" target="_blank"><asset:image class="youtube-button" src="icons/svg/youtube.svg" /> </g:link>
+    </div>
 
     <div class="row homepageSearchBar">
         <div class="col-md-3"></div>
@@ -110,6 +113,7 @@
     $(document).ready(function () {
         $('.mapWithDec').css({'pointer-events': 'none'});
         $('.tooltip-actions').hide().delay(300).fadeIn('slow');
+        $('.youtube-actions').hide().delay(500).fadeIn('slow');
         $('#welcomeTag').hide().delay(500).fadeIn('slow');
         $('#mainSearch').hide().delay(700).fadeIn('slow');
     });
